@@ -187,7 +187,7 @@
         class="cover-img">
       <audio
         id="ophelia-audio"
-        src="https://example.com/path/to/your/audio.mp3"
+        src="sha256:2951946b09907a3b372b1a526f2cd2e7def23e1e53cb17631ebd9e1c91fab4b9"
         preload="auto"
       ></audio> </td>
                     <td><div class="track">Taylor Swift</div><div class="artist">The Fate of Ophelia</div></td>
@@ -580,10 +580,34 @@
             console.log(`Голос за позицию ${pos}`);
         }
     </script>
+    <script>
+            // Получаем элементы
+            const coverImg = document.getElementById('ophelia-cover');
+            const audio = document.getElementById('ophelia-audio');
 
+            // Обработчик клика
+            coverImg.addEventListener('click', function() {
+            if (audio.paused) {
+            audio.play();
+            // Можно добавить визуальные эффекты (например, изменить border)
+            coverImg.style.border = '2px solid #ff6b6b';
+            } else {
+            audio.pause();
+            audio.currentTime = 0; // Сбрасываем позицию
+            coverImg.style.border = 'none';
+         }
+         });
+
+            // Сбрасываем стиль при окончании аудио
+            audio.addEventListener('ended', function() {
+            coverImg.style.border = 'none';
+          });
+</script>
+    
 </body>
 
 </html>
+
 
 
 

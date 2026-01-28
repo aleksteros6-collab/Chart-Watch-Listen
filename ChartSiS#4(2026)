@@ -162,7 +162,7 @@
 
     <div class="container">
         <h1>Смотри и Слушай 2.0</h1>
-        <div class="subtitle">Выпуск #3 — 24 января 2025</div>
+        <div class="subtitle">Выпуск #4 — 31 января 2026</div>
 
         <table>
             <thead>
@@ -179,24 +179,23 @@
             <tbody>
                 <tr class="track-item">
                     <td class="position">1</td>
-                    <td>   <img 
-        id="ophelia-cover"
-        data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Taylor.Swift.-.The.Fate.of.Ophelia.hitmos.fm.mp3"
-        src="https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png"
-        alt="Taylor Swift - The Fate of Ophelia"
-        style="width:60px; height:60px; border-radius:10px; cursor:pointer;"
-        class="cover-img">
-      <audio
-          class="audio-player"
+                     <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ray_Dalton_-_Blood_Running_79928040.mp3cut.net.mp3"
+                            src="https://avatars.yandex.net/get-music-content/15682289/42a36f3f.a.38477503-1/m1000x1000" 
+                            alt="Ray Dalton - Blood Running" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+        class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Taylor.Swift.-.The.Fate.of.Ophelia.hitmos.fm.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ray_Dalton_-_Blood_Running_79928040.mp3cut.net.mp3"
         preload="auto">
-        </audio></audio> </td>
-                    <td><div class="track">Taylor Swift</div><div class="artist">The Fate of Ophelia</div></td>
-                    <td class="movement up">+3</td>
-                    <td class="weeks">8</td>
-                    <td class="points">243</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+        </audio></td>
+                    <td><div class="track">Ray Dalton</div><div class="artist">Blood Running</div></td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">10</td>
+                    <td class="points">259</td>
+                    <td><button class="vote-btn" onclick="vote(this, 3)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">2</td>
@@ -213,34 +212,14 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">John Summit & Inez</div><div class="artist">crystallized</div></td>
-                    <td class="movement down">-1</td>
-                    <td class="weeks">13</td>
-                    <td class="points">440</td>
+                    <td class="movement stay">-0</td>
+                    <td class="weeks">14</td>
+                    <td class="points">479</td>
                     <td><button class="vote-btn" onclick="vote(this, 2)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">3</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ray_Dalton_-_Blood_Running_79928040.mp3cut.net.mp3"
-                            src="https://avatars.yandex.net/get-music-content/15682289/42a36f3f.a.38477503-1/m1000x1000" 
-                            alt="Ray Dalton - Blood Running" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-        class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ray_Dalton_-_Blood_Running_79928040.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Ray Dalton</div><div class="artist">Blood Running</div></td>
-                    <td class="movement up">+7</td>
-                    <td class="weeks">9</td>
-                    <td class="points">219</td>
-                    <td><button class="vote-btn" onclick="vote(this, 3)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">4</td>
-                    <td><img 
+                   <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Haven_-_I_Run_feat_Kaitlin_Aragon_80287129.mp3cut.net.mp3"
                             src="https://images.genius.com/9fe572005e814778ec82276c92cd66ad.800x800x1.webp" 
                             alt="HAVEN feat. Kaitlin Aragon - I Run" 
@@ -253,53 +232,13 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">HAVEN. feat. Kaitlin Aragon</div><div class="artist">I Run</div></td>
-                    <td class="movement down">-2</td>
-                    <td class="weeks">7</td>
-                    <td class="points">224</td>
+                    <td class="movement up">+1</td>
+                    <td class="weeks">8</td>
+                    <td class="points">262</td>
                     <td><button class="vote-btn" onclick="vote(this, 4)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                  <tr class="track-item">
-                    <td class="position">5</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Tyla_-_CHANEL_80070599.mp3cut.net.mp3"
-                            src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/06/fe/42/06fe424a-5dcc-58a5-925b-2261fbe79320/196873542416.jpg/840x840bb.webp" 
-                            alt="Tyla - CHANEL" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Tyla_-_CHANEL_80070599.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Tyla</div><div class="artist">CHANEL</div></td>
-                    <td class="movement up">+4</td>
-                    <td class="weeks">6</td>
-                    <td class="points">140</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                 <tr class="track-item">
-                    <td class="position">6</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Prospa_Kosmo_Kint_-_Love_Songs_Extended_Mix_-_80030714.mp3cut.net.mp3"
-                            src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f9/39/85/f939852b-20ff-b2a9-d198-b77dc6425eca/199538885613.jpg/800x800cc.jpg" 
-                            alt="Prospa - Love Songs" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Prospa_Kosmo_Kint_-_Love_Songs_Extended_Mix_-_80030714.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Prospa</div><div class="artist">Love Songs (feat. Kosmo Kint)</div></td>
-                    <td class="movement stay">-0</td>
-                    <td class="weeks">11</td>
-                    <td class="points">260</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                 <tr class="track-item">
-                    <td class="position">7</td>
+                    <td class="position">4</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Doja_Cat_-_Jealous_Type_79525686.mp3cut.net.mp3"
                             src="https://cdn-images.dzcdn.net/images/cover/0733e2ba03767a583e35cafc0fee076c/1000x1000.jpg" 
@@ -313,13 +252,54 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Doja Cat</div><div class="artist">Jealous Type</div></td>
-                    <td class="movement stay">-0</td>
-                    <td class="weeks">11</td>
-                    <td class="points">278</td>
+                    <td class="movement up">+3</td>
+                    <td class="weeks">12</td>
+                    <td class="points">315</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                  <tr class="track-item">
-                    <td class="position">8</td>
+                    <td class="position">5</td>      
+                    <td>   <img 
+        id="ophelia-cover"
+        data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Taylor.Swift.-.The.Fate.of.Ophelia.hitmos.fm.mp3"
+        src="https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png"
+        alt="Taylor Swift - The Fate of Ophelia"
+        style="width:60px; height:60px; border-radius:10px; cursor:pointer;"
+        class="cover-img">
+      <audio
+          class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Taylor.Swift.-.The.Fate.of.Ophelia.hitmos.fm.mp3"
+        preload="auto">
+        </audio></audio> </td>
+                    <td><div class="track">Taylor Swift</div><div class="artist">The Fate of Ophelia</div></td>
+                    <td class="movement down">-3</td>
+                    <td class="weeks">9</td>
+                    <td class="points">279</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">6</td>
+                     <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Tyla_-_CHANEL_80070599.mp3cut.net.mp3"
+                            src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/06/fe/42/06fe424a-5dcc-58a5-925b-2261fbe79320/196873542416.jpg/840x840bb.webp" 
+                            alt="Tyla - CHANEL" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Tyla_-_CHANEL_80070599.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Tyla</div><div class="artist">CHANEL</div></td>
+                    <td class="movement down">-1</td>
+                    <td class="weeks">7</td>
+                    <td class="points">175</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                 <tr class="track-item">
+                    <td class="position">7</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Robyn_-_Dopamine_80218442.mp3cut.net.mp3"
                             src="https://avatars.yandex.net/get-music-content/16334817/caca7eb1.a.39005041-1/m1000x1000" 
@@ -333,73 +313,13 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Robyn</div><div class="artist">Dopamine</div></td>
-                    <td class="movement up">+4</td>
-                    <td class="weeks">5</td>
-                    <td class="points">114</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                 <tr class="track-item">
-                    <td class="position">9</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Benson_Boone_-_Mystical_Magical_79265092.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/2115007/1232343201/S600xU" 
-                            alt="Benson Boone - Mystical Magical" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Benson_Boone_-_Mystical_Magical_79265092.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Benson Boone</div><div class="artist">Mystical Magical</div></td>
-                    <td class="movement down">-6</td>
-                    <td class="weeks">20</td>
-                    <td class="points">578</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                 <tr class="track-item">
-                    <td class="position">10</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Mot_-_Bez_nazvaniya_79923862.mp3cut.net.mp3"
-                            src="https://avatars.yandex.net/get-music-content/15499524/a18488f3.a.38261918-2/m1000x1000" 
-                            alt="Мот - одинок.Net" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Mot_-_Bez_nazvaniya_79923862.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Мот</div><div class="artist">одинок.Net</div></td>
                     <td class="movement up">+1</td>
-                    <td class="weeks">13</td>
-                    <td class="points">368</td>
+                    <td class="weeks">6</td>
+                    <td class="points">148</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                  <tr class="track-item">
-                    <td class="position">11</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Sonny_Fodera_-_Think_About_Us_feat_Poppy_Baskcomb_Extended_Mix_80237391.mp3cut.net.mp3"
-                            src="https://avatars.yandex.net/get-music-content/16616584/9e54ae66.a.38878697-1/m1000x1000" 
-                            alt="Sonny Fodera & D.O.D - Think About Us (feat. Poppy Baskcomb)" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Sonny_Fodera_-_Think_About_Us_feat_Poppy_Baskcomb_Extended_Mix_80237391.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Sonny Fodera & D.O.D</div><div class="artist">Think About Us (feat. Poppy Baskcomb)</div></td>
-                    <td class="movement up">+6</td>
-                    <td class="weeks">4</td>
-                    <td class="points">96</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">12</td>
+                    <td class="position">8</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Fezzo_-_Kids_80340970.mp3cut.net.mp3"
                             src="https://topmusicarts.com/cdn/shop/files/FEZZO---Kids-_Ableton-Remake_4e6c8d3a-e8a9-4dae-ad13-4aaff39df020_1512x.png?v=1764286067" 
@@ -413,33 +333,53 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">FEZZO</div><div class="artist">Kids</div></td>
-                    <td class="movement up">+2</td>
-                    <td class="weeks">5</td>
-                    <td class="points">107</td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">6</td>
+                    <td class="points">130</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
-                    <td class="position">13</td>
+                    <td class="position">9</td>
                     <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Raye_-_WHERE_IS_MY_HUSBAND_79814814.mp3cut.net.mp3"
-                            src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/10/8a/69108a18-55ec-d774-a653-90b2242733db/199538765458.jpg/800x800cc.jpg" 
-                            alt="RAYE - WHERE IS MY HUSBAND!" 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Prospa_Kosmo_Kint_-_Love_Songs_Extended_Mix_-_80030714.mp3cut.net.mp3"
+                            src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f9/39/85/f939852b-20ff-b2a9-d198-b77dc6425eca/199538885613.jpg/800x800cc.jpg" 
+                            alt="Prospa - Love Songs" 
                             style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
                             class="cover-img">
                      <audio
                          class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Raye_-_WHERE_IS_MY_HUSBAND_79814814.mp3cut.net.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Prospa_Kosmo_Kint_-_Love_Songs_Extended_Mix_-_80030714.mp3cut.net.mp3"
         preload="auto">
         </audio></td>
-                    <td><div class="track">RAYE</div><div class="artist">WHERE IS MY HUSBAND!</div></td>
-                    <td class="movement stay">-0</td>
+                    <td><div class="track">Prospa</div><div class="artist">Love Songs (feat. Kosmo Kint)</div></td>
+                    <td class="movement down">-3</td>
                     <td class="weeks">12</td>
-                    <td class="points">352</td>
+                    <td class="points">292</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                 <tr class="track-item">
+                    <td class="position">10</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Sonny_Fodera_-_Think_About_Us_feat_Poppy_Baskcomb_Extended_Mix_80237391.mp3cut.net.mp3"
+                            src="https://avatars.yandex.net/get-music-content/16616584/9e54ae66.a.38878697-1/m1000x1000" 
+                            alt="Sonny Fodera & D.O.D - Think About Us (feat. Poppy Baskcomb)" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Sonny_Fodera_-_Think_About_Us_feat_Poppy_Baskcomb_Extended_Mix_80237391.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Sonny Fodera & D.O.D</div><div class="artist">Think About Us (feat. Poppy Baskcomb)</div></td>
+                    <td class="movement up">+1</td>
+                    <td class="weeks">5</td>
+                    <td class="points">127</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
-                    <td class="position">14</td>
+                    <td class="position">11</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/David_Guetta_Teddy_Swims_Tones_And_I_-_Gone_Gone_Gone_80116105.mp3cut.net.mp3"
                             src="https://avatars.yandex.net/get-music-content/16496077/51f2aed6.a.38548635-1/m1000x1000" 
@@ -453,13 +393,33 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">David Guetta & Teddy Swims, Tones and I</div><div class="artist">Gone Gone Gone</div></td>
-                    <td class="movement up">+9</td>
-                    <td class="weeks">12</td>
-                    <td class="points">281</td>
+                    <td class="movement up">+3</td>
+                    <td class="weeks">13</td>
+                    <td class="points">311</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
-                    <td class="position">15</td>
+                    <td class="position">12</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Mot_-_Bez_nazvaniya_79923862.mp3cut.net.mp3"
+                            src="https://avatars.yandex.net/get-music-content/15499524/a18488f3.a.38261918-2/m1000x1000" 
+                            alt="Мот - одинок.Net" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Mot_-_Bez_nazvaniya_79923862.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Мот</div><div class="artist">одинок.Net</div></td>
+                    <td class="movement down">-2</td>
+                    <td class="weeks">14</td>
+                    <td class="points">397</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                 <tr class="track-item">
+                    <td class="position">13</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/JONY_-_Pomnyu_80172084.mp3cut.net.mp3"
                             src="https://avatars.mds.yandex.net/get-entity_search/2431491/1231360828/S600xU" 
@@ -473,53 +433,153 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">JONY</div><div class="artist">Помню</div></td>
-                    <td class="movement up">+9</td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">4</td>
+                    <td class="points">83</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">14</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Paul.Kalkbrenner.Stromae.-.Que.Ce.Soit.Clair.hitmos.mp3cut.net.mp3"
+                            src="https://avatars.yandex.net/get-music-content/15018579/5f418476.a.37879570-1/m1000x1000" 
+                            alt="Paul Kalkbrenner & Stromae - QUE CE SOIT CLAIR" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Paul.Kalkbrenner.Stromae.-.Que.Ce.Soit.Clair.hitmos.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Paul Kalkbrenner & Stromae</div><div class="artist">QUE CE SOIT CLAIR</div></td>
+                    <td class="movement up">+8</td>
                     <td class="weeks">3</td>
-                    <td class="points">55</td>
+                    <td class="points">64</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">15</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/KDDK_Alex_Alta_-_12_79808147.mp3cut.net.mp3"
+                            src="https://avatars.yandex.net/get-music-content/16469857/9cc87625.a.38060253-1/m1000x1000" 
+                            alt="Alex Alta & KDDK - 1&2" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/KDDK_Alex_Alta_-_12_79808147.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Alex Alta & KDDK</div><div class="artist">1&2</div></td>
+                    <td class="movement up">+8</td>
+                    <td class="weeks">2</td>
+                    <td class="points">44</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">16</td>
                     <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/sombr_-_12_to_12_79355108.mp3cut.net.mp3"
-                            src="https://upload.wikimedia.org/wikipedia/en/0/05/Sombr_-_12_to_12.png" 
-                            alt="sombr - 12 to 12" 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Calvin_Harris_-_Ocean_feat_Jessie_Reyez_80033618.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/10105370/1206658855/S600xU" 
+                            alt="Calvin Harris - Ocean" 
                             style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
                             class="cover-img">
                      <audio
                          class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/sombr_-_12_to_12_79355108.mp3cut.net.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Calvin_Harris_-_Ocean_feat_Jessie_Reyez_80033618.mp3cut.net.mp3"
         preload="auto">
         </audio></td>
-                    <td><div class="track">sombr</div><div class="artist">12 to 12</div></td>
-                    <td class="movement down">-11</td>
+                    <td><div class="track">Calvin Harris</div><div class="artist">Ocean (feat. Jessie Reyez)</div></td>
+                    <td class="movement up">+10</td>
                     <td class="weeks">12</td>
-                    <td class="points">531</td>
+                    <td class="points">216</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">17</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Alex.Taros.-.Adrenaline.Rush_.vagant-music.mp3cut.net.mp3"
-                            src="https://avatars.yandex.net/get-music-content/14304155/f010a8e4.a.38876348-1/m1000x1000" 
-                            alt="Alex Taros - Adrenaline Rush" 
+                   <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Fantomel.KATE.LINN.Provi.-.Dame.Un.Grrr.Provi.Remix.Radio.Edit.hitmos.mp3cut.net.mp3"
+                            src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/aa/62/69/aa62694d-7e55-f8e1-e2a5-f531072aa35e/25UM1IM18230.rgb.jpg/316x316bb.webp" 
+                            alt="Fantomel & Kate Linn - Dame Un Grrr (Provi Remix)" 
                             style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
                             class="cover-img">
                      <audio
                          class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Alex.Taros.-.Adrenaline.Rush_.vagant-music.mp3cut.net.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Fantomel.KATE.LINN.Provi.-.Dame.Un.Grrr.Provi.Remix.Radio.Edit.hitmos.mp3cut.net.mp3"
         preload="auto">
         </audio></td>
-                    <td><div class="track">Alex Taros</div><div class="artist">Adrenaline Rush</div></td>
-                    <td class="movement down">-9</td>
-                    <td class="weeks">10</td>
-                    <td class="points">193</td>
+                    <td><div class="track">Fantomel & Kate Linn</div><div class="artist">Dame Un Grrr (Provi Remix)</div></td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">4</td>
+                    <td class="points">66</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">18</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Benson_Boone_-_Mystical_Magical_79265092.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/2115007/1232343201/S600xU" 
+                            alt="Benson Boone - Mystical Magical" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Benson_Boone_-_Mystical_Magical_79265092.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Benson Boone</div><div class="artist">Mystical Magical</div></td>
+                    <td class="movement down">-9</td>
+                    <td class="weeks">21</td>
+                    <td class="points">601</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                 <tr class="track-item">
+                    <td class="position">19</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Raye_-_WHERE_IS_MY_HUSBAND_79814814.mp3cut.net.mp3"
+                            src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/69/10/8a/69108a18-55ec-d774-a653-90b2242733db/199538765458.jpg/800x800cc.jpg" 
+                            alt="RAYE - WHERE IS MY HUSBAND!" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Raye_-_WHERE_IS_MY_HUSBAND_79814814.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">RAYE</div><div class="artist">WHERE IS MY HUSBAND!</div></td>
+                    <td class="movement down">-6</td>
+                    <td class="weeks">13</td>
+                    <td class="points">374</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">20</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Dimension.Karen.Harding.-.Guardian.Angel.hitmos.mp3cut.net.mp3"
+                            src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/70/7b/4e/707b4e4e-1e7d-d730-302c-a5e6456a6075/196873665474.jpg/316x316bb.webp" 
+                            alt="Dimension & Karen Harding - Guardian angel" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Dimension.Karen.Harding.-.Guardian.Angel.hitmos.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Dimension & Karen Harding</div><div class="artist">Guardian Angel</div></td>
+                    <td class="movement down">-1</td>
+                    <td class="weeks">4</td>
+                    <td class="points">71</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">21</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Demi_Lovato_-_Fast_79368874.mp3cut.net.mp3"
                             src="https://avatars.mds.yandex.net/i?id=d7aa7b01a8ac05f9186ee3972bcc5ec7_l-5236341-images-thumbs&n=13" 
@@ -534,32 +594,12 @@
         </audio></td>
                     <td><div class="track">Demi Lovato</div><div class="artist">Fast</div></td>
                     <td class="movement down">-3</td>
-                    <td class="weeks">18</td>
-                    <td class="points">512</td>
+                    <td class="weeks">19</td>
+                    <td class="points">532</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
-                    <td class="position">19</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Dimension.Karen.Harding.-.Guardian.Angel.hitmos.mp3cut.net.mp3"
-                            src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/70/7b/4e/707b4e4e-1e7d-d730-302c-a5e6456a6075/196873665474.jpg/316x316bb.webp" 
-                            alt="Dimension & Karen Harding - Guardian angel" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Dimension.Karen.Harding.-.Guardian.Angel.hitmos.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Dimension & Karen Harding</div><div class="artist">Guardian Angel</div></td>
-                    <td class="movement up">+1</td>
-                    <td class="weeks">3</td>
-                    <td class="points">50</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">20</td>
+                    <td class="position">22</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/HUNTRX_EJAE_AUDREY_NUNA_Rei_Ami_KPop_Demon_Hunters_Cast_-_Golden_79398164.mp3cut.net.mp3"
                             src="https://images.genius.com/b5c11506d341f028f3665d09b2d41250.1000x1000x1.png" 
@@ -573,133 +613,73 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">HUNTR/X: Ejae & Audrey Nuna, REI AMI</div><div class="artist">Golden</div></td>
-                    <td class="movement down">-4</td>
-                    <td class="weeks">14</td>
-                    <td class="points">419</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">21</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Fantomel.KATE.LINN.Provi.-.Dame.Un.Grrr.Provi.Remix.Radio.Edit.hitmos.mp3cut.net.mp3"
-                            src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/aa/62/69/aa62694d-7e55-f8e1-e2a5-f531072aa35e/25UM1IM18230.rgb.jpg/316x316bb.webp" 
-                            alt="Fantomel & Kate Linn - Dame Un Grrr (Provi Remix)" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Fantomel.KATE.LINN.Provi.-.Dame.Un.Grrr.Provi.Remix.Radio.Edit.hitmos.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Fantomel & Kate Linn</div><div class="artist">Dame Un Grrr (Provi Remix)</div></td>
-                    <td class="movement up">+4</td>
-                    <td class="weeks">3</td>
-                    <td class="points">42</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">22</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Paul.Kalkbrenner.Stromae.-.Que.Ce.Soit.Clair.hitmos.mp3cut.net.mp3"
-                            src="https://avatars.yandex.net/get-music-content/15018579/5f418476.a.37879570-1/m1000x1000" 
-                            alt="Paul Kalkbrenner & Stromae - QUE CE SOIT CLAIR" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Paul.Kalkbrenner.Stromae.-.Que.Ce.Soit.Clair.hitmos.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Paul Kalkbrenner & Stromae</div><div class="artist">QUE CE SOIT CLAIR</div></td>
-                    <td class="movement up">+7</td>
-                    <td class="weeks">2</td>
-                    <td class="points">37</td>
+                    <td class="movement down">-2</td>
+                    <td class="weeks">15</td>
+                    <td class="points">438</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">23</td>
                     <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/KDDK_Alex_Alta_-_12_79808147.mp3cut.net.mp3"
-                            src="https://avatars.yandex.net/get-music-content/16469857/9cc87625.a.38060253-1/m1000x1000" 
-                            alt="Alex Alta & KDDK - 1&2" 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/sombr_-_12_to_12_79355108.mp3cut.net.mp3"
+                            src="https://upload.wikimedia.org/wikipedia/en/0/05/Sombr_-_12_to_12.png" 
+                            alt="sombr - 12 to 12" 
                             style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
                             class="cover-img">
                      <audio
                          class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/KDDK_Alex_Alta_-_12_79808147.mp3cut.net.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/sombr_-_12_to_12_79355108.mp3cut.net.mp3"
         preload="auto">
         </audio></td>
-                    <td><div class="track">Alex Alta & KDDK</div><div class="artist">1&2</div></td>
-                    <td class="movement new">NEW</td>
-                    <td class="weeks">1</td>
-                    <td class="points">18</td>
+                    <td><div class="track">sombr</div><div class="artist">12 to 12</div></td>
+                    <td class="movement down">-7</td>
+                    <td class="weeks">13</td>
+                    <td class="points">549</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">24</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Selena_Gomez_benny_blanco_-_Talk_79574622.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/5578182/1230887889/S600xU" 
-                            alt="Selena Gomez & benny blanco - Talk" 
+                     <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Alex.Taros.-.Adrenaline.Rush_.vagant-music.mp3cut.net.mp3"
+                            src="https://avatars.yandex.net/get-music-content/14304155/f010a8e4.a.38876348-1/m1000x1000" 
+                            alt="Alex Taros - Adrenaline Rush" 
                             style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
                             class="cover-img">
                      <audio
                          class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Selena_Gomez_benny_blanco_-_Talk_79574622.mp3cut.net.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Alex.Taros.-.Adrenaline.Rush_.vagant-music.mp3cut.net.mp3"
         preload="auto">
         </audio></td>
-                    <td><div class="track">Selena Gomez & benny blanco</div><div class="artist">Talk</div></td>
-                    <td class="movement down">-2</td>
-                    <td class="weeks">21</td>
-                    <td class="points">512</td>
+                    <td><div class="track">Alex Taros</div><div class="artist">Adrenaline Rush</div></td>
+                    <td class="movement down">-7</td>
+                    <td class="weeks">11</td>
+                    <td class="points">210</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">25</td>
                     <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Disco_Lines_Tinashe_-_No_Broke_Boys_80420225.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/5622257/1231815829/S600xU" 
-                            alt="Disco Lines & Tinashe - No Broke Boys" 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Tame_Impala_-_Dracula_79863015.mp3cut.net.mp3"
+                            src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Dracula_by_Tame_Impala.jpg/250px-Dracula_by_Tame_Impala.jpg" 
+                            alt="Mak5D - Bold & Wild" 
                             style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
                             class="cover-img">
                      <audio
                          class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Disco_Lines_Tinashe_-_No_Broke_Boys_80420225.mp3cut.net.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Tame_Impala_-_Dracula_79863015.mp3cut.net.mp3"
         preload="auto">
         </audio></td>
-                    <td><div class="track">Disco Lines & Tinashe</div><div class="artist">No Broke Boys</div></td>
-                    <td class="movement down">-7</td>
-                    <td class="weeks">19</td>
-                    <td class="points">537</td>
+                    <td><div class="track">Mak5D</div><div class="artist">Bold & Wild</div></td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">3</td>
+                    <td class="points">34</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">26</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Calvin_Harris_-_Ocean_feat_Jessie_Reyez_80033618.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/10105370/1206658855/S600xU" 
-                            alt="Calvin Harris - Ocean" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Calvin_Harris_-_Ocean_feat_Jessie_Reyez_80033618.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Calvin Harris</div><div class="artist">Ocean (feat. Jessie Reyez)</div></td>
-                    <td class="movement up">+4</td>
-                    <td class="weeks">11</td>
-                    <td class="points">191</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">27</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Tame_Impala_-_Dracula_79863015.mp3cut.net.mp3"
                             src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Dracula_by_Tame_Impala.jpg/250px-Dracula_by_Tame_Impala.jpg" 
@@ -713,6 +693,26 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Tame Impala</div><div class="artist">Dracula</div></td>
+                    <td class="movement up">+1</td>
+                    <td class="weeks">2</td>
+                    <td class="points">29</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">27</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ava_Max_-_Dont_Click_Play_79525828.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/2114271/1217297856/S600xU" 
+                            alt="Barton - I Think We're Alone Now" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ava_Max_-_Dont_Click_Play_79525828.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Barton</div><div class="artist">I Think We're Alone Now</div></td>
                     <td class="movement new">NEW</td>
                     <td class="weeks">1</td>
                     <td class="points">14</td>
@@ -733,33 +733,13 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Morgan Wallen</div><div class="artist">Love Somebody</div></td>
-                    <td class="movement down">-1</td>
-                    <td class="weeks">22</td>
-                    <td class="points">588</td>
+                    <td class="movement stay">-0</td>
+                    <td class="weeks">23</td>
+                    <td class="points">601</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">29</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Mak5D.Bold.Wild.www.mp3cut.net.mp3"
-                            src="https://avatars.yandex.net/get-music-content/15499524/6958124e.a.39380611-1/m1000x1000" 
-                            alt="Mak5D - Bold & Wild" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Mak5D.Bold.Wild.www.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Mak5D</div><div class="artist">Bold & Wild</div></td>
-                    <td class="movement up">+6</td>
-                    <td class="weeks">2</td>
-                    <td class="points">11</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">30</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Zara.Larsson.-.Crush.hitmos.mp3cut.net.mp3"
                             src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fb/1d/2d/fb1d2d1c-0f79-53ad-ab9b-ac20918b5856/196873177199.jpg/300x300bb.webp" 
@@ -773,53 +753,53 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Zara Larsson</div><div class="artist">Crush</div></td>
-                    <td class="movement new">NEW</td>
-                    <td class="weeks">1</td>
-                    <td class="points">11</td>
+                    <td class="movement up">+1</td>
+                    <td class="weeks">2</td>
+                    <td class="points">23</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">30</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Selena_Gomez_benny_blanco_-_Talk_79574622.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/5578182/1230887889/S600xU" 
+                            alt="Selena Gomez & benny blanco - Talk" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Selena_Gomez_benny_blanco_-_Talk_79574622.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Selena Gomez & benny blanco</div><div class="artist">Talk</div></td>
+                    <td class="movement down">-6</td>
+                    <td class="weeks">22</td>
+                    <td class="points">523</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">31</td>
                     <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/-.hitmos.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/2038203/1149909263/S600xU" 
-                            alt="Моя Мишель - Иногда" 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Disco_Lines_Tinashe_-_No_Broke_Boys_80420225.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/5622257/1231815829/S600xU" 
+                            alt="Disco Lines & Tinashe - No Broke Boys" 
                             style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
                             class="cover-img">
                      <audio
                          class="audio-player"
         id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/-.hitmos.mp3cut.net.mp3"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Disco_Lines_Tinashe_-_No_Broke_Boys_80420225.mp3cut.net.mp3"
         preload="auto">
         </audio></td>
-                    <td><div class="track">Моя Мишель</div><div class="artist">Иногда</div></td>
-                    <td class="movement down">-14</td>
-                    <td class="weeks">22</td>
-                    <td class="points">442</td>
+                    <td><div class="track">Disco Lines & Tinashe</div><div class="artist">No Broke Boys</div></td>
+                    <td class="movement down">-6</td>
+                    <td class="weeks">20</td>
+                    <td class="points">547</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">32</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Still_Young_BROMANCE_-_Do_it_Again_Extended_Mix_79316717.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/2369898/1228065480/S600xU" 
-                            alt="Still Young & BROMANCE - Do It Again" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Still_Young_BROMANCE_-_Do_it_Again_Extended_Mix_79316717.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Still Young & BROMANCE</div><div class="artist">Do It Again</div></td>
-                    <td class="movement down">-11</td>
-                    <td class="weeks">16</td>
-                    <td class="points">425</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">33</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Felix_Jaehn_Sarah_Barrios_-_Nows_A_Good_Time_To_Be_80578316.mp3cut.net.mp3"
                             src="https://avatars.mds.yandex.net/get-entity_search/2327175/1230710905/S600xU" alt="Felix Jaehn & Sarah Barrios - Now's A Good Time To Be" 
@@ -832,33 +812,13 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Felix Jaehn & Sarah Barrios</div><div class="artist">Now's A Good Time To Be</div></td>
-                    <td class="movement down">-7</td>
-                    <td class="weeks">4</td>
-                    <td class="points">47</td>
+                    <td class="movement up">+1</td>
+                    <td class="weeks">5</td>
+                    <td class="points">56</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
-                    <td class="position">34</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/joel-corry-i-love-ur-gf-extended-mix.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/1870652/1233364298/S600xU" 
-                            alt="Joel Corry - I LOVE UR GF" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/joel-corry-i-love-ur-gf-extended-mix.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Joel Corry</div><div class="artist">I LOVE UR GF</div></td>
-                    <td class="movement down">-6</td>
-                    <td class="weeks">15</td>
-                    <td class="points">286</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">35</td>
+                    <td class="position">33</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/The_Supermen_Lovers_OneRepublic_-_Starlight_The_Fame_80661465.mp3cut.net.mp3"
                             src="https://avatars.mds.yandex.net/i?id=4047b7ae905454f9b06f41782d40fca2_l-5226953-images-thumbs&n=13" alt="The Supermen Lovers & OneRepublic - Starlight (The Fame)" 
@@ -871,13 +831,13 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">The Supermen Lovers & OneRepublic</div><div class="artist">Starlight (The Fame)</div></td>
-                    <td class="movement down">-4</td>
-                    <td class="weeks">19</td>
-                    <td class="points">360</td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">20</td>
+                    <td class="points">368</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
-                    <td class="position">36</td>
+                    <td class="position">34</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Damiano_David_-_Next_Summer_79457152.mp3cut.net.mp3"
                             src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Next_Summer_-_Damiano_David.png/250px-Next_Summer_-_Damiano_David.png" 
@@ -891,13 +851,73 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Damiano David</div><div class="artist">Next Summer</div><span class="longest"> Longest Chart Sitter</span></td>
-                    <td class="movement down">-4</td>
-                    <td class="weeks">38</td>
-                    <td class="points">710</td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">39</td>
+                    <td class="points">717</td>
                     <td><button class="vote-btn" onclick="vote(this, 36)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
+                    <td class="position">35</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/-.hitmos.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/2038203/1149909263/S600xU" 
+                            alt="Моя Мишель - Иногда" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/-.hitmos.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Моя Мишель</div><div class="artist">Иногда</div></td>
+                    <td class="movement down">-4</td>
+                    <td class="weeks">23</td>
+                    <td class="points">448</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">36</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Still_Young_BROMANCE_-_Do_it_Again_Extended_Mix_79316717.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/2369898/1228065480/S600xU" 
+                            alt="Still Young & BROMANCE - Do It Again" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Still_Young_BROMANCE_-_Do_it_Again_Extended_Mix_79316717.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Still Young & BROMANCE</div><div class="artist">Do It Again</div></td>
+                    <td class="movement down">-4</td>
+                    <td class="weeks">17</td>
+                    <td class="points">430</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
                     <td class="position">37</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/joel-corry-i-love-ur-gf-extended-mix.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/1870652/1233364298/S600xU" 
+                            alt="Joel Corry - I LOVE UR GF" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/joel-corry-i-love-ur-gf-extended-mix.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Joel Corry</div><div class="artist">I LOVE UR GF</div></td>
+                    <td class="movement down">-3</td>
+                    <td class="weeks">16</td>
+                    <td class="points">290</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
+                    <td class="position">38</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Armin_van_Buuren_feat_JAI_RYU_-_Let_It_Be_for_Love_79286461.mp3cut.net.mp3"
                             src="https://avatars.mds.yandex.net/get-entity_search/2265709/1232137584/S600xU" 
@@ -911,53 +931,13 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">Armin van Buuren & Jai Ryu</div><div class="artist">Let It Be for Love</div></td>
-                    <td class="movement down">-4</td>
-                    <td class="weeks">22</td>
-                    <td class="points">501</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">38</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Avicii_Elle_King_-_Lets_Ride_Away_79255105.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/10767883/1230768971/S600xU" 
-                            alt="Avicii feat. Ella King - Let's Ride Away" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Avicii_Elle_King_-_Lets_Ride_Away_79255105.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Avicii feat. Elle King</div><div class="artist">Let's Ride Away</div></td>
-                    <td class="movement stay">-0</td>
-                    <td class="weeks">18</td>
-                    <td class="points">321</td>
+                    <td class="movement down">-1</td>
+                    <td class="weeks">23</td>
+                    <td class="points">504</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
                 </tr>
                 <tr class="track-item">
                     <td class="position">39</td>
-                    <td><img 
-                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ava_Max_-_Dont_Click_Play_79525828.mp3cut.net.mp3"
-                            src="https://avatars.mds.yandex.net/get-entity_search/2114271/1217297856/S600xU" 
-                            alt="Ava Max - Don't Click Play" 
-                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
-                            class="cover-img">
-                     <audio
-                         class="audio-player"
-        id="covers"
-        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Ava_Max_-_Dont_Click_Play_79525828.mp3cut.net.mp3"
-        preload="auto">
-        </audio></td>
-                    <td><div class="track">Ava Max</div><div class="artist">Don't Click Play</div></td>
-                    <td class="movement down">-5</td>
-                    <td class="weeks">16</td>
-                    <td class="points">337</td>
-                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
-                </tr>
-                <tr class="track-item">
-                    <td class="position">40</td>
                     <td><img 
                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/NEIKED_Portugal_The_Man_-_Glide_79399195.mp3cut.net.mp3"
                             src="https://avatars.mds.yandex.net/get-entity_search/7751290/1231030455/S600xU" 
@@ -971,10 +951,31 @@
         preload="auto">
         </audio></td>
                     <td><div class="track">NEIKED & Portugal.The Man</div><div class="artist">Glide</div></td>
-                    <td class="movement down">-4</td>
-                    <td class="weeks">36</td>
-                    <td class="points">452</td>
+                    <td class="movement up">+1</td>
+                    <td class="weeks">37</td>
+                    <td class="points">454</td>
                     <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                    <td class="position">40</td>
+                    <td><img 
+                            data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Avicii_Elle_King_-_Lets_Ride_Away_79255105.mp3cut.net.mp3"
+                            src="https://avatars.mds.yandex.net/get-entity_search/10767883/1230768971/S600xU" 
+                            alt="Avicii feat. Ella King - Let's Ride Away" 
+                            style="width:60px;height:60px;border-radius:10px; cursor:pointer;" 
+                            class="cover-img">
+                     <audio
+                         class="audio-player"
+        id="covers"
+        src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Avicii_Elle_King_-_Lets_Ride_Away_79255105.mp3cut.net.mp3"
+        preload="auto">
+        </audio></td>
+                    <td><div class="track">Avicii feat. Elle King</div><div class="artist">Let's Ride Away</div></td>
+                    <td class="movement down">-2</td>
+                    <td class="weeks">19</td>
+                    <td class="points">322</td>
+                    <td><button class="vote-btn" onclick="vote(this, 1)">Голосовать <span class="vote-count">(0)</span></button></td>
+                </tr>
+                <tr class="track-item">
                 </tr>
                 <!-- Примеры выбывших (с ❌) можно оставить или закомментировать -->
             </tbody>
@@ -983,13 +984,15 @@
         <div class="novelties">
             <h2>Новинки</h2>
             <ul>
-                <li>1. Barton — I Think We're Alone Now</li>
-                <li>2. Vintage Culture & Gabss — Lost</li>
-                <li>3. BROMANCE — You Can Dance</li>
-                <li>4. Matoma & Coleman Hell — World In Your Eyes</li>
-                <li>5. Alok & DENNIS — Mimosa (Now and Forever)</li>
-                <li>6. Robin Schulz & Sigala — AM to PM (feat. Zoe Wees)</li>
-                <li>7. Cash Cash & Kyle — Honest</li>
+                <li>1. Ваня Дмитриенко & Аня Пересильд - Силуэт</li>
+                <li>2. OneRepublic - Give Me Something</li>
+                <li>3. Jamback - Positive</li>
+                <li>4. Robyn - Talk To Me</li>
+                <li>5. Vintage Culture & Gabss — Lost</li>
+                <li>6. BROMANCE — You Can Dance</li>
+                <li>7. Matoma & Coleman Hell — World In Your Eyes</li>
+                <li>8. Alok & DENNIS — Mimosa (Now and Forever)</li>
+                <li>9. Robin Schulz & Sigala — AM to PM (feat. Zoe Wees)</li>
             </ul>
         </div>
     </div>

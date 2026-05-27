@@ -1684,6 +1684,21 @@ document.addEventListener('DOMContentLoaded', function() {
     checkAndUpdateChart();
 });
     </script>
+    <script>
+        function vote(button, pos) {
+            if (button.classList.contains('voted')) return;
+            
+            let countEl = button.querySelector('.vote-count');
+            let current = parseInt(countEl.textContent.slice(1, -1)) || 0;
+            countEl.textContent = `(${current + 1})`;
+            
+            button.classList.add('voted');
+            button.textContent = 'Голос учтён!';
+            
+            // Здесь можно добавить localStorage или отправку на сервер
+            console.log(`Голос за позицию ${pos}`);
+        }
+    </script>
 <script>
   // Находим все изображения-обложки
   const covers = document.querySelectorAll('.cover-img');

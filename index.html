@@ -1068,19 +1068,621 @@
     </div>
 
     <script>
-        function vote(button, pos) {
-            if (button.classList.contains('voted')) return;
-            
-            let countEl = button.querySelector('.vote-count');
-            let current = parseInt(countEl.textContent.slice(1, -1)) || 0;
-            countEl.textContent = `(${current + 1})`;
-            
-            button.classList.add('voted');
-            button.textContent = 'Голос учтён!';
-            
-            // Здесь можно добавить localStorage или отправку на сервер
-            console.log(`Голос за позицию ${pos}`);
+        // Данные треков с полями для очков и предыдущей позиции
+const tracksData = [
+    {
+        id: 1,
+        title: "The Fate of Ophelia",
+        artist: "Taylor Swift",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 8,
+        currentPosition: 1,
+        points: 243,
+        previousPosition: 4
+    },
+    {
+        id: 2,
+        title: "crystallized",
+        artist: "John Summit & Inez",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 13,
+        currentPosition: 2,
+        points: 440,
+        previousPosition: 2 
+    },
+    {
+        id: 3,
+        title: "Blood Running",
+        artist: "Ray Dalton",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 9,
+        currentPosition: 3,
+        points: 219,
+        previousPosition: 10
+    },
+        {
+        id: 4,
+        title: "I Run",
+        artist: "HAVEN. feat. Kaitlin Aragon",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 7,
+        currentPosition: 4,
+        points: 224,
+        previousPosition: 2
+    },
+        {
+        id: 5,
+        title: "CHANEL",
+        artist: "Tyla",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 8,
+        currentPosition: 5,
+        points: 140,
+        previousPosition: 9
+    },
+        {
+        id: 6,
+        title: "Love Songs (feat. Kosmo Kint)",
+        artist: "Prospa",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 11,
+        currentPosition: 6,
+        points: 260,
+        previousPosition: 6
+    },
+        {
+        id: 7,
+        title: "Jealous Type",
+        artist: "Doja Cat",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 11,
+        currentPosition: 7,
+        points: 278,
+        previousPosition: 7
+    },
+     {
+        id: 8,
+        title: "Dopamine",
+        artist: "Robyn",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 5,
+        currentPosition: 8,
+        points: 114,
+        previousPosition: 12
+    },
+        {
+        id: 9,
+        title: "Mystical Magical",
+        artist: "Benson Boone",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 20,
+        currentPosition: 9,
+        points: 578,
+        previousPosition: 3
+    },
+        {
+        id: 10,
+        title: "одинок.Net",
+        artist: "Мот",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 13,
+        currentPosition: 10,
+        points: 0,
+        previousPosition: 11
+    },
+        {
+        id: 11,
+        title: "Think About Us (feat. Poppy Baskcomb)",
+        artist: "Sonny Fodera & D.O.D",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 4,
+        currentPosition: 11,
+        points: 96,
+        previousPosition: 17
+    },
+        {
+        id: 12,
+        title: "Kids",
+        artist: "FEZZO",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 5,
+        currentPosition: 12,
+        points: 107,
+        previousPosition: 14
+    },
+        {
+        id: 13,
+        title: "WHERE IS MY HUSBAND!",
+        artist: "RAYE",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 12,
+        currentPosition: 13,
+        points: 352,
+        previousPosition: 13
+    },
+        {
+        id: 14,
+        title: "Gone Gone Gone",
+        artist: "David Guetta & Teddy Swims, Tones and I",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 12,
+        currentPosition: 14,
+        points: 281,
+        previousPosition: 23
+    },
+        {
+        id: 15,
+        title: "Помню",
+        artist: "JONY",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 3,
+        currentPosition: 15,
+        points: 55,
+        previousPosition: 24
+    },
+        {
+        id: 16,
+        title: "12 to 12",
+        artist: "sombr",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 17,
+        currentPosition: 16,
+        points: 531,
+        previousPosition: 5
+    },
+        {
+        id: 17,
+        title: "Adrenaline Rush",
+        artist: "Alex Taros",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 10,
+        currentPosition: 17,
+        points: 193,
+        previousPosition: 8
+    },
+        {
+        id: 18,
+        title: "Fast",
+        artist: "Demi Lovato",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 18,
+        currentPosition: 18,
+        points: 512,
+        previousPosition: 15
+    },
+        {
+        id: 19,
+        title: "Guardian Angel",
+        artist: "Dimension & Karen Harding",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 3,
+        currentPosition: 19,
+        points: 50,
+        previousPosition: 20
+    },
+        {
+        id: 20,
+        title: "Golden",
+        artist: "HUNTR/X: Ejae & Audrey Nuna, REI AMI",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 14,
+        currentPosition: 20,
+        points: 419,
+        previousPosition: 16
+    },
+        {
+        id: 21,
+        title: "Dame Un Grrr (Provi Remix)",
+        artist: "Fantomel & Kate Linn",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 3,
+        currentPosition: 21,
+        points: 42,
+        previousPosition: 25
+    },
+        {
+        id: 22,
+        title: "QUE CE SOIT CLAIR",
+        artist: "Paul Kalkbrenner & Stromae",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 2,
+        currentPosition: 22,
+        points: 37,
+        previousPosition: 29
+    },
+        {
+        id: 23,
+        title: "1&2",
+        artist: "Alex Alta & KDDK",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 1,
+        currentPosition: 23,
+        points: 18,
+        previousPosition: NEW
+    },
+        {
+        id: 24,
+        title: "Talk",
+        artist: "Selena Gomez & benny blanco",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 21,
+        currentPosition: 24,
+        points: 512,
+        previousPosition: 22
+    },
+        {
+        id: 25,
+        title: "No Broke Boys",
+        artist: "Disco Lines & Tinashe",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 19,
+        currentPosition: 25,
+        points: 537,
+        previousPosition: 18
+    },
+        {
+        id: 26,
+        title: "Ocean (feat. Jessie Reyez)",
+        artist: "Calvin Harris",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 11,
+        currentPosition: 26,
+        points: 191,
+        previousPosition: 30
+    },
+        {
+        id: 27,
+        title: "Dracula",
+        artist: "Tame Impala",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 1,
+        currentPosition: 27,
+        points: 14,
+        previousPosition: NEW
+    },
+        {
+        id: 28,
+        title: "Love Somebody",
+        artist: "Morgan Wallen",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 22,
+        currentPosition: 28,
+        points: 588,
+        previousPosition: 27
+    },
+        {
+        id: 29,
+        title: "Bold & Wild",
+        artist: "Mak5D",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 2,
+        currentPosition: 29,
+        points: 11,
+        previousPosition: 35
+    },
+        {
+        id: 30,
+        title: "Crush",
+        artist: "Zara Larsson",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 1,
+        currentPosition: 30,
+        points: 11,
+        previousPosition: NEW
+    },
+        {
+        id: 31,
+        title: "Иногда",
+        artist: "Моя Мишель",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 22,
+        currentPosition: 31,
+        points: 442,
+        previousPosition: 17
+    },
+        {
+        id: 32,
+        title: "Do It Again",
+        artist: "Still Young & BROMANCE",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 16,
+        currentPosition: 32,
+        points: 425,
+        previousPosition: 21
+    },
+        {
+        id: 33,
+        title: "Now's A Good Time To Be",
+        artist: "Felix Jaehn & Sarah Barrios",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 4,
+        currentPosition: 33,
+        points: 47,
+        previousPosition: 26
+    },
+        {
+        id: 34,
+        title: "I LOVE UR GF",
+        artist: "Joel Corry",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 15,
+        currentPosition: 34,
+        points: 286,
+        previousPosition: 28
+    },
+        {
+        id: 35,
+        title: "Starlight (The Fame)",
+        artist: "The Supermen Lovers & OneRepublic",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 19,
+        currentPosition: 35,
+        points: 360,
+        previousPosition: 31
+    },
+        {
+        id: 36,
+        title: "Next Summer",
+        artist: "Damiano David",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 38,
+        currentPosition: 36,
+        points: 710,
+        previousPosition: 32
+    },
+        {
+        id: 37,
+        title: "Let It Be for Love",
+        artist: "Armin van Buuren & Jai Ryu",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 22,
+        currentPosition: 37,
+        points: 501,
+        previousPosition: 33
+    },
+        {
+        id: 38,
+        title: "Let's Ride Away",
+        artist: "Avicii feat. Elle King",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 18,
+        currentPosition: 38,
+        points: 321,
+        previousPosition: 38
+    },
+        {
+        id: 39,
+        title: "Don't Click Play",
+        artist: "Ava Max",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 16,
+        currentPosition: 39,
+        points: 337,
+        previousPosition: 34
+    },
+        {
+        id: 40,
+        title: "Glide",
+        artist: "NEIKED & Portugal. The Man",
+        cover: "https://upload.wikimedia.org/wikipedia/ru/thumb/c/c3/The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png/300px-The_Fate_of_Ophelia_%28Alone_in_My_Tower_Acoustic_Version%29.png",
+        votes: 0,
+        isNew: false,
+        weeksInChart: 36,
+        currentPosition: 40,
+        points: 452,
+        previousPosition: 36
+    },
+    // Добавьте остальные треки по аналогии
+];
+function calculatePointsByPosition(position) {
+    if (position <= 40) {
+        return 41 - position; // 1-е место: 40 очков, 2-е: 39, ..., 40-е: 1
+    }
+    return 0; // За пределами топ‑40 — 0 очков
+}
+function calculateMovement(trackId) {
+    const track = tracksData.find(t => t.id === trackId);
+    const previousPosition = track.previousPosition || track.currentPosition;
+    const positionChange = previousPosition - track.currentPosition;
+
+
+    let movementValue = '';
+    let className = '';
+
+    if (positionChange > 0) {
+        movementValue = `+${positionChange}`;
+        className = 'up';
+    } else if (positionChange < 0) {
+        movementValue = `${positionChange}`;
+        className = 'down';
+    } else {
+        movementValue = '0';
+        className = 'stay';
+    }
+
+    track.previousPosition = track.currentPosition;
+
+    return { value: movementValue, className };
+}
+function enforceNewReleaseRules() {
+    const newReleases = tracksData.filter(t => t.isNew);
+
+    newReleases.forEach(track => {
+        const pos = track.currentPosition;
+        if (pos === 6 || pos === 7 || pos === 12 || pos === 13 || pos === 16 || pos === 17 || pos === 18 || pos === 25 || pos === 26 || pos === 32 || pos === 33 || pos === 34 || pos === 36 || pos === 37 || pos === 38 || pos === 39 || pos === 40) {
+            const swapTarget = tracksData.find((t, idx) =>
+                idx + 1 > pos && !t.isNew
+            );
+            if (swapTarget) {
+                const tempPos = track.currentPosition;
+                track.currentPosition = swapTarget.currentPosition;
+                swapTarget.currentPosition = tempPos;
+            }
         }
+    });
+}
+function recalculatePositions() {
+    tracksData.sort((a, b) => {
+        if (b.votes !== a.votes) return b.votes - a.votes;
+        if (a.isNew !== b.isNew) return a.isNew ? 1 : -1;
+        return a.weeksInChart - b.weeksInChart;
+    });
+
+    enforceNewReleaseRules();
+
+    tracksData.forEach((track, index) => {
+        const newPosition = index + 1;
+        track.currentPosition = newPosition;
+        track.points = calculatePointsByPosition(newPosition);
+    });
+}
+function voteForTrack(trackId) {
+    const track = tracksData.find(t => t.id === trackId);
+    if (!track) return;
+
+    track.votes++;
+
+    localStorage.setItem('chartData', JSON.stringify({
+        tracks: tracksData,
+        lastUpdate: Date.now()
+    }));
+
+    updateVoteDisplay(trackId, track.votes);
+}
+
+function updateVoteDisplay(trackId, voteCount) {
+    const span = document.querySelector(`[data-track-id="${trackId}"]`);
+    if (span) span.textContent = voteCount;
+}
+function renderChart() {
+    const tbody = document.querySelector('table tbody');
+    tbody.innerHTML = '';
+
+    tracksData.forEach(track => {
+        const movement = calculateMovement(track.id);
+        const row = document.createElement('tr');
+        row.className = 'track-item';
+        row.innerHTML = `
+            <td class="position">${track.currentPosition}</td>
+            <td><img src="${track.cover}" alt="${track.title}" class="img-cover"></td>
+            <td><div class="track">${track.artist}</div><div class="artist">${track.title}</div></td>
+            <td class="movement ${movement.className}">${movement.value}</td>
+            <td class="weeks">${track.weeksInChart}</td>
+            <td class="points">${track.points}</td>
+            <td>
+                <button class="vote-btn" onclick="voteForTrack(${track.id})">
+                    Голосовать <span class="vote-count" data-track-id="${track.id}">${track.votes}</span>
+                </button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+function checkAndUpdateChart() {
+    const savedData = localStorage.getItem('chartData');
+    if (!savedData) {
+        renderChart();
+        return;
+    }
+
+    const { tracks, lastUpdate } = JSON.parse(savedData);
+    Object.assign(tracksData, tracks);
+
+    const weekInMs = 7 * 24 * 60 * 60 * 1000;
+
+    if (Date.now() - lastUpdate > weekInMs) {
+        recalculatePositions();
+        tracksData.forEach(t => { t.votes = 0; t.weeksInChart++; });
+
+        localStorage.setItem('chartData', JSON.stringify({
+            tracks: tracksData,
+            lastUpdate: Date.now()
+        }));
+    }
+
+    renderChart();
+}
+document.addEventListener('DOMContentLoaded', function() {
+    checkAndUpdateChart();
+});
     </script>
 <script>
   // Находим все изображения-обложки

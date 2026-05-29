@@ -205,6 +205,26 @@
             border-radius: 16px;
             border: 1px dashed #60a5fa;
         }
+        .novelties {
+    margin-top: 60px;
+    padding: 30px;
+    background: rgba(30, 58, 138, 0.6);
+    border-radius: 16px;
+    border: 1px solid #60a5fa;
+}
+
+.novelties-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.novelties h2 {
+    text-align: center;
+    color: #93c5fd;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
         .novelties h2 {
             text-align: center;
             color: #93c5fd;
@@ -1054,17 +1074,125 @@
         </table>
 
         <div class="novelties">
-            <h2>Новинки</h2>
-            <ul>
-                <li>1. Barton — I Think We're Alone Now</li>
-                <li>2. Vintage Culture & Gabss — Lost</li>
-                <li>3. BROMANCE — You Can Dance</li>
-                <li>4. Matoma & Coleman Hell — World In Your Eyes</li>
-                <li>5. Alok & DENNIS — Mimosa (Now and Forever)</li>
-                <li>6. Robin Schulz & Sigala — AM to PM (feat. Zoe Wees)</li>
-                <li>7. Cash Cash & Kyle — Honest</li>
-            </ul>
-        </div>
+    <h2>Новинки Выпуска</h2>
+    <table class="novelties-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th></th>
+                <th>Трек</th>
+                <th>Голос</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="position">1</td>
+                <td>
+                    <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/barton.-.i.thnk.we.re.alone.now.jfif" alt="Barton" class="img-cover" 
+                         onclick="playTrack('https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Barton.mp3', this)">
+                </td>
+                <td>
+                    <div class="track">Barton</div>
+                    <div class="artist">I Think We're Alone Now</div>
+                </td>
+                <td>
+                    <button class="vote-btn" onclick="vote(this, 'nov1')">Голосовать <span class="vote-count">(0)</span></button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="position">2</td>
+                <td>
+                    <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/vintage.culture.gabbs.lost.jfif" alt="Vintage Culture" class="img-cover" 
+                         onclick="playTrack('https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/vintage.culture.lost.mp3', this)">
+                </td>
+                <td>
+                    <div class="track">Vintage Culture & Gabss</div>
+                    <div class="artist">Lost</div>
+                </td>
+                <td>
+                    <button class="vote-btn" onclick="vote(this, 'nov2')">Голосовать <span class="vote-count">(0)</span></button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="position">3</td>
+                <td>
+                    <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/bromance.you.can.dance.jpg" alt="BROMANCE" class="img-cover" 
+                         onclick="playTrack('https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/bromance.you.can.dance.mp3', this)">
+                </td>
+                <td>
+                    <div class="track">BROMANCE</div>
+                    <div class="artist">You Can Dance</div>
+                </td>
+                <td>
+                    <button class="vote-btn" onclick="vote(this, 'nov3')">Голосовать <span class="vote-count">(0)</span></button>
+                </td>
+            </tr>
+            
+            <!-- Добавляй остальные новинки по этому шаблону -->
+            <tr>
+                <td class="position">4</td>
+                <td>
+                    <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/matoma.world.in.your.eyes.jpg" alt="Matoma" class="img-cover" 
+                         onclick="playTrack('https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/matoma.world.in.your.eyes.mp3', this)">
+                </td>
+                <td>
+                    <div class="track">Matoma & Coleman Hell</div>
+                    <div class="artist">World In Your Eyes</div>
+                </td>
+                <td>
+                    <button class="vote-btn" onclick="vote(this, 'nov4')">Голосовать <span class="vote-count">(0)</span></button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="position">5</td>
+                <td>
+                    <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/alok.dennis.mimosa.jfif" alt="Alok" class="img-cover" 
+                         onclick="playTrack('https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/alok.dennis.mimosa.mp3', this)">
+                </td>
+                <td>
+                    <div class="track">Alok & DENNIS</div>
+                    <div class="artist">Mimosa (Now and Forever)</div>
+                </td>
+                <td>
+                    <button class="vote-btn" onclick="vote(this, 'nov5')">Голосовать <span class="vote-count">(0)</span></button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="position">6</td>
+                <td>
+                    <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/robin.schulz.sigala.am.to.pm.png" alt="Robin Schulz" class="img-cover" 
+                         onclick="playTrack('https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/robin.schulz.am.to.pm.mp3', this)">
+                </td>
+                <td>
+                    <div class="track">Robin Schulz & Sigala</div>
+                    <div class="artist">AM to PM (feat. Zoe Wees)</div>
+                </td>
+                <td>
+                    <button class="vote-btn" onclick="vote(this, 'nov6')">Голосовать <span class="vote-count">(0)</span></button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="position">7</td>
+                <td>
+                    <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/cash.cash.kyle.honest.jpg" alt="Cash Cash" class="img-cover" 
+                         onclick="playTrack('https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/cash.cash.honest.mp3', this)">
+                </td>
+                <td>
+                    <div class="track">Cash Cash & Kyle</div>
+                    <div class="artist">Honest</div>
+                </td>
+                <td>
+                    <button class="vote-btn" onclick="vote(this, 'nov7')">Голосовать <span class="vote-count">(0)</span></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
     </div>
 
     <script>

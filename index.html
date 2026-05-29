@@ -1887,33 +1887,49 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 </script>
 <script>
-// Hover audio для новинок
-let hoverAudio = null;
+// Глобальная переменная для текущего играющего трека
+let currentAudio = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const covers = document.querySelectorAll('.nov-cover');
     
     covers.forEach(img => {
+        // Курсор при наведении
         img.style.cursor = 'pointer';
         
-        img.addEventListener('mouseenter', () => {
-            if (hoverAudio) hoverAudio.pause();
+        img.addEventListener('click', () => {
+            const audioUrl = img.getAttribute('data-audio');
             
-            hoverAudio = new Audio(img.dataset.audio);
-            hoverAudio.volume = 0.6;
-            hoverAudio.play().catch(() => {});
-            
-            img.style.opacity = '0.85';
-            img.style.transform = 'scale(1.08)';
-        });
-        
-        img.addEventListener('mouseleave', () => {
-            if (hoverAudio) {
-                hoverAudio.pause();
-                hoverAudio.currentTime = 0;
+            // Если уже играет этот же трек — останавливаем
+            if (currentAudio && currentAudio.src === audioUrl) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
+                img.style.opacity = '1';
+                return;
             }
-            img.style.opacity = '1';
-            img.style.transform = 'scale(1)';
+            
+            // Останавливаем предыдущий трек
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            
+            // Создаём и запускаем новый трек
+            currentAudio = new Audio(audioUrl);
+            currentAudio.volume = 0.7;
+            currentAudio.play().catch(err => {
+                console.log('Ошибка воспроизведения:', err);
+            });
+            
+            // Визуальный эффект
+            img.style.opacity = '0.75';
+            
+            // Когда трек закончится — убираем эффект
+            currentAudio.onended = () => {
+                img.style.opacity = '1';
+                currentAudio = null;
+            };
         });
     });
 });

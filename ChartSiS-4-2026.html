@@ -1221,6 +1221,49 @@
         </tbody>
     </table>
 </div>
+        <script>
+  // Находим все изображения-обложки
+  const covers = document.querySelectorAll('.cover-img');
+
+  covers.forEach(cover => {
+    cover.addEventListener('click', function() {
+      // Находим аудиоэлемент внутри текущего трека
+      const audio = this.closest('.track-item').querySelector('.audio-player');
+
+      // Если аудио уже играет — останавливаем
+      if (!audio.paused) {
+        audio.pause();
+        audio.currentTime = 0;
+        this.style.border = 'none';
+        return;
+      }
+
+      // Загружаем новый источник (если ещё не загружен)
+      const src = this.getAttribute('data-audio');
+      if (audio.src !== src) {
+        audio.src = src;
+      }
+
+      // Запускаем воспроизведение
+      audio.play()
+        .then(() => {
+          this.style.border = '2px solid #ff6b6b';
+        })
+        .catch(error => {
+          console.error('Ошибка воспроизведения:', error);
+          alert('Не удалось воспроизвести аудио. Проверьте ссылку.');
+        });
+    });
+  });
+
+  // Сбрасываем стиль при окончании аудио
+  document.querySelectorAll('.audio-player').forEach(audio => {
+    audio.addEventListener('ended', function() {
+      const cover = this.closest('.track-item').querySelector('.cover-img');
+      cover.style.border = 'none';
+    });
+  });
+</script>
   <script>
 // Глобальная переменная для текущего играющего трека
 let currentAudio = null;

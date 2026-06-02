@@ -1051,10 +1051,21 @@
                 </tr>
                 <!-- Примеры выбывших (с ❌) можно оставить или закомментировать -->
             </tbody>
-        </table>
+           </table> 
+               
+            <div class="novelties">
+    <h2>Новинки Выпуска</h2>
+    
+    <table class="novelties-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Обложка</th>
+                <th>Трек</th>
+                <th>Голосовать</th>
+            </tr>
+        </thead>
         <tbody>
-                    <div class="novelties">
-            <h2>Новинки</h2>
             <tr>
                 <td class="position">1</td>
                 <td>
@@ -1089,7 +1100,7 @@
                 </td>
             </tr>
 
-           <tr>
+            <tr>
                 <td class="position">3</td>
                 <td>
                     <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/jamback.postive.jfif" 
@@ -1102,11 +1113,11 @@
                     <div class="artist">Positive</div>
                 </td>
                 <td>
-                    <button class="vote-btn" onclick="vote(this, 'nov2')">Голосовать <span class="vote-count">(0)</span></button>
+                    <button class="vote-btn" onclick="vote(this, 'nov3')">Голосовать <span class="vote-count">(0)</span></button>
                 </td>
             </tr>
 
-           <tr>
+            <tr>
                 <td class="position">4</td>
                 <td>
                     <img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/Robyn.Talk.TO.Me.png" 
@@ -1119,10 +1130,10 @@
                     <div class="artist">Talk To Me</div>
                 </td>
                 <td>
-                    <button class="vote-btn" onclick="vote(this, 'nov2')">Голосовать <span class="vote-count">(0)</span></button>
+                    <button class="vote-btn" onclick="vote(this, 'nov4')">Голосовать <span class="vote-count">(0)</span></button>
                 </td>
             </tr>
-                        
+
             <tr>
                 <td class="position">5</td>
                 <td>
@@ -1136,10 +1147,10 @@
                     <div class="artist">Lost</div>
                 </td>
                 <td>
-                    <button class="vote-btn" onclick="vote(this, 'nov2')">Голосовать <span class="vote-count">(0)</span></button>
+                    <button class="vote-btn" onclick="vote(this, 'nov5')">Голосовать <span class="vote-count">(0)</span></button>
                 </td>
             </tr>
-            
+
             <tr>
                 <td class="position">6</td>
                 <td>
@@ -1153,10 +1164,10 @@
                     <div class="artist">You Can Dance</div>
                 </td>
                 <td>
-                    <button class="vote-btn" onclick="vote(this, 'nov3')">Голосовать <span class="vote-count">(0)</span></button>
+                    <button class="vote-btn" onclick="vote(this, 'nov6')">Голосовать <span class="vote-count">(0)</span></button>
                 </td>
             </tr>
-            
+
             <tr>
                 <td class="position">7</td>
                 <td>
@@ -1170,10 +1181,10 @@
                     <div class="artist">World In Your Eyes</div>
                 </td>
                 <td>
-                    <button class="vote-btn" onclick="vote(this, 'nov4')">Голосовать <span class="vote-count">(0)</span></button>
+                    <button class="vote-btn" onclick="vote(this, 'nov7')">Голосовать <span class="vote-count">(0)</span></button>
                 </td>
             </tr>
-            
+
             <tr>
                 <td class="position">8</td>
                 <td>
@@ -1187,10 +1198,10 @@
                     <div class="artist">Mimosa (Now and Forever)</div>
                 </td>
                 <td>
-                    <button class="vote-btn" onclick="vote(this, 'nov5')">Голосовать <span class="vote-count">(0)</span></button>
+                    <button class="vote-btn" onclick="vote(this, 'nov8')">Голосовать <span class="vote-count">(0)</span></button>
                 </td>
             </tr>
-            
+
             <tr>
                 <td class="position">9</td>
                 <td>
@@ -1204,117 +1215,12 @@
                     <div class="artist">AM to PM (feat. Zoe Wees)</div>
                 </td>
                 <td>
-                    <button class="vote-btn" onclick="vote(this, 'nov6')">Голосовать <span class="vote-count">(0)</span></button>
+                    <button class="vote-btn" onclick="vote(this, 'nov9')">Голосовать <span class="vote-count">(0)</span></button>
                 </td>
             </tr>
         </tbody>
-    </div>
-
-    <script>
-        function vote(button, pos) {
-            if (button.classList.contains('voted')) return;
-            
-            let countEl = button.querySelector('.vote-count');
-            let current = parseInt(countEl.textContent.slice(1, -1)) || 0;
-            countEl.textContent = `(${current + 1})`;
-            
-            button.classList.add('voted');
-            button.textContent = 'Голос учтён!';
-            
-            // Здесь можно добавить localStorage или отправку на сервер
-            console.log(`Голос за позицию ${pos}`);
-        }
-    </script>
-<script>
-  // Находим все изображения-обложки
-  const covers = document.querySelectorAll('.cover-img');
-
-  covers.forEach(cover => {
-    cover.addEventListener('click', function() {
-      // Находим аудиоэлемент внутри текущего трека
-      const audio = this.closest('.track-item').querySelector('.audio-player');
-
-      // Если аудио уже играет — останавливаем
-      if (!audio.paused) {
-        audio.pause();
-        audio.currentTime = 0;
-        this.style.border = 'none';
-        return;
-      }
-
-      // Загружаем новый источник (если ещё не загружен)
-      const src = this.getAttribute('data-audio');
-      if (audio.src !== src) {
-        audio.src = src;
-      }
-
-      // Запускаем воспроизведение
-      audio.play()
-        .then(() => {
-          this.style.border = '2px solid #ff6b6b';
-        })
-        .catch(error => {
-          console.error('Ошибка воспроизведения:', error);
-          alert('Не удалось воспроизвести аудио. Проверьте ссылку.');
-        });
-    });
-  });
-<script>
-// Глобальная переменная для текущего играющего трека
-let currentAudio = null;
-
-document.addEventListener('DOMContentLoaded', () => {
-    const covers = document.querySelectorAll('.nov-cover');
-    
-    covers.forEach(img => {
-        // Курсор при наведении
-        img.style.cursor = 'pointer';
-        
-        img.addEventListener('click', () => {
-            const audioUrl = img.getAttribute('data-audio');
-            
-            // Если уже играет этот же трек — останавливаем
-            if (currentAudio && currentAudio.src === audioUrl) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-                currentAudio = null;
-                img.style.opacity = '1';
-                return;
-            }
-            
-            // Останавливаем предыдущий трек
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-            
-            // Создаём и запускаем новый трек
-            currentAudio = new Audio(audioUrl);
-            currentAudio.volume = 0.7;
-            currentAudio.play().catch(err => {
-                console.log('Ошибка воспроизведения:', err);
-            });
-            
-            // Визуальный эффект
-            img.style.opacity = '0.75';
-            
-            // Когда трек закончится — убираем эффект
-            currentAudio.onended = () => {
-                img.style.opacity = '1';
-                currentAudio = null;
-            };
-        });
-    });
-});
-</script>
-  // Сбрасываем стиль при окончании аудио
-  document.querySelectorAll('.audio-player').forEach(audio => {
-    audio.addEventListener('ended', function() {
-      const cover = this.closest('.track-item').querySelector('.cover-img');
-      cover.style.border = 'none';
-    });
-  });
-</script>
+    </table>
+</div>
     
 </body>
 

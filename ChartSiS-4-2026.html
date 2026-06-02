@@ -1221,7 +1221,54 @@
         </tbody>
     </table>
 </div>
+  <script>
+// Глобальная переменная для текущего играющего трека
+let currentAudio = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const covers = document.querySelectorAll('.nov-cover');
     
+    covers.forEach(img => {
+        // Курсор при наведении
+        img.style.cursor = 'pointer';
+        
+        img.addEventListener('click', () => {
+            const audioUrl = img.getAttribute('data-audio');
+            
+            // Если уже играет этот же трек — останавливаем
+            if (currentAudio && currentAudio.src === audioUrl) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
+                img.style.opacity = '1';
+                return;
+            }
+            
+            // Останавливаем предыдущий трек
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            
+            // Создаём и запускаем новый трек
+            currentAudio = new Audio(audioUrl);
+            currentAudio.volume = 0.7;
+            currentAudio.play().catch(err => {
+                console.log('Ошибка воспроизведения:', err);
+            });
+            
+            // Визуальный эффект
+            img.style.opacity = '0.75';
+            
+            // Когда трек закончится — убираем эффект
+            currentAudio.onended = () => {
+                img.style.opacity = '1';
+                currentAudio = null;
+            };
+        });
+    });
+});
+</script>  
 </body>
 
 </html>

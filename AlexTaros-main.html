@@ -202,6 +202,33 @@ font-family: inherit;
             color: #6b5f51;
         }
 
+        .scrollable-list {
+    max-height: 240px;
+    overflow-y: auto;
+    margin: 1rem 0;
+    border: 1px solid #2a2725;
+    border-radius: 16px;
+    padding: 0.5rem;
+}
+.archive-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    color: #e6e3dc;
+    text-decoration: none;
+    border-bottom: 1px solid #2a2725;
+    transition: 0.2s;
+}
+.archive-link:hover {
+    background: #1f1c1a;
+    color: #f2eee9;
+}
+.episode-date {
+    font-size: 0.75rem;
+    color: #7c6e5f;
+}
+
         max-width: 700px {
             .container {
                 padding: 1.5rem;
@@ -232,37 +259,34 @@ font-family: inherit;
         <button class="tab-btn" data-tab="tab4">📻 Новинки & Плейлисты</button>
     </div>
 
-    <!-- панель 1: Смотри и Слушай 2.0 -->
-    <div id="tab1" class="tab-panel active-panel">
-        <h2 style="font-weight: 400; margin-bottom: 0.5rem;">Смотри и Слушай 2.0</h2>
-        <p style="color:#b1a692; margin-bottom: 1rem;">Авторский формат: видео-чарт, где электронная музыка встречается с визуальной эстетикой.</p>
-        
-        <div class="grid-2">
-            <div class="card">
-                <h3>Последний выпуск</h3>
-                <p>Выпуск #14 — меланхоличный транс / мелодик техно. Подборка для поздних вечеров.</p>
-                <a href="#" class="btn-sm">▶ Смотреть на YouTube</a>
-            </div>
-            <div class="card">
-                <h3>Анонс</h3>
-                <p>Выпуск #15: специальный гостевой микс + визуальный ряд от Taros Media.</p>
-                <span class="btn-sm" style="background:#2a2725; cursor:default;">Скоро</span>
-            </div>
+<!-- панель 1: Смотри и Слушай 2.0 -->
+<div id="tab1" class="tab-panel active-panel">
+    <h2 style="font-weight: 400; margin-bottom: 0.5rem;">Смотри и Слушай 2.0</h2>
+    <p style="color:#b1a692; margin-bottom: 1rem;">Авторский формат: видео-чарт, где электронная музыка встречается с визуальной эстетикой.</p>
+    
+    <div class="grid-2">
+        <div class="card">
+            <h3>Последний выпуск</h3>
+            <p>Выпуск #14 — меланхоличный транс / мелодик техно. Подборка для поздних вечеров.</p>
+            <a href="/watch-listen/issue-14" class="btn-sm">▶ Смотреть на YouTube</a>
         </div>
-
-        <h3 style="margin-top: 1rem;">Архив выпусков (Смотри и Слушай 2.0)</h3>
-        <ul class="episode-list">
-            <li><span>Выпуск 13 — Deep & Progressive</span> <span class="episode-date">май 2025</span></li>
-            <li><span>Выпуск 12 — Organic House / Downtempo</span> <span class="episode-date">апрель 2025</span></li>
-            <li><span>Выпуск 11 — Техно-сплав с элементами транса</span> <span class="episode-date">март 2025</span></li>
-            <li><span>Выпуск 10 — Melodic techno special</span> <span class="episode-date">февраль 2025</span></li>
-        </ul>
-        <a href="#" class="btn-sm" style="margin-top
-
-
-: 0.5rem;">📂 Весь архив →</a>
+        <div class="card">
+            <h3>Анонс</h3>
+            <p>Выпуск #15: специальный гостевой микс + визуальный ряд от Taros Media.</p>
+            <span class="btn-sm" style="background:#2a2725; cursor:default;">Скоро</span>
+        </div>
     </div>
 
+    <h3 style="margin-top: 1rem;">Архив выпусков (Смотри и Слушай 2.0)</h3>
+    <div class="scrollable-list">
+        <a href="/watch-listen/issue-13" class="archive-link">Выпуск 13 — Deep & Progressive <span class="episode-date">май 2025</span></a>
+        <a href="/watch-listen/issue-12" class="archive-link">Выпуск 12 — Organic House / Downtempo <span class="episode-date">апрель 2025</span></a>
+        <a href="/watch-listen/issue-11" class="archive-link">Выпуск 11 — Техно-сплав с элементами транса <span class="episode-date">март 2025</span></a>
+        <a href="/watch-listen/issue-10" class="archive-link">Выпуск 10 — Melodic techno special <span class="episode-date">февраль 2025</span></a>
+    </div>
+    <a href="/watch-listen/archive" class="btn-sm" style="margin-top: 0.5rem;">📂 Весь архив →</a>
+</div>
+    
     <!-- панель 2: TAROS DANCE CHART -->
     <div id="tab2" class="tab-panel">
         <h2 style="font-weight: 400;">TAROS DANCE CHART</h2>

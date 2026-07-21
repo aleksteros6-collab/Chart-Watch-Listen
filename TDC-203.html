@@ -24,54 +24,6 @@
             border: 1px solid #8a2be2;
             position: relative;
         }
-        .dropdown-menu {
-    position: relative;
-    margin: 20px auto 40px;
-    max-width: 400px;
-}
-
-/* Скрываем контент меню по умолчанию */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(20, 30, 60, 0.95);
-    border: 1px solid #3b82f6;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-    z-index: 100;
-    list-style: none;
-    padding: 10px 0;
-}
-
-/* Ссылки в меню */
-.menu-link {
-    display: block;
-    padding: 14px 20px;
-    color: #93c5fd;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(147, 197, 253, 0.2);
-}
-
-/* Эффект при наведении */
-.menu-link:hover {
-    background: rgba(59, 130, 246, 0.3);
-    color: #60a5fa;
-    transform: translateX(8px);
-}
-
-/* Последняя ссылка — без границы снизу */
-.menu-link:last-child {
-    border-bottom: none;
-}
-
-/* Показываем меню при наведении на контейнер */
-.dropdown-menu:hover .dropdown-content {
-    display: block;
-}
         h1 {
             text-align: center;
             font-size: 2.8em;
@@ -192,6 +144,54 @@ color: #ff8c00;
             color: #b0a0ff;
             font-size: 1.1em;
         }
+                    .dropdown-menu {
+    position: relative;
+    margin: 20px auto 40px;
+    max-width: 400px;
+}
+
+/* Скрываем контент меню по умолчанию */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(20, 30, 60, 0.95);
+    border: 1px solid #3b82f6;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+    z-index: 100;
+    list-style: none;
+    padding: 10px 0;
+}
+
+/* Ссылки в меню */
+.menu-link {
+    display: block;
+    padding: 14px 20px;
+    color: #93c5fd;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(147, 197, 253, 0.2);
+}
+
+/* Эффект при наведении */
+.menu-link:hover {
+    background: rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+    transform: translateX(8px);
+}
+
+/* Последняя ссылка — без границы снизу */
+.menu-link:last-child {
+    border-bottom: none;
+}
+
+/* Показываем меню при наведении на контейнер */
+.dropdown-menu:hover .dropdown-content {
+    display: block;
+}
     </style>
 </head>
     <nav class="dropdown-menu">

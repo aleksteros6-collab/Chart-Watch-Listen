@@ -440,44 +440,61 @@
 
   
       <script>
-        // Поочередное воспроизведение при клике на обложку
-        let currentAudio = null;
+// Поочередное воспроизведение аудио при клике на любую обложку
+let currentAudio = null;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const covers = document.querySelectorAll('.img-cover');
+function initAudioPlayers() {
+    const covers = document.querySelectorAll('.img-cover');
+    
+    console.log(`Найдено обложек: ${covers.length}`); // для отладки
+    
+    covers.forEach((img, index) => {
+        img.addEventListener('click', function() {
+            const audioUrl = this.getAttribute('data-audio');
+            if (!audioUrl) {
+                console.warn('Нет data-audio у трека', index + 1);
+                return;
+            }
+
+            // Если кликнули на уже играющий трек — останавливаем
+            if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
+                this.style.opacity = '1';
+                return;
+            }
+
+            // Останавливаем предыдущий трек
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            // Запускаем новый
+            currentAudio = new Audio(audioUrl);
+            currentAudio.volume = 0.75;
             
-            covers.forEach(img => {
-                img.addEventListener('click', () => {
-                    const audioUrl = img.getAttribute('data-audio');
-                    if (!audioUrl) return;
-
-                    if (currentAudio && currentAudio.src === audioUrl) {
-                        currentAudio.pause();
-                        currentAudio.currentTime = 0;
-                        currentAudio = null;
-                        img.style.opacity = '1';
-                        return;
-                    }
-
-                    if (currentAudio) {
-                        currentAudio.pause();
-                        currentAudio.currentTime = 0;
-                    }
-
-                    currentAudio = new Audio(audioUrl);
-                    currentAudio.volume = 0.75;
-                    currentAudio.play().catch(err => console.log('Ошибка:', err));
-
-                    img.style.opacity = '0.75';
-
-                    currentAudio.onended = () => {
-                        img.style.opacity = '1';
-                        currentAudio = null;
-                    };
+            currentAudio.play()
+                .then(() => {
+                    this.style.opacity = '0.75';
+                })
+                .catch(err => {
+                    console.error('Ошибка воспроизведения трека ' + (index + 1), err);
                 });
-            });
+
+            // Когда трек закончится
+            currentAudio.onended = () => {
+                this.style.opacity = '1';
+                currentAudio = null;
+            };
         });
-    </script>
+    });
+}
+
+// Запускаем после полной загрузки страницы
+window.addEventListener('load', initAudioPlayers);
+</script>
 </body>
 </html>
 </body>

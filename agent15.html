@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Агент 15 — Защитники Солнца</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background-color: #080c0e;
+            color: #b0c8d0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(circle at 30% 40%, #0c1a20, #04080a);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            width: 100%;
+            background: #0a1014;
+            padding: 50px 40px;
+            box-shadow: inset 0 0 80px rgba(30, 120, 140, 0.02);
+            border: 1px solid #1a3a40;
+            position: relative;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 60% 40%, rgba(40, 160, 180, 0.02), transparent 60%);
+            pointer-events: none;
+        }
+
+        .dossier {
+            background: #0a1216;
+            border: 2px solid #1a4a50;
+            padding: 30px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow:
+                inset 0 0 40px rgba(20, 80, 100, 0.02),
+                0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .dossier::before,
+        .dossier::after {
+            content: '▣';
+            position: absolute;
+            font-size: 28px;
+            color: #2a7a80;
+            opacity: 0.06;
+        }
+        .dossier::before {
+            top: 10px;
+            left: 14px;
+            transform: rotate(5deg);
+        }
+        .dossier::after {
+            bottom: 10px;
+            right: 14px;
+            transform: rotate(-5deg);
+        }
+
+        .photo-block {
+            flex: 0 0 23%;
+            min-width: 160px;
+            max-width: 220px;
+            background: #080e12;
+            border: 2px solid #1a4a50;
+            padding: 6px;
+            box-shadow: 0 0 30px rgba(30, 120, 140, 0.02);
+        }
+
+        .photo-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(0.3) contrast(1.1) saturate(0.7);
+            border: 1px solid #1a3a40;
+        }
+
+        .info-block {
+            flex: 1;
+            background: #0a1218;
+            padding: 20px 25px;
+            border-left: 4px solid #3a8a90;
+            box-shadow: inset 0 0 30px rgba(20, 60, 80, 0.02);
+        }
+
+        .info-block h1 {
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: #b0d8e0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #1a4a50;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            text-shadow: 0 0 40px rgba(60, 180, 200, 0.02);
+        }
+
+        .info-block .sub {
+            color: #8ab0b8;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .info-block .sub span {
+            background: #0c1a20;
+            padding: 4px 14px;
+            border-left: 3px solid #3a8a90;
+        }
+
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 30px;
+            margin-top: 12px;
+        }
+
+        .dossier-grid .label {
+            color: #6a9aa0;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #1a3a40;
+        }
+
+        .dossier-grid .value {
+            color: #b8d0d8;
+            font-size: 0.95rem;
+            padding-bottom: 6px;
+        }
+
+        .dossier-grid .value a {
+            color: #6ab0b8;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a4a50;
+            transition: 0.2s;
+        }
+        .dossier-grid .value a:hover {
+            color: #90d0d8;
+            border-bottom-color: #3a8a90;
+        }
+
+        .bio-block {
+            background: #0a1218;
+            padding: 25px 30px;
+            border-left: 4px solid #3a8a90;
+            margin: 40px 0 30px;
+            box-shadow: inset 0 0 30px rgba(20, 60, 80, 0.02);
+        }
+
+        .bio-block h2 {
+            color: #b0d8e0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #1a4a50;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .bio-block p {
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #b0c8d0;
+            margin-bottom: 14px;
+        }
+
+        .events-block {
+            background: #080e12;
+            padding: 25px 30px;
+            border: 2px solid #1a4a50;
+            margin: 30px 0;
+            box-shadow: inset 0 0 40px rgba(10, 40, 50, 0.02);
+        }
+
+        .events-block h2 {
+            color: #b0d8e0;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #1a4a50;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .events-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .events-block li {
+            padding: 10px 0 10px 30px;
+            border-bottom: 1px solid #1a2a30;
+            color: #b0c8d0;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .events-block li::before {
+            content: '◆';
+            color: #3a8a90;
+            position: absolute;
+            left: 4px;
+            font-size: 0.9rem;
+        }
+
+        .gallery-block {
+            background: #0a1218;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border: 2px solid #1a4a50;
+        }
+
+        .gallery-block h2 {
+            color: #b0d8e0;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #1a4a50;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 14px;
+        }
+
+        .gallery-grid .item {
+            background: #080e12;
+            border: 2px solid #1a4a50;
+            aspect-ratio: 1 / 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3a6a70;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+            transition: 0.25s;
+            cursor: pointer;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .gallery-grid .item:hover {
+            border-color: #3a8a90;
+            background: #0c1a20;
+            color: #90d0d8;
+        }
+
+        .projects-block {
+            background: #0a1218;
+            padding: 25px 30px;
+            border-left: 4px solid #3a8a90;
+            margin: 30px 0;
+        }
+
+        .projects-block h2 {
+            color: #b0d8e0;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #1a4a50;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .projects-block .project-item {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 8px 0;
+            border-bottom: 1px solid #1a2a30;
+            color: #b0c8d0;
+        }
+
+        .projects-block .project-item .name {
+            font-weight: 300;
+            color: #b8d0d8;
+        }
+
+        .projects-block .project-item .phase {
+            color: #3a8a90;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .photo-block {
+                flex: 1 1 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            .photo-block img {
+                max-width: 240px;
+                margin: 0 auto;
+            }
+            .dossier-grid {
+                grid-template-columns: 1fr;
+            }
+            .page {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- ДОСЬЕ -->
+    <div class="dossier">
+
+        <div class="photo-block">
+            <img src="https://via.placeholder.com/400x600/0c1a20/3a8a90?text=AGENT+15" alt="Агент 15">
+        </div>
+
+        <div class="info-block">
+            <h1>Агент 15</h1>
+            <div class="sub">
+                <span>Имя: Катя Уварова</span>
+                <span>Статус: Неизвестен (после Фазы 3)</span>
+                <span>Позиция: Антигерой / Предатель</span>
+            </div>
+
+            <div class="dossier-grid">
+                <div class="label">Общая информация</div>
+                <div class="value">Возраст: ~40 лет / Место: Россия / Роль: Двойной агент, бывший оперативник Организации Солнца</div>
+
+                <div class="label">Способности</div>
+                <div class="value">Шпионаж • Тактическая подготовка • Психологическая манипуляция • Скрытность</div>
+
+                <div class="label">Союзники</div>
+                <div class="value"><a href="#">Агитатор</a> (бывший), Оружейный контроль (бывший)</div>
+
+                <div class="label">Враги</div>
+                <div class="value"><a href="#">Елена Солнцева</a>, <a href="#">Ястреб</a>, Организация Солнца</div>
+
+                <div class="label">Команды / Организации</div>
+                <div class="value">Организация Солнца (бывш.), Корпорация «Горизонт» (бывш.)</div>
+
+                <div class="label">Оружие / Костюмы</div>
+                <div class="value">Стандартный тактический костюм • Скрытое оружие</div>
+
+                <div class="label">Участие в проектах</div>
+                <div class="value">Призрачные крылья • Организация Солнца: Жёлтый шар</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БИОГРАФИЯ -->
+    <div class="bio-block">
+        <h2>Каноничная биография</h2>
+        <p>Катя Уварова была одним из лучших агентов Организации Солнца. Она работала под прикрытием, но её предательство стало одним из самых болезненных ударов для Елены и Ястреба.</p>
+        <p>Она помогла Агитатору украсть Жёлтый шар, использовав доверие команды. После этого её след потерялся. Она не вернулась в Организацию и не осталась с Агитатором.</p>
+        <p>Её мотивы остаются туманными — возможно, она действовала из страха, возможно, из убеждений.</p>
+    </div>
+
+    <!-- СОБЫТИЯ -->
+    <div class="events-block">
+        <h2>События, повлиявшие на альтернативные ветки</h2>
+        <ul>
+            <li><strong>Предательство в Организации</strong> — если бы она не перешла на сторону Агитатора, шар мог бы остаться у Елены.</li>
+            <li><strong>Отношения с Ястребом</strong> — в некоторых реальностях она не предаёт его, и их союз спасает её.</li>
+            <li><strong>Исчезновение</strong> — её судьба остаётся открытой в альтернативных ветках.</li>
+        </ul>
+    </div>
+
+    <!-- ГАЛЕРЕЯ -->
+    <div class="gallery-block">
+        <h2>Галерея</h2>
+        <div class="gallery-grid">
+            <div class="item">Агент 15</div>
+            <div class="item">В Организации</div>
+            <div class="item">С Ястребом</div>
+            <div class="item">Момент предательства</div>
+            <div class="item">Исчезновение</div>
+        </div>
+    </div>
+
+    <!-- ПРОЕКТЫ -->
+    <div class="projects-block">
+        <h2>Участие в проектах</h2>
+        <div class="project-item">
+            <span class="name">Призрачные крылья</span>
+            <span class="phase">Фаза 1</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Организация Солнца: Жёлтый шар</span>
+            <span class="phase">Фаза 1</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хаос — Защитники Солнца</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', 'Consolas', monospace;
+            background-color: #0a0505;
+            color: #d0b0a0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(circle at 30% 20%, #1f0a0a, #040202);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            width: 100%;
+            background: #0a0606;
+            padding: 50px 40px;
+            box-shadow: inset 0 0 80px rgba(120, 20, 20, 0.15), 0 0 60px rgba(160, 30, 30, 0.05);
+            border: 1px solid #4a2020;
+            position: relative;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 60% 50%, rgba(160, 30, 30, 0.04), transparent 60%);
+            pointer-events: none;
+        }
+
+        .dossier {
+            background: #0c0707;
+            border: 2px solid #4a2020;
+            padding: 30px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow:
+                inset 0 0 40px rgba(80, 10, 10, 0.15),
+                0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .dossier::before,
+        .dossier::after {
+            content: '⚡';
+            position: absolute;
+            font-size: 28px;
+            color: #8a2a2a;
+            opacity: 0.25;
+        }
+        .dossier::before {
+            top: -6px;
+            left: -6px;
+            transform: rotate(15deg);
+        }
+        .dossier::after {
+            bottom: -6px;
+            right: -6px;
+            transform: rotate(-15deg);
+        }
+
+        .photo-block {
+            flex: 0 0 23%;
+            min-width: 160px;
+            max-width: 220px;
+            background: #0a0505;
+            border: 2px solid #4a2020;
+            padding: 6px;
+            box-shadow: 0 0 30px rgba(120, 20, 20, 0.1);
+        }
+
+        .photo-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(0.3) contrast(1.2) saturate(1.1);
+            border: 1px solid #3a1a1a;
+        }
+
+        .info-block {
+            flex: 1;
+            background: #0b0606;
+            padding: 20px 25px;
+            border-left: 4px solid #8a2a2a;
+            box-shadow: inset 0 0 30px rgba(60, 10, 10, 0.2);
+        }
+
+        .info-block h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #d09080;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #4a2020;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-shadow: 0 0 30px rgba(180, 60, 40, 0.15);
+        }
+
+        .info-block .sub {
+            color: #b08878;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .info-block .sub span {
+            background: #160a0a;
+            padding: 4px 14px;
+            border-left: 3px solid #8a2a2a;
+        }
+
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 30px;
+            margin-top: 12px;
+        }
+
+        .dossier-grid .label {
+            color: #a06a5a;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #3a1a1a;
+        }
+
+        .dossier-grid .value {
+            color: #c8a898;
+            font-size: 0.95rem;
+            padding-bottom: 6px;
+        }
+
+        .dossier-grid .value a {
+            color: #c87868;
+            text-decoration: none;
+            border-bottom: 1px dotted #5a2a2a;
+            transition: 0.2s;
+        }
+        .dossier-grid .value a:hover {
+            color: #e89080;
+            border-bottom-color: #8a3a3a;
+        }
+
+        .bio-block {
+            background: #0b0606;
+            padding: 25px 30px;
+            border-left: 4px solid #8a2a2a;
+            margin: 40px 0 30px;
+            box-shadow: inset 0 0 30px rgba(40, 8, 8, 0.15);
+        }
+
+        .bio-block h2 {
+            color: #d09080;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #4a2020;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .bio-block p {
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #b8a090;
+            margin-bottom: 14px;
+        }
+
+        .events-block {
+            background: #0a0505;
+            padding: 25px 30px;
+            border: 2px solid #4a2020;
+            margin: 30px 0;
+            box-shadow: inset 0 0 40px rgba(40, 8, 8, 0.1);
+        }
+
+        .events-block h2 {
+            color: #d09080;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #4a2020;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .events-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .events-block li {
+            padding: 10px 0 10px 30px;
+            border-bottom: 1px solid #2a1210;
+            color: #b8a090;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .events-block li::before {
+            content: '◆';
+            color: #8a3a2a;
+            position: absolute;
+            left: 4px;
+            font-size: 0.9rem;
+        }
+
+        .gallery-block {
+            background: #0b0606;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border: 2px solid #4a2020;
+        }
+
+        .gallery-block h2 {
+            color: #d09080;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #4a2020;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 14px;
+        }
+
+        .gallery-grid .item {
+            background: #0a0505;
+            border: 2px solid #4a2020;
+            aspect-ratio: 1 / 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7a3a2a;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+            transition: 0.25s;
+            cursor: pointer;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .gallery-grid .item:hover {
+            border-color: #8a3a2a;
+            background: #160a0a;
+            color: #d08070;
+        }
+
+        .projects-block {
+            background: #0b0606;
+            padding: 25px 30px;
+            border-left: 4px solid #8a2a2a;
+            margin: 30px 0;
+        }
+
+        .projects-block h2 {
+            color: #d09080;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #4a2020;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .projects-block .project-item {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a1210;
+            color: #b8a090;
+        }
+
+        .projects-block .project-item .name {
+            font-weight: 700;
+            color: #c8a898;
+        }
+
+        .projects-block .project-item .phase {
+            color: #8a3a2a;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .photo-block {
+                flex: 1 1 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            .photo-block img {
+                max-width: 240px;
+                margin: 0 auto;
+            }
+            .dossier-grid {
+                grid-template-columns: 1fr;
+            }
+            .page {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- ДОСЬЕ -->
+    <div class="dossier">
+
+        <div class="photo-block">
+            <img src="https://via.placeholder.com/400x600/1a0a0a/8a2a2a?text=CHAOS" alt="Хаос">
+        </div>
+
+        <div class="info-block">
+            <h1>Хаос</h1>
+            <div class="sub">
+                <span>Имя: Алиса Воронцова</span>
+                <span>Статус: Активна (Фаза 5)</span>
+            </div>
+
+            <div class="dossier-grid">
+                <div class="label">Общая информация</div>
+                <div class="value">Возраст: 41 год (р. 1988) / Место: Россия, Москва / Роль: Хакер, энергетический взломщик</div>
+
+                <div class="label">Способности</div>
+                <div class="value">Красная энергия • Цифровой взлом • Энергетические конструкты • Материализация информации</div>
+
+                <div class="label">Союзники</div>
+                <div class="value"><a href="#">Быстрин</a>, <a href="#">Елена Солнцева</a>, <a href="#">Защитники Солнца</a></div>
+
+                <div class="label">Враги</div>
+                <div class="value"><a href="#">Агитатор</a>, ОРБ, Пересмешница</div>
+
+                <div class="label">Команды / Организации</div>
+                <div class="value">Организация Солнца (участник), Защитники Солнца (экс), Теневая тройка</div>
+
+                <div class="label">Оружие / Костюмы</div>
+                <div class="value">Красная энергия (взлом, конструкты, атаки)</div>
+
+                <div class="label">Участие в проектах</div>
+                <div class="value">Хаос и Быстрин: Красная вспышка • Защитники Солнца 1–4 • Защитники Солнца: Обычные герои</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БИОГРАФИЯ -->
+    <div class="bio-block">
+        <h2>Каноничная биография</h2>
+        <p>Алиса Воронцова была обычной хакершей, пока не запустила код «Красный Феникс». Он дал ей способность превращать мысли в красную энергию — цифровую силу, способную проникать в любую систему.</p>
+        <p>Она стала известна как Хаос. Вместе с Быстрином она стала «тенью» Елены Солнцевой. Её дар позволяет ей взламывать реальность и материализовать информацию.</p>
+        <p>В Фазе 5 она остаётся одним из ключевых оперативников Организации Солнца, продолжая защищать мир от цифровых и магических угроз.</p>
+    </div>
+
+    <!-- СОБЫТИЯ -->
+    <div class="events-block">
+        <h2>События, повлиявшие на альтернативные ветки</h2>
+        <ul>
+            <li><strong>Код «Красный Феникс»</strong> — в некоторых реальностях он убивает её, а не даёт силу.</li>
+            <li><strong>Связь с Быстрином</strong> — если бы они не встретились, её энергия могла бы разрушить её.</li>
+            <li><strong>Отказ от Елены</strong> — в альтернативных ветках она становится независимым хакером-одиночкой.</li>
+        </ul>
+    </div>
+
+    <!-- ГАЛЕРЕЯ -->
+    <div class="gallery-block">
+        <h2>Галерея</h2>
+        <div class="gallery-grid">
+            <div class="item">Активация силы</div>
+            <div class="item">Хаос и Быстрин</div>
+            <div class="item">Взлом системы</div>
+            <div class="item">Красный энерго-конструкт</div>
+            <div class="item">Битва с Пересмешницей</div>
+        </div>
+    </div>
+
+    <!-- ПРОЕКТЫ -->
+    <div class="projects-block">
+        <h2>Участие в проектах</h2>
+        <div class="project-item">
+            <span class="name">Хаос и Быстрин: Красная вспышка</span>
+            <span class="phase">Фаза 1</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Защитники Солнца</span>
+            <span class="phase">Фаза 2</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Защитники Солнца 2: Последний импульс</span>
+            <span class="phase">Фаза 3</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Защитники Солнца 3: Тень Агитатора</span>
+            <span class="phase">Фаза 4</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Защитники Солнца 4: Абсолютный ноль</span>
+            <span class="phase">Фаза 4</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Защитники Солнца: Обычные герои</span>
+            <span class="phase">Фаза 5</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

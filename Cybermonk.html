@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кибермонах — Защитники Солнца</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', 'Consolas', monospace;
+            background-color: #0a0907;
+            color: #c8c0b0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(circle at 50% 30%, #1a1510, #050403);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            width: 100%;
+            background: #0f0d0a;
+            padding: 50px 40px;
+            box-shadow: inset 0 0 80px rgba(60, 50, 20, 0.15), 0 0 60px rgba(120, 100, 30, 0.05);
+            border: 1px solid #4a3f30;
+            position: relative;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, rgba(80, 70, 30, 0.02) 0px, rgba(80, 70, 30, 0.02) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+        }
+
+        .dossier {
+            background: #12100c;
+            border: 2px solid #5a4d30;
+            padding: 30px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow:
+                inset 0 0 40px rgba(30, 25, 10, 0.2),
+                0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .dossier::before,
+        .dossier::after {
+            content: '⛓';
+            position: absolute;
+            font-size: 28px;
+            color: #7a6a40;
+            opacity: 0.25;
+        }
+        .dossier::before {
+            top: -6px;
+            left: -6px;
+            transform: rotate(10deg);
+        }
+        .dossier::after {
+            bottom: -6px;
+            right: -6px;
+            transform: rotate(-10deg);
+        }
+
+        .photo-block {
+            flex: 0 0 23%;
+            min-width: 160px;
+            max-width: 220px;
+            background: #0e0c08;
+            border: 2px solid #5a4d30;
+            padding: 6px;
+            box-shadow: 0 0 30px rgba(60, 50, 20, 0.15);
+        }
+
+        .photo-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(0.7) contrast(1.2) saturate(0.6);
+            border: 1px solid #4a3f30;
+        }
+
+        .info-block {
+            flex: 1;
+            background: #100e0a;
+            padding: 20px 25px;
+            border-left: 4px solid #7a6a40;
+            box-shadow: inset 0 0 30px rgba(30, 25, 10, 0.2);
+        }
+
+        .info-block h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #d4c8a0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #5a4d30;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-shadow: 0 0 30px rgba(180, 160, 60, 0.08);
+        }
+
+        .info-block .sub {
+            color: #b0a888;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .info-block .sub span {
+            background: #1a1710;
+            padding: 4px 14px;
+            border-left: 3px solid #7a6a40;
+        }
+
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 30px;
+            margin-top: 12px;
+        }
+
+        .dossier-grid .label {
+            color: #9a8a68;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #3d3520;
+        }
+
+        .dossier-grid .value {
+            color: #c8bea8;
+            font-size: 0.95rem;
+            padding-bottom: 6px;
+        }
+
+        .dossier-grid .value a {
+            color: #c8b070;
+            text-decoration: none;
+            border-bottom: 1px dotted #5a4d30;
+            transition: 0.2s;
+        }
+        .dossier-grid .value a:hover {
+            color: #e8d090;
+            border-bottom-color: #8a7a50;
+        }
+
+        .bio-block {
+            background: #100e0a;
+            padding: 25px 30px;
+            border-left: 4px solid #7a6a40;
+            margin: 40px 0 30px;
+            box-shadow: inset 0 0 30px rgba(20, 18, 10, 0.2);
+        }
+
+        .bio-block h2 {
+            color: #d4c8a0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #4a3f30;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .bio-block p {
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #b8ae98;
+            margin-bottom: 14px;
+        }
+
+        .events-block {
+            background: #0e0c08;
+            padding: 25px 30px;
+            border: 2px solid #4a3f30;
+            margin: 30px 0;
+            box-shadow: inset 0 0 40px rgba(20, 18, 8, 0.2);
+        }
+
+        .events-block h2 {
+            color: #d4c8a0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #5a4d30;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .events-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .events-block li {
+            padding: 10px 0 10px 30px;
+            border-bottom: 1px solid #2a2418;
+            color: #b8ae98;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .events-block li::before {
+            content: '◆';
+            color: #8a7a50;
+            position: absolute;
+            left: 4px;
+            font-size: 0.9rem;
+        }
+
+        .gallery-block {
+            background: #100e0a;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border: 2px solid #4a3f30;
+        }
+
+        .gallery-block h2 {
+            color: #d4c8a0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #5a4d30;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 14px;
+        }
+
+        .gallery-grid .item {
+            background: #0e0c08;
+            border: 2px solid #4a3f30;
+            aspect-ratio: 1 / 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6a5a3a;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+            transition: 0.25s;
+            cursor: pointer;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .gallery-grid .item:hover {
+            border-color: #8a7a50;
+            background: #1a1710;
+            color: #c8b888;
+        }
+
+        .projects-block {
+            background: #100e0a;
+            padding: 25px 30px;
+            border-left: 4px solid #7a6a40;
+            margin: 30px 0;
+        }
+
+        .projects-block h2 {
+            color: #d4c8a0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #5a4d30;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .projects-block .project-item {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2418;
+            color: #b8ae98;
+        }
+
+        .projects-block .project-item .name {
+            font-weight: 700;
+            color: #c8bea8;
+        }
+
+        .projects-block .project-item .phase {
+            color: #8a7a50;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .photo-block {
+                flex: 1 1 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            .photo-block img {
+                max-width: 240px;
+                margin: 0 auto;
+            }
+            .dossier-grid {
+                grid-template-columns: 1fr;
+            }
+            .page {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- ДОСЬЕ -->
+    <div class="dossier">
+
+        <div class="photo-block">
+            <img src="https://via.placeholder.com/400x600/1a1710/8a7a50?text=CYBERMONK" alt="Кибермонах">
+        </div>
+
+        <div class="info-block">
+            <h1>Кибермонах</h1>
+            <div class="sub">
+                <span>Имя: Кирилл Яковлев</span>
+                <span>Статус: Заключён (Фаза 5)</span>
+            </div>
+
+            <div class="dossier-grid">
+                <div class="label">Общая информация</div>
+                <div class="value">Возраст: 57 лет (р. 1968) / Место: СССР, Россия / Роль: Техногенный фанатик, изобретатель</div>
+
+                <div class="label">Способности</div>
+                <div class="value">Кибер-костюм • Чип-контроль • Высокий интеллект • Гибкая броня • Техно-оружие</div>
+
+                <div class="label">Союзники</div>
+                <div class="value"><a href="#">Агитатор</a> (бывший), Оружейный контроль (бывший)</div>
+
+                <div class="label">Враги</div>
+                <div class="value"><a href="#">Амбал</a>, <a href="#">Андроид</a>, Защитники Солнца</div>
+
+                <div class="label">Команды / Организации</div>
+                <div class="value">Корпорация «Горизонт» (бывш.), ОРБ (бывш.)</div>
+
+                <div class="label">Оружие / Костюмы</div>
+                <div class="value">Кибер-костюм (модифицированный) • Контроль-чип • Спектральный анализатор</div>
+
+                <div class="label">Участие в проектах</div>
+                <div class="value">Амбал: Нулевой пациент • Тени Горизонта (упоминание)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БИОГРАФИЯ -->
+    <div class="bio-block">
+        <h2>Каноничная биография</h2>
+        <p>Кирилл Яковлев — младший брат Олега, гениальный инженер, ушедший в подполье ради создания технологий контроля. Он считал, что человечество слишком слабо, чтобы управлять собой, и что истинный порядок может быть достигнут только через кибернетическое подчинение.</p>
+        <p>Он создал чип-контроль, превратил Настю в Андроид и пытался убить собственного брата. В финале он был побеждён и заключён в тюрьму, где остаётся до сих пор.</p>
+        <p>Даже в заключении он продолжает разрабатывать теории и строить планы — его разум остаётся опаснейшим оружием.</p>
+    </div>
+
+    <!-- СОБЫТИЯ -->
+    <div class="events-block">
+        <h2>События, повлиявшие на альтернативные ветки</h2>
+        <ul>
+            <li><strong>Взрыв на заводе</strong> — если бы он не встретил там брата, его план мог бы удаться.</li>
+            <li><strong>Чип Насти</strong> — в некоторых реальностях он не повреждается, и Андроид остаётся его оружием.</li>
+            <li><strong>Плен</strong> — в альтернативных ветках он сбегает и становится лидером техно-культа.</li>
+        </ul>
+    </div>
+
+    <!-- ГАЛЕРЕЯ -->
+    <div class="gallery-block">
+        <h2>Галерея</h2>
+        <div class="gallery-grid">
+            <div class="item">Кибер-костюм</div>
+            <div class="item">Лаборатория</div>
+            <div class="item">Чип-контроль</div>
+            <div class="item">Противостояние с Амбалом</div>
+            <div class="item">Заключение</div>
+        </div>
+    </div>
+
+    <!-- ПРОЕКТЫ -->
+    <div class="projects-block">
+        <h2>Участие в проектах</h2>
+        <div class="project-item">
+            <span class="name">Амбал: Нулевой пациент</span>
+            <span class="phase">Фаза 1</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Тени Горизонта</span>
+            <span class="phase">Фаза 4 (упоминание)</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

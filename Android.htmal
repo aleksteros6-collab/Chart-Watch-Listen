@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Андроид — Защитники Солнца</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background-color: #0b0810;
+            color: #d4c8e0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image: radial-gradient(circle at 30% 40%, #1a1225, #05030a);
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            width: 100%;
+            background: #0e0a14;
+            padding: 50px 40px;
+            box-shadow: inset 0 0 80px rgba(80, 20, 120, 0.2), 0 0 60px rgba(100, 30, 160, 0.08);
+            border: 1px solid #3a2a4a;
+            position: relative;
+        }
+
+        /* Матовое покрытие с лёгким свечением по краям */
+        .page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 20%, rgba(130, 40, 200, 0.03), transparent 60%);
+            pointer-events: none;
+        }
+
+        /* ДОСЬЕ — матовый пластик */
+        .dossier {
+            background: #110d18;
+            border: 2px solid #4a2f5e;
+            padding: 30px 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow:
+                inset 0 0 30px rgba(80, 20, 120, 0.15),
+                0 10px 30px rgba(0, 0, 0, 0.6);
+            border-radius: 4px;
+        }
+
+        /* Уголки как в интерфейсе */
+        .dossier::before,
+        .dossier::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #7a4a9a;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .dossier::before {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .dossier::after {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .photo-block {
+            flex: 0 0 23%;
+            min-width: 160px;
+            max-width: 220px;
+            background: #0e0a14;
+            border: 2px solid #4a2f5e;
+            padding: 6px;
+            box-shadow: 0 0 30px rgba(100, 30, 160, 0.1);
+            border-radius: 2px;
+        }
+
+        .photo-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(0.3) contrast(1.1) saturate(0.8);
+            border: 1px solid #3a2a4a;
+        }
+
+        .info-block {
+            flex: 1;
+            background: #100c18;
+            padding: 20px 25px;
+            border-left: 3px solid #7a4a9a;
+            box-shadow: inset 0 0 30px rgba(40, 10, 70, 0.3);
+            border-radius: 2px;
+        }
+
+        .info-block h1 {
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: #d0b8e0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #4a2f5e;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-shadow: 0 0 30px rgba(160, 80, 220, 0.15);
+        }
+
+        .info-block .sub {
+            color: #b098c0;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .info-block .sub span {
+            background: #160e20;
+            padding: 4px 14px;
+            border-left: 3px solid #7a4a9a;
+        }
+
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 30px;
+            margin-top: 12px;
+        }
+
+        .dossier-grid .label {
+            color: #9a80b0;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #3a2a4a;
+        }
+
+        .dossier-grid .value {
+            color: #c8b8d8;
+            font-size: 0.95rem;
+            padding-bottom: 6px;
+        }
+
+        .dossier-grid .value a {
+            color: #b890d0;
+            text-decoration: none;
+            border-bottom: 1px dotted #5a3a70;
+            transition: 0.2s;
+        }
+        .dossier-grid .value a:hover {
+            color: #d8b0f0;
+            border-bottom-color: #9a6ab8;
+        }
+
+        .bio-block {
+            background: #100c18;
+            padding: 25px 30px;
+            border-left: 4px solid #7a4a9a;
+            margin: 40px 0 30px;
+            box-shadow: inset 0 0 30px rgba(40, 10, 70, 0.2);
+            border-radius: 2px;
+        }
+
+        .bio-block h2 {
+            color: #d0b8e0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #3a2a4a;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .bio-block p {
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #c0b0d0;
+            margin-bottom: 14px;
+        }
+
+        .events-block {
+            background: #0e0a16;
+            padding: 25px 30px;
+            border: 2px solid #3a2a4a;
+            margin: 30px 0;
+            box-shadow: inset 0 0 40px rgba(30, 10, 50, 0.3);
+            border-radius: 2px;
+        }
+
+        .events-block h2 {
+            color: #d0b8e0;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #4a2f5e;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .events-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .events-block li {
+            padding: 10px 0 10px 30px;
+            border-bottom: 1px solid #2a1a3a;
+            color: #c0b0d0;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .events-block li::before {
+            content: '◇';
+            color: #9a6ab8;
+            position: absolute;
+            left: 4px;
+            font-size: 1rem;
+        }
+
+        .gallery-block {
+            background: #100c18;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border: 2px solid #3a2a4a;
+            border-radius: 2px;
+        }
+
+        .gallery-block h2 {
+            color: #d0b8e0;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #4a2f5e;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 14px;
+        }
+
+        .gallery-grid .item {
+            background: #0e0a16;
+            border: 2px solid #3a2a4a;
+            aspect-ratio: 1 / 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7a5a8a;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+            transition: 0.25s;
+            cursor: pointer;
+            border-radius: 2px;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .gallery-grid .item:hover {
+            border-color: #9a6ab8;
+            background: #1a1225;
+            color: #c8b0d8;
+        }
+
+        .projects-block {
+            background: #100c18;
+            padding: 25px 30px;
+            border-left: 4px solid #7a4a9a;
+            margin: 30px 0;
+            border-radius: 2px;
+        }
+
+        .projects-block h2 {
+            color: #d0b8e0;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #4a2f5e;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .projects-block .project-item {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a1a3a;
+            color: #c0b0d0;
+        }
+
+        .projects-block .project-item .name {
+            font-weight: 400;
+            color: #c8b0d8;
+        }
+
+        .projects-block .project-item .phase {
+            color: #9a6ab8;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .photo-block {
+                flex: 1 1 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            .photo-block img {
+                max-width: 240px;
+                margin: 0 auto;
+            }
+            .dossier-grid {
+                grid-template-columns: 1fr;
+            }
+            .page {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- ДОСЬЕ -->
+    <div class="dossier">
+
+        <div class="photo-block">
+            <img src="https://via.placeholder.com/400x600/1a1225/7a4a9a?text=ANDROID" alt="Андроид">
+        </div>
+
+        <div class="info-block">
+            <h1>Андроид</h1>
+            <div class="sub">
+                <span>Имя: Настя Ковалёва</span>
+                <span>Статус: Активна (Фаза 5)</span>
+            </div>
+
+            <div class="dossier-grid">
+                <div class="label">Общая информация</div>
+                <div class="value">Возраст: 55 лет (р. 1969) / Место: СССР, Россия / Роль: Хакер, киборг, оперативник</div>
+
+                <div class="label">Способности</div>
+                <div class="value">Взлом систем • Киборг-импланты • Улучшенная реакция • Обработка данных</div>
+
+                <div class="label">Союзники</div>
+                <div class="value"><a href="#">Амбал</a>, <a href="#">Неон</a>, <a href="#">Отряд Содружества</a></div>
+
+                <div class="label">Враги</div>
+                <div class="value"><a href="#">Агитатор</a>, ОРБ, Кибермонах</div>
+
+                <div class="label">Команды / Организации</div>
+                <div class="value">Организация Солнца (экс), Отряд Содружества (участник)</div>
+
+                <div class="label">Оружие / Костюмы</div>
+                <div class="value">Модифицированный кибер-костюм • Взлом-интерфейс</div>
+
+                <div class="label">Участие в проектах</div>
+                <div class="value">Амбал: Нулевой пациент • Тени Горизонта • Андроид: Человеческое сердце • Отряд Содружества</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БИОГРАФИЯ -->
+    <div class="bio-block">
+        <h2>Каноничная биография</h2>
+        <p>Настя Ковалёва была студенткой, влюблённой в Олега Яковлева. Её жизнь перевернулась, когда её похитил Кибермонах и превратил в киборга-хакера с чипом контроля.</p>
+        <p>Она потеряла память и личность, стала оружием в руках Агитатора. Но встреча с Олегом пробудила в ней воспоминания. Она выбрала свободу, хотя заплатила за неё разрывом с прошлым.</p>
+        <p>В Фазе 5 она ищет себя, находит общину «Дети Тишины» и вступает в Отряд Содружества, где начинает новую жизнь как человек, а не как машина.</p>
+    </div>
+
+    <!-- СОБЫТИЯ -->
+    <div class="events-block">
+        <h2>События, повлиявшие на альтернативные ветки</h2>
+        <ul>
+            <li><strong>Чип контроля</strong> — если бы он не был повреждён, Настя осталась бы оружием Агитатора навсегда.</li>
+            <li><strong>Встреча с Амбалом</strong> — в некоторых реальностях она не узнаёт его и уничтожает.</li>
+            <li><strong>«Дети Тишины»</strong> — без этой общины она могла бы остаться в одиночестве или вернуться к Агитатору.</li>
+        </ul>
+    </div>
+
+    <!-- ГАЛЕРЕЯ -->
+    <div class="gallery-block">
+        <h2>Галерея</h2>
+        <div class="gallery-grid">
+            <div class="item">Кибер-костюм</div>
+            <div class="item">Андроид и Амбал</div>
+            <div class="item">Взлом системы</div>
+            <div class="item">Община «Дети Тишины»</div>
+            <div class="item">Отряд Содружества</div>
+        </div>
+    </div>
+
+    <!-- ПРОЕКТЫ -->
+    <div class="projects-block">
+        <h2>Участие в проектах</h2>
+        <div class="project-item">
+            <span class="name">Амбал: Нулевой пациент</span>
+            <span class="phase">Фаза 1</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Тени Горизонта</span>
+            <span class="phase">Фаза 4</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Андроид: Человеческое сердце</span>
+            <span class="phase">Фаза 5</span>
+        </div>
+        <div class="project-item">
+            <span class="name">Отряд Содружества</span>
+            <span class="phase">Фаза 5</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -7,6 +7,7 @@
     <title>Alex Taros | Музыка, чарты, вселенная</title>
     <meta name="description" content="Alex Taros — электронная музыка, авторские чарты и вымышленная вселенная Taros Media. Смотри и слушай.">
     <style>
+        /* ---------- RESET & BASE ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -21,20 +22,20 @@
             scroll-behavior: smooth;
         }
 
-        /* тёмная эстетика + винтажный акцент */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
 
-        /* шапка */
+        /* ---------- HEADER ---------- */
         .site-header {
             text-align: center;
             border-bottom: 1px solid #2a2725;
             padding-bottom: 2rem;
             margin-bottom: 2rem;
         }
+
         .logo {
             font-size: 2.8rem;
             font-weight: 600;
@@ -45,6 +46,7 @@
             color: transparent;
             margin-bottom: 0.5rem;
         }
+
         .tagline {
             color: #9c9286;
             font-size: 0.9rem;
@@ -53,17 +55,21 @@
             font-weight: 400;
         }
 
-        /* навигация (вкладки) */
-        .tabs {
+        /* ---------- MENU (new improved) ---------- */
+        .menu {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.25rem 0.5rem;
             margin-bottom: 2.5rem;
-            border-bottom: 1px solid #2a2725;
             padding-bottom: 0.75rem;
+            border-bottom: 1px solid #2a2725;
         }
-        .tab-btn {
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
             background: transparent;
             border: none;
             padding: 0.6rem 1.4rem;
@@ -74,37 +80,66 @@
             border-radius: 40px;
             transition: all 0.2s ease;
             font-family: inherit;
+            text-decoration: none;
+            position: relative;
         }
-        .tab-btn:hover {
+
+        .menu-item:hover {
             color: #e6e3dc;
             background: #1f1c1a;
         }
-        .tab-btn.active {
+
+        .menu-item.active {
             background: #2a2725;
             color: #f2eee9;
         }
 
-        /* панели контента */
+        /* разделитель между пунктами (только на десктопе) */
+        .menu-divider {
+            width: 1px;
+            background: #2a2725;
+            margin: 0.2rem 0.2rem;
+        }
+
+        @media (max-width: 600px) {
+            .menu-divider {
+                display: none;
+            }
+            .menu-item {
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ---------- PANELS ---------- */
         .tab-panel {
             display: none;
             animation: fade 0.25s ease;
         }
+
         .tab-panel.active-panel {
             display: block;
         }
 
         @keyframes fade {
-            from { opacity: 0; transform: translateY(6px);}
-            to { opacity: 1; transform: translateY(0);}
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* карточки */
+        /* ---------- CARDS, LISTS, etc ---------- */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.8rem;
             margin: 2rem 0;
         }
+
         .card {
             background: #12100e;
             border-radius: 24px;
@@ -112,22 +147,26 @@
             border: 1px solid #26221f;
             transition: all 0.2s;
         }
+
         .card:hover {
             border-color: #4a3e34;
             transform: translateY(-3px);
         }
+
         .card h3 {
             font-size: 1.4rem;
             font-weight: 500;
             margin-bottom: 0.75rem;
             color: #f2eee9;
         }
+
         .card p {
             color: #b1a692;
             font-size: 0.9rem;
             margin-bottom: 1.2rem;
             line-height: 1.4;
         }
+
         .btn-sm {
             background: #2a2725;
             color: #e6e3dc;
@@ -141,6 +180,7 @@
             cursor: pointer;
             font-family: inherit;
         }
+
         .btn-sm:hover {
             background: #4a3e34;
             color: white;
@@ -150,6 +190,7 @@
             list-style: none;
             margin-top: 1rem;
         }
+
         .episode-list li {
             margin-bottom: 0.8rem;
             border-bottom: 1px dashed #2a2725;
@@ -158,10 +199,6 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-        }
-        .episode-date {
-            font-size: 0.75rem;
-            color: #7c6e5f;
         }
 
         .universe-block {
@@ -178,6 +215,7 @@
             gap: 1rem;
             margin: 2rem 0 1rem;
         }
+
         .social-link {
             background: #1e1b18;
             padding: 0.5rem 1rem;
@@ -187,6 +225,7 @@
             font-size: 0.85rem;
             transition: 0.2s;
         }
+
         .social-link:hover {
             background: #3e332a;
             color: white;
@@ -202,221 +241,234 @@
         }
 
         .scrollable-list {
-    max-height: 240px;
-    overflow-y: auto;
-    margin: 1rem 0;
-    border: 1px solid #2a2725;
-    border-radius: 16px;
-    padding: 0.5rem;
-}
-.archive-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 0.8rem;
-    color: #e6e3dc;
-    text-decoration: none;
-    border-bottom: 1px solid #2a2725;
-    transition: 0.2s;
-}
-.archive-link:hover {
-    background: #1f1c1a;
-    color: #f2eee9;
-}
-.episode-date {
-    font-size: 0.75rem;
-    color: #7c6e5f;
-}
+            max-height: 240px;
+            overflow-y: auto;
+            margin: 1rem 0;
+            border: 1px solid #2a2725;
+            border-radius: 16px;
+            padding: 0.5rem;
+            list-style: none;
+        }
 
-        max-width: 700px {
+        .scrollable-list li {
+            list-style: none;
+        }
+
+        .scrollable-list .menu-link {
+            display: block;
+            padding: 0.4rem 0.8rem;
+            color: #e6e3dc;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.15s;
+        }
+
+        .scrollable-list .menu-link:hover {
+            background: #1f1c1a;
+            color: #f2eee9;
+        }
+
+        .episode-date {
+            font-size: 0.75rem;
+            color: #7c6e5f;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
             .container {
                 padding: 1.5rem;
             }
             .logo {
                 font-size: 2rem;
             }
-            .tab-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.85rem;
-            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="site-header">
-        <div class="logo">ALEX TAROS</div>
-        <div class="tagline">электронная музыка · чарты · вселенная Taros Media</div>
-    </div>
+    <div class="container">
 
-    <!-- вкладки -->
-    <div class="tabs">
-        <button class="tab-btn active" data-tab="tab1">🎧 Смотри и Слушай 2.0</button>
-        <button class="tab-btn" data-tab="tab2">🕺 TAROS DANCE CHART</button>
-        <button class="tab-btn" data-tab="tab3">🌌 Taros Media (Вселенная)</button>
-        <button class="tab-btn" data-tab="tab4">📻 Новинки & Плейлисты</button>
-    </div>
-
-<!-- панель 1: Смотри и Слушай 2.0 -->
-<div id="tab1" class="tab-panel active-panel">
-    <h2 style="font-weight: 400; margin-bottom: 0.5rem;">Смотри и Слушай 2.0</h2>
-    <p style="color:#b1a692; margin-bottom: 1rem;">Авторский формат: видео-чарт, где электронная музыка встречается с визуальной эстетикой.</p>
-    
-    <div class="grid-2">
-        <div class="card">
-            <h3>Последний выпуск</h3>
-            <p>Выпуск #14 — меланхоличный транс / мелодик техно. Подборка для поздних вечеров.</p>
-            <a href="/watch-listen/issue-14" class="btn-sm">▶ Смотреть на YouTube</a>
-        </div>
-        <div class="card">
-            <h3>Анонс</h3>
-            <p>Выпуск #15: специальный гостевой микс + визуальный ряд от Taros Media.</p>
-            <span class="btn-sm" style="background:#2a2725; cursor:default;">Скоро</span>
-        </div>
-    </div>
-
-    <h3 style="margin-top: 1rem;">Архив выпусков (Смотри и Слушай 2.0)</h3>
-    <div class="scrollable-list">
-        <li><a href="index.html" class="menu-link">Главная</a></li>
-        <li><a href="ChartSiS-3-2026.html" class="menu-link">ChartSiS#3(2026)</a></li>
-        <li><a href="ChartSiS-4-2026.html" class="menu-link">ChartSiS#4(2026)</a></li>
-        <li><a href="ChartSiS-5-2026.html" class="menu-link">ChartSiS#5(2026)</a></li>
-        <li><a href="ChartSiS-6-2026.html" class="menu-link">ChartSiS#6(2026)</a></li>
-        <li><a href="ChartSiS-7-2026.html" class="menu-link">ChartSiS#7(2026)</a></li>
-        <li><a href="ChartSiS-8-2026.html" class="menu-link">ChartSiS#8(2026)</a></li>
-        <li><a href="ChartSiS-9-2026.html" class="menu-link">ChartSiS#9(2026)</a></li>
-        <li><a href="ChartSiS-10-2026.html" class="menu-link">ChartSiS#10(2026)</a></li>
-        <li><a href="ChartSiS-11-2026.html" class="menu-link">ChartSiS#11(2026)</a></li>
-        <li><a href="ChartSiS-12-2026.html" class="menu-link">ChartSiS#12(2026)</a></li>
-        <li><a href="ChartSiS-13-2026.html" class="menu-link">ChartSiS#13(2026)</a></li>
-        <li><a href="ChartSiS-14-2026.html" class="menu-link">ChartSiS#14(2026)</a></li>
-        <li><a href="ChartSiS-15-2026.html" class="menu-link">ChartSiS#15(2026)</a></li>
-        <li><a href="ChartSiS-16-2026.html" class="menu-link">ChartSiS#16(2026)</a></li>
-        <li><a href="ChartSiS-17-2026.html" class="menu-link">ChartSiS#17(2026)</a></li>
-        <li><a href="ChartSiS-18-2026.html" class="menu-link">ChartSiS#18(2026)</a></li>
-        <li><a href="ChartSiS-19-2026.html" class="menu-link">ChartSiS#19(2026)</a></li>
-        <li><a href="ChartSiS-20-2026.html" class="menu-link">ChartSiS#20(2026)</a></li>
-    </div>
-    <a href="/watch-listen/archive" class="btn-sm" style="margin-top: 0.5rem;">📂 Весь архив →</a>
-</div>
-    
-    <!-- панель 2: TAROS DANCE CHART -->
-    <div id="tab2" class="tab-panel">
-        <h2 style="font-weight: 400;">TAROS DANCE CHART</h2>
-        <p style="color:#b1a692; margin-bottom: 1rem;">Танцевальная энергия, актуальный отбор треков для диджеев и танцпола.</p>
-
-        <div class="card" style="margin-bottom: 1.5rem;">
-            <h3>Свежий выпуск</h3>
-            <p>TAROS DANCE CHART #22 — лёгкий tech house, яркие басы, летнее настроение.</p>
-            <a href="#" class="btn-sm">Слушать на VK / Mixcloud</a>
+        <!-- HEADER -->
+        <div class="site-header">
+            <div class="logo">ALEX TAROS</div>
+            <div class="tagline">электронная музыка · чарты · вселенная Taros Media</div>
         </div>
 
-        <h3>Архив выпусков TAROS DANCE CHART</h3>
-    <div class="scrollable-list">
-        <li><a href="index.html" class="menu-link">Главная</a></li>
-        <li><a href="TDC-203.html" class="menu-link">TAROS DANCE CHART #203</a></li>
-        <li><a href="TDC-204.html" class="menu-link">TAROS DANCE CHART #204</a></li>
-        <li><a href="TDC-205.html" class="menu-link">TAROS DANCE CHART #205</a></li>
-        </ul>
-        <a href="#" class="btn-sm">📀 Полный архив TAROS DANCE CHART →</a>
-    </div>
+        <!-- MENU (улучшенное) -->
+        <nav class="menu">
+            <button class="menu-item active" data-tab="tab1">🎧 Смотри и Слушай 2.0</button>
+            <span class="menu-divider"></span>
+            <button class="menu-item" data-tab="tab2">🕺 TAROS DANCE CHART</button>
+            <span class="menu-divider"></span>
+            <button class="menu-item" data-tab="tab3">🌌 Taros Media (Вселенная)</button>
+            <span class="menu-divider"></span>
+            <button class="menu-item" data-tab="tab4">📻 Новинки & Плейлисты</button>
+        </nav>
 
-    <!-- панель 3: ВСЕЛЕННАЯ TAROS MEDIA -->
-    <div id="tab3" class="tab-panel">
-        <div class="universe-block">
-            <h2 style="margin-bottom: 0.5rem;">🌌 Taros Media</h2>
-            <p style="margin-bottom: 1.2rem;">Вымышленная вселенная, где переплетаются музыка, мифы и технологии. Здесь я создаю хроники миров, персонажей и звуковых ландшафтов.</p>
-            <p>⚡ Основная идея: музыка как портал между реальностями. Каждый чарт — это глава. Каждый трек — артефакт.</p>
-            <p style="margin-top: 1rem; font-style: italic;">«Taros Media — это моя лаборатория. Здесь звук становится историей».</p>
-        </div>
-        <div class="grid-2">
-            <div class="card">
-                <h3>Ключевой проект</h3>
-                <p>«Хроники Алекса Т.Р.» — короткие рассказы + звуковой ряд.</p>
-                <a href="ambal.html" class="btn-sm">Амбал</a>
+        <!-- ПАНЕЛЬ 1 -->
+        <div id="tab1" class="tab-panel active-panel">
+            <h2 style="font-weight: 400; margin-bottom: 0.5rem;">Смотри и Слушай 2.0</h2>
+            <p style="color:#b1a692; margin-bottom: 1rem;">Авторский формат: видео-чарт, где электронная музыка встречается с визуальной эстетикой.</p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Последний выпуск</h3>
+                    <p>Выпуск #14 — меланхоличный транс / мелодик техно. Подборка для поздних вечеров.</p>
+                    <a href="/watch-listen/issue-14" class="btn-sm">▶ Смотреть на YouTube</a>
+                </div>
+                <div class="card">
+                    <h3>Анонс</h3>
+                    <p>Выпуск #15: специальный гостевой микс + визуальный ряд от Taros Media.</p>
+                    <span class="btn-sm" style="background:#2a2725; cursor:default;">Скоро</span>
+                </div>
             </div>
-            <div class="card">
-                <h3>Визуальная эстетика</h3>
-                <p>Арты, персонажи, маскот вселенной — вдохновение rugged vintage и северной мифологией.</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- панель 4: НОВИНКИ и ПЛЕЙЛИСТЫ -->
-    <div id="tab4" class="tab-panel">
-        <h2 style="font-weight: 400;">Новинки музыки</h2>
-        <div class="grid-2">
-            <div class="card">
-                <h3>Недавний релиз</h3>
-                <p>Alex Taros — «Northern Lights» (Melodic techno / 2025). Уже на площадках.</p>
-                <a href="#" class="btn-sm">Слушать на Яндекс Музыке</a>
+            <h3 style="margin-top: 1rem;">Архив выпусков (Смотри и Слушай 2.0)</h3>
+            <ul class="scrollable-list">
+                <li><a href="index.html" class="menu-link">Главная</a></li>
+                <li><a href="ChartSiS-3-2026.html" class="menu-link">ChartSiS#3(2026)</a></li>
+                <li><a href="ChartSiS-4-2026.html" class="menu-link">ChartSiS#4(2026)</a></li>
+                <li><a href="ChartSiS-5-2026.html" class="menu-link">ChartSiS#5(2026)</a></li>
+                <li><a href="ChartSiS-6-2026.html" class="menu-link">ChartSiS#6(2026)</a></li>
+                <li><a href="ChartSiS-7-2026.html" class="menu-link">ChartSiS#7(2026)</a></li>
+                <li><a href="ChartSiS-8-2026.html" class="menu-link">ChartSiS#8(2026)</a></li>
+                <li><a href="ChartSiS-9-2026.html" class="menu-link">ChartSiS#9(2026)</a></li>
+                <li><a href="ChartSiS-10-2026.html" class="menu-link">ChartSiS#10(2026)</a></li>
+                <li><a href="ChartSiS-11-2026.html" class="menu-link">ChartSiS#11(2026)</a></li>
+                <li><a href="ChartSiS-12-2026.html" class="menu-link">ChartSiS#12(2026)</a></li>
+                <li><a href="ChartSiS-13-2026.html" class="menu-link">ChartSiS#13(2026)</a></li>
+                <li><a href="ChartSiS-14-2026.html" class="menu-link">ChartSiS#14(2026)</a></li>
+                <li><a href="ChartSiS-15-2026.html" class="menu-link">ChartSiS#15(2026)</a></li>
+                <li><a href="ChartSiS-16-2026.html" class="menu-link">ChartSiS#16(2026)</a></li>
+                <li><a href="ChartSiS-17-2026.html" class="menu-link">ChartSiS#17(2026)</a></li>
+                <li><a href="ChartSiS-18-2026.html" class="menu-link">ChartSiS#18(2026)</a></li>
+                <li><a href="ChartSiS-19-2026.html" class="menu-link">ChartSiS#19(2026)</a></li>
+                <li><a href="ChartSiS-20-2026.html" class="menu-link">ChartSiS#20(2026)</a></li>
+            </ul>
+            <a href="/watch-listen/archive" class="btn-sm" style="margin-top: 0.5rem;">📂 Весь архив →</a>
+        </div>
+
+        <!-- ПАНЕЛЬ 2 -->
+        <div id="tab2" class="tab-panel">
+            <h2 style="font-weight: 400;">TAROS DANCE CHART</h2>
+            <p style="color:#b1a692; margin-bottom: 1rem;">Танцевальная энергия, актуальный отбор треков для диджеев и танцпола.</p>
+
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <h3>Свежий выпуск</h3>
+                <p>TAROS DANCE CHART #22 — лёгкий tech house, яркие басы, летнее настроение.</p>
+                <a href="#" class="btn-sm">Слушать на VK / Mixcloud</a>
             </div>
-            <div class="card">
-                <h3>Скоро</h3>
-                <p>Сингл «Frost & Echo» — премьера на лейбле в июле 2025.</p>
-                <a href="#" class="btn-sm">Предзаказ / Presave</a>
+
+            <h3>Архив выпусков TAROS DANCE CHART</h3>
+            <ul class="scrollable-list">
+                <li><a href="index.html" class="menu-link">Главная</a></li>
+                <li><a href="TDC-203.html" class="menu-link">TAROS DANCE CHART #203</a></li>
+                <li><a href="TDC-204.html" class="menu-link">TAROS DANCE CHART #204</a></li>
+                <li><a href="TDC-205.html" class="menu-link">TAROS DANCE CHART #205</a></li>
+            </ul>
+            <a href="#" class="btn-sm">📀 Полный архив TAROS DANCE CHART →</a>
+        </div>
+
+        <!-- ПАНЕЛЬ 3 -->
+        <div id="tab3" class="tab-panel">
+            <div class="universe-block">
+                <h2 style="margin-bottom: 0.5rem;">🌌 Taros Media</h2>
+                <p style="margin-bottom: 1.2rem;">Вымышленная вселенная, где переплетаются музыка, мифы и технологии. Здесь я создаю хроники миров, персонажей и звуковых ландшафтов.</p>
+                <p>⚡ Основная идея: музыка как портал между реальностями. Каждый чарт — это глава. Каждый трек — артефакт.</p>
+                <p style="margin-top: 1rem; font-style: italic;">«Taros Media — это моя лаборатория. Здесь звук становится историей».</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Ключевой проект</h3>
+                    <p>«Хроники Алекса Т.Р.» — короткие рассказы + звуковой ряд.</p>
+                    <a href="ambal.html" class="btn-sm">Амбал</a>
+                </div>
+                <div class="card">
+                    <h3>Визуальная эстетика</h3>
+                    <p>Арты, персонажи, маскот вселенной — вдохновение rugged vintage и северной мифологией.</p>
+                </div>
             </div>
         </div>
 
-        <h3>🎧 Избранные плейлисты от Alex Taros</h3>
-        <ul class="episode-list">
-            <li><span>Плейлист «Меланхоличный транс для работы»</span> <a href="#" class="btn-sm" style="padding:0.2rem 0.8rem;">Открыть</a></li>
-            <li><span>Плейлист «Энергия утра» (tech house / deep)</span> <a href="#" class="btn-sm" style="padding:0.2rem 0.8rem;">Открыть</a></li>
-            <li><span>Плейлист «Саундтрек вселенной Taros Media»</span> <a href="#" class="btn-sm" style="padding:0.2rem 0.8rem;">Открыть</a></li>
-        </ul>
+        <!-- ПАНЕЛЬ 4 -->
+        <div id="tab4" class="tab-panel">
+            <h2 style="font-weight: 400;">Новинки музыки</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Недавний релиз</h3>
+                    <p>Alex Taros — «Northern Lights» (Melodic techno / 2025). Уже на площадках.</p>
+                    <a href="#" class="btn-sm">Слушать на Яндекс Музыке</a>
+                </div>
+                <div class="card">
+                    <h3>Скоро</h3>
+                    <p>Сингл «Frost & Echo» — премьера на лейбле в июле 2025.</p>
+                    <a href="#" class="btn-sm">Предзаказ / Presave</a>
+                </div>
+            </div>
 
-        <h3 style="margin-top: 2rem;">⚡ Ещё источники и соцсети</h3>
-        <div class="links-row">
-            <a href="#" class="social-link">Telegram-канал</a>
-            <a href="#" class="social-link">VK Музыка</a>
-            <a href="#" class="social-link">YouTube / Чарты</a>
-            <a href="#" class="social-link">Яндекс Музыка</a>
-            <a href="#" class="social-link">Spotify</a>
-            <a href="#" class="social-link">Boosty (поддержка)</a>
+            <h3>🎧 Избранные плейлисты от Alex Taros</h3>
+            <ul class="episode-list">
+                <li><span>Плейлист «Меланхоличный транс для работы»</span> <a href="#" class="btn-sm" style="padding:0.2rem 0.8rem;">Открыть</a></li>
+                <li><span>Плейлист «Энергия утра» (tech house / deep)</span> <a href="#" class="btn-sm" style="padding:0.2rem 0.8rem;">Открыть</a></li>
+                <li><span>Плейлист «Саундтрек вселенной Taros Media»</span> <a href="#" class="btn-sm" style="padding:0.2rem 0.8rem;">Открыть</a></li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">⚡ Ещё источники и соцсети</h3>
+            <div class="links-row">
+                <a href="#" class="social-link">Telegram-канал</a>
+                <a href="#" class="social-link">VK Музыка</a>
+                <a href="#" class="social-link">YouTube / Чарты</a>
+                <a href="#" class="social-link">Яндекс Музыка</a>
+                <a href="#" class="social-link">Spotify</a>
+                <a href="#" class="social-link">Boosty (поддержка)</a>
+            </div>
+            <p style="margin-top: 1rem;">Все релизы, чарты и новости — в одном месте. Следи за обновлениями.</p>
         </div>
-        <p style="margin-top: 1rem;">Все релизы, чарты и новости — в одном месте. Следи за обновлениями.</p>
+
+        <!-- НИЖНИЙ БЛОК -->
+        <div style="margin: 3rem 0 1rem; text-align: center;">
+            <p style="margin-bottom: 1rem;">Alex Taros — электронная музыка, чарты, вселенная. Основано в 2025.</p>
+            <div class="links-row" style="justify-content: center;">
+                <a href="#" class="social-link">Сотрудничество</a>
+                <a href="#" class="social-link">Поддержать проект</a>
+                <a href="#" class="social-link">Telegram</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© Alex Taros / Taros Media. Все права на музыкальные чарты и вымышленную вселенную защищены.</p>
+        </footer>
+
     </div>
 
-    <!-- короткое описание и ссылки снизу -->
-    <div style="margin: 3rem 0 1rem; text-align: center;">
-        <p style="margin-bottom: 1rem;">Alex Taros — электронная музыка, чарты, вселенная. Основано в 2025.</p>
-        <div class="links-row" style="justify-content: center;">
-            <a href="#" class="social-link">Сотрудничество</a>
-            <a href="#" class="social-link">Поддержать проект</a>
-            <a href="#" class="social-link">Telegram</a>
-        </div>
-    </div>
+    <script>
+        // Механика вкладок
+        const menuItems = document.querySelectorAll('.menu-item');
+        const panels = document.querySelectorAll('.tab-panel');
 
-    <footer>
-        <p>© Alex Taros / Taros Media. Все права на музыкальные чарты и вымышленную вселенную защищены.</p>
-    </footer>
-</div>
+        function switchTab(tabId) {
+            // скрыть все панели
+            panels.forEach(p => p.classList.remove('active-panel'));
+            // показать нужную
+            const activePanel = document.getElementById(tabId);
+            if (activePanel) activePanel.classList.add('active-panel');
 
-<script>
-    // механика вкладок
-    const tabs = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.tab-panel');
+            // обновить активный пункт меню
+            menuItems.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-tab') === tabId) {
+                    btn.classList.add('active');
+                }
+            });
+        }
 
-    function switchTab(tabId) {
-        panels.forEach(panel => panel.classList.remove('active-panel'));
-        const activePanel = document.getElementById(tabId);
-        if (activePanel) activePanel.classList.add('active-panel');
-
-        tabs.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.getAttribute('data-tab') === tabId) {
-                btn.classList.add('active');
-            }
+        menuItems.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const tabId = this.getAttribute('data-tab');
+                if (tabId) switchTab(tabId);
+            });
         });
-    }
+    </script>
 
-    tabs.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const tabId = btn.getAttribute('data-tab');
-            if (tabId) switchTab(tabId);
-        });
-    });
-</script>
 </body>
 </html>

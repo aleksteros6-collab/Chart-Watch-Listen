@@ -20,28 +20,35 @@
             backdrop-filter: blur(10px);
             border-bottom: 2px solid #8a2be2;
             z-index: 1000;
-            padding: 12px 20px;
+            padding: 8px 12px;
             overflow-x: auto;
             white-space: nowrap;
             box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            scrollbar-width: thin;
+            scrollbar-color: #8a2be2 rgba(20, 0, 50, 0.6);
         }
-        .menu-list {
-            display: flex;
-            gap: 15px;
-        }
+        .top-menu::-webkit-scrollbar { height: 6px; }
+        .top-menu::-webkit-scrollbar-track { background: rgba(20, 0, 50, 0.6); border-radius: 3px; }
+        .top-menu::-webkit-scrollbar-thumb { background: #8a2be2; border-radius: 3px; }
+        .top-menu::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+
+        .menu-list { display: flex; gap: 6px; align-items: center; }
         .menu-item {
             color: #dda0dd;
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.3s;
-            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 600;
+            font-size: 12px;
+            white-space: nowrap;
         }
         .menu-item:hover, .menu-item.active {
             background: #8a2be2;
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
+
         .chart-container {
             max-width: 1000px;
             margin: 30px auto;
@@ -50,12 +57,41 @@
             border-radius: 20px;
             box-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
         }
-        h1 { text-align: center; font-size: 2.8em; background: linear-gradient(to right, #ff8c00, #da70d6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            background: linear-gradient(to right, #ff8c00, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #dda0dd;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
         table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
-        th { background: linear-gradient(to bottom, #8a2be2, #4b0082); color: white; padding: 15px; }
-        td { padding: 16px 12px; background: rgba(70, 20, 120, 0.6); transition: all 0.3s; }
+        th {
+            background: linear-gradient(to bottom, #8a2be2, #4b0082);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        td {
+            padding: 16px 12px;
+            background: rgba(70, 20, 120, 0.6);
+            transition: all 0.3s;
+            vertical-align: middle;
+        }
         tr:hover td { background: rgba(100, 40, 160, 0.8); border-left: 4px solid #ff8c00; }
-        .position { text-align: center; font-size: 1.8em; color: #ff8c00; font-weight: bold; }
+        .position {
+            text-align: center;
+            font-size: 1.8em;
+            color: #ff8c00;
+            font-weight: bold;
+            width: 60px;
+        }
         .img-cover {
             width: 70px;
             height: 70px;
@@ -64,42 +100,98 @@
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
             cursor: pointer;
             transition: all 0.3s;
+            display: block;
         }
         .img-cover:hover { transform: scale(1.08); opacity: 0.9; }
-        .track-title { font-size: 1.25em; font-weight: bold; }
-        .track-artist { color: #dda0dd; }
-        .movement.up, .movement.new { color: #00ff9d; font-weight: bold; }
-        .movement.down { color: #ff4500; font-weight: bold; }
-        .movement.stay { color: #ffd700; font-weight: bold; }
+        .track-title { font-size: 1.15em; font-weight: bold; color: #fff; }
+        .track-artist { color: #dda0dd; font-size: 0.95em; }
+        .movement { text-align: center; font-weight: bold; white-space: nowrap; }
+        .movement.up { color: #00ff9d; }
+        .movement.new { color: #00ff9d; }
+        .movement.down { color: #ff4500; }
+        .movement.stay { color: #ffd700; }
         .weeks { color: #b0a0ff; font-weight: bold; text-align: center; }
-        .points { color: #ff8c00; font-weight: bold; text-align: center; }
-        .longest { color: #ffd700; font-size: 0.8em; font-weight: bold; }
+        .points { color: #ff8c00; font-weight: bold; text-align: center; font-size: 1.1em; }
+        .longest {
+            display: inline-block;
+            color: #ffd700;
+            font-size: 0.7em;
+            font-weight: bold;
+            background: rgba(255, 215, 0, 0.12);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+        .new-badge {
+            display: inline-block;
+            background: #00ff9d;
+            color: #000;
+            font-size: 0.65em;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .out-block {
+            margin-top: 30px;
+            background: rgba(40, 0, 20, 0.6);
+            border-left: 4px solid #ff4500;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .out-block h3 { color: #ff4500; margin-top: 0; }
+        .out-block ul { list-style: none; padding: 0; margin: 0; }
+        .out-block li { padding: 6px 0; color: #dda0dd; border-bottom: 1px dashed rgba(255, 69, 0, 0.3); }
+        .out-block li:last-child { border-bottom: none; }
+        .perspective {
+            margin-top: 20px;
+            background: rgba(20, 40, 20, 0.6);
+            border-left: 4px solid #00ff9d;
+            padding: 15px 20px;
+            border-radius: 12px;
+        }
+        .perspective strong { color: #00ff9d; }
+        .perspective span { color: #dda0dd; }
+
+        @media (max-width: 700px) {
+            .chart-container { padding: 15px; margin: 15px; }
+            h1 { font-size: 1.8em; }
+            th, td { padding: 8px 5px; }
+            .position { font-size: 1.3em; width: 40px; }
+            .img-cover { width: 45px; height: 45px; border-radius: 8px; }
+            .track-title { font-size: 0.9em; }
+            .track-artist { font-size: 0.8em; }
+            th:nth-child(4), td:nth-child(4) { display: none; } /* скрываем «Движение» на узких */
+            .weeks, .points { font-size: 0.85em; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- ВСПЛЫВАЮЩЕЕ МЕНЮ -->
+    <!-- МЕНЮ -->
     <div class="top-menu">
         <div class="menu-list">
-            <a href="#" class="menu-item">Главная</a>
-            <a href="#" class="menu-item active">TAROS DANCE CHART #208 (05.02.2026)</a>
-            <a href="#" class="menu-item">#207 (29.01.2026)</a>
-            <a href="#" class="menu-item">#206 (22.01.2026)</a>
-            <a href="#" class="menu-item">#205 (15.01.2026)</a>
-            <a href="#" class="menu-item">#204 (08.01.2026)</a>
-            <a href="#" class="menu-item">#203 (01.01.2026)</a>
-            <a href="#" class="menu-item">#202 (25.12.2025)</a>
-            <a href="#" class="menu-item">#201 (18.12.2025)</a>
-            <a href="#" class="menu-item">#200 (11.12.2025)</a>
-            <a href="#" class="menu-item">#199</a>
-            <a href="#" class="menu-item">#198</a>
-            <a href="#" class="menu-item">#197</a>
+            <a href="index.html" class="menu-item">🏠 Главная</a>
+            <a href="TDC-208.html" class="menu-item active">#208 (05.02.2026)</a>
+            <a href="TDC-207.html" class="menu-item">#207</a>
+            <a href="TDC-206.html" class="menu-item">#206</a>
+            <a href="TDC-205.html" class="menu-item">#205</a>
+            <a href="TDC-204.html" class="menu-item">#204</a>
+            <a href="TDC-203.html" class="menu-item">#203</a>
+            <a href="TDC-202.html" class="menu-item">#202</a>
+            <a href="TDC-201.html" class="menu-item">#201</a>
+            <a href="TDC-200.html" class="menu-item">#200</a>
+            <a href="TDC-199.html" class="menu-item">#199</a>
+            <a href="TDC-198.html" class="menu-item">#198</a>
+            <a href="TDC-197.html" class="menu-item">#197</a>
         </div>
     </div>
 
     <div class="chart-container">
         <h1>TAROS DANCE CHART #208</h1>
-        <div style="text-align:center; color:#dda0dd; margin-bottom:30px;">05.02.2026</div>
+        <div class="subtitle">05.02.2026</div>
 
         <table>
             <thead>
@@ -123,7 +215,7 @@
                     <td><div class="track-title">Discip</div><div class="track-artist">Pull Up</div></td>
                     <td class="movement stay">0</td>
                     <td class="weeks">6</td>
-                    <td class="points">25</td>
+                    <td class="points">120</td>
                 </tr>
 
                 <!-- 2 -->
@@ -135,7 +227,7 @@
                     <td><div class="track-title">John Summit</div><div class="track-artist">LIGHTS GO OUT</div></td>
                     <td class="movement up">+10</td>
                     <td class="weeks">2</td>
-                    <td class="points">24</td>
+                    <td class="points">38</td>
                 </tr>
 
                 <!-- 3 -->
@@ -147,7 +239,7 @@
                     <td><div class="track-title">Benny Benassi & Tobias Gerard</div><div class="track-artist">DISCOTEKA</div></td>
                     <td class="movement up">+11</td>
                     <td class="weeks">15</td>
-                    <td class="points">23</td>
+                    <td class="points">36</td>
                 </tr>
 
                 <!-- 4 -->
@@ -159,7 +251,7 @@
                     <td><div class="track-title">Tiga</div><div class="track-artist">Mind Dimension (Adam Sellouk Remix)</div></td>
                     <td class="movement up">+5</td>
                     <td class="weeks">3</td>
-                    <td class="points">22</td>
+                    <td class="points">48</td>
                 </tr>
 
                 <!-- 5 -->
@@ -171,7 +263,7 @@
                     <td><div class="track-title">Adam Beyer & Bart Skills</div><div class="track-artist">Your Mind (HNTR Remix)</div></td>
                     <td class="movement down">-3</td>
                     <td class="weeks">6</td>
-                    <td class="points">21</td>
+                    <td class="points">113</td>
                 </tr>
 
                 <!-- 6 -->
@@ -183,7 +275,7 @@
                     <td><div class="track-title">Adriatique & Vincent Vossen & Yubik</div><div class="track-artist">Never Alone</div></td>
                     <td class="movement down">-1</td>
                     <td class="weeks">5</td>
-                    <td class="points">20</td>
+                    <td class="points">75</td>
                 </tr>
 
                 <!-- 7 -->
@@ -195,7 +287,7 @@
                     <td><div class="track-title">Illyus & Barrientos, Adam Remai</div><div class="track-artist">Deep Down</div></td>
                     <td class="movement up">+1</td>
                     <td class="weeks">4</td>
-                    <td class="points">19</td>
+                    <td class="points">50</td>
                 </tr>
 
                 <!-- 8 -->
@@ -207,7 +299,7 @@
                     <td><div class="track-title">Mark Knight & Lukas Setto</div><div class="track-artist">Get With You Tonight (Jay Vegas Disco Dub)</div></td>
                     <td class="movement down">-5</td>
                     <td class="weeks">6</td>
-                    <td class="points">18</td>
+                    <td class="points">89</td>
                 </tr>
 
                 <!-- 9 LONGEST -->
@@ -216,10 +308,10 @@
                     <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/superflu.jpg"
                              alt="Believe (Robin Schulz Rework)" class="img-cover"
                              data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/super.flu.remix.mp3"></td>
-                    <td><div class="track-title">Super Flu</div><div class="track-artist">Believe (Robin Schulz Rework)</div><span class="longest"> LONGEST CHART SITTER</span></td>
+                    <td><div class="track-title">Super Flu</div><div class="track-artist">Believe (Robin Schulz Rework)</div><span class="longest">LONGEST CHART SITTER</span></td>
                     <td class="movement down">-4</td>
                     <td class="weeks">11</td>
-                    <td class="points">17</td>
+                    <td class="points">233</td>
                 </tr>
 
                 <!-- 10 -->
@@ -231,7 +323,7 @@
                     <td><div class="track-title">FEZZO</div><div class="track-artist">Kids</div></td>
                     <td class="movement down">-3</td>
                     <td class="weeks">9</td>
-                    <td class="points">16</td>
+                    <td class="points">154</td>
                 </tr>
 
                 <!-- 11 -->
@@ -243,7 +335,7 @@
                     <td><div class="track-title">Wh0</div><div class="track-artist">Can't Stop</div></td>
                     <td class="movement up">+6</td>
                     <td class="weeks">2</td>
-                    <td class="points">15</td>
+                    <td class="points">24</td>
                 </tr>
 
                 <!-- 12 -->
@@ -255,7 +347,7 @@
                     <td><div class="track-title">Volkoder</div><div class="track-artist">All Night Long</div></td>
                     <td class="movement up">+7</td>
                     <td class="weeks">2</td>
-                    <td class="points">14</td>
+                    <td class="points">21</td>
                 </tr>
 
                 <!-- 13 -->
@@ -267,7 +359,7 @@
                     <td><div class="track-title">Tom & Collins</div><div class="track-artist">Disco Musiq</div></td>
                     <td class="movement down">-7</td>
                     <td class="weeks">6</td>
-                    <td class="points">13</td>
+                    <td class="points">101</td>
                 </tr>
 
                 <!-- 14 -->
@@ -279,7 +371,7 @@
                     <td><div class="track-title">Nico De Andrea & MAXI MERAKI</div><div class="track-artist">You Are My High</div></td>
                     <td class="movement up">+7</td>
                     <td class="weeks">3</td>
-                    <td class="points">12</td>
+                    <td class="points">21</td>
                 </tr>
 
                 <!-- 15 -->
@@ -291,7 +383,7 @@
                     <td><div class="track-title">Will Clarke</div><div class="track-artist">WHAT?!</div></td>
                     <td class="movement up">+9</td>
                     <td class="weeks">2</td>
-                    <td class="points">11</td>
+                    <td class="points">13</td>
                 </tr>
 
                 <!-- 16 -->
@@ -303,7 +395,7 @@
                     <td><div class="track-title">Laherte</div><div class="track-artist">Pump Up The Jam</div></td>
                     <td class="movement down">-5</td>
                     <td class="weeks">4</td>
-                    <td class="points">10</td>
+                    <td class="points">40</td>
                 </tr>
 
                 <!-- 17 -->
@@ -315,16 +407,16 @@
                     <td><div class="track-title">OMNOM</div><div class="track-artist">Lavender Town</div></td>
                     <td class="movement up">+5</td>
                     <td class="weeks">2</td>
-                    <td class="points">9</td>
+                    <td class="points">13</td>
                 </tr>
 
                 <!-- 18 NEW -->
                 <tr>
                     <td class="position">18</td>
-                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/830b92ab-b0cf-489e-88db-c24ae5cba965.jpg"
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/2c442b72-d5e9-4052-b3a6-c4374a4f861b.jpg"
                              alt="Back & Forth (Tony Romera Rework)" class="img-cover"
                              data-audio=""></td>
-                    <td><div class="track-title">Fedde Le Grand feat. Mr.V</div><div class="track-artist">Back & Forth (Tony Romera Rework)</div></td>
+                    <td><div class="track-title">Fedde Le Grand feat. Mr.V <span class="new-badge">NEW</span></div><div class="track-artist">Back & Forth (Tony Romera Rework)</div></td>
                     <td class="movement new">NEW</td>
                     <td class="weeks">1</td>
                     <td class="points">8</td>
@@ -339,7 +431,7 @@
                     <td><div class="track-title">Confidence Man & JADE</div><div class="track-artist">gossip (Chris Lake Remix)</div></td>
                     <td class="movement down">-9</td>
                     <td class="weeks">7</td>
-                    <td class="points">7</td>
+                    <td class="points">99</td>
                 </tr>
 
                 <!-- 20 -->
@@ -351,7 +443,7 @@
                     <td><div class="track-title">Emanuel Satie</div><div class="track-artist">Give It All</div></td>
                     <td class="movement down">-7</td>
                     <td class="weeks">8</td>
-                    <td class="points">6</td>
+                    <td class="points">116</td>
                 </tr>
 
                 <!-- 21 -->
@@ -363,7 +455,7 @@
                     <td><div class="track-title">OFFAIAH & Nevve</div><div class="track-artist">Physical</div></td>
                     <td class="movement up">+4</td>
                     <td class="weeks">2</td>
-                    <td class="points">5</td>
+                    <td class="points">6</td>
                 </tr>
 
                 <!-- 22 -->
@@ -375,16 +467,16 @@
                     <td><div class="track-title">Jack Orley</div><div class="track-artist">Don't Let Me Go</div></td>
                     <td class="movement down">-6</td>
                     <td class="weeks">5</td>
-                    <td class="points">4</td>
+                    <td class="points">38</td>
                 </tr>
 
                 <!-- 23 NEW -->
                 <tr>
                     <td class="position">23</td>
-                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/2c442b72-d5e9-4052-b3a6-c4374a4f861b.jpg"
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/830b92ab-b0cf-489e-88db-c24ae5cba965.jpg"
                              alt="Stuck In A Loop" class="img-cover"
                              data-audio=""></td>
-                    <td><div class="track-title">Joel Corry</div><div class="track-artist">Stuck In A Loop</div></td>
+                    <td><div class="track-title">Joel Corry <span class="new-badge">NEW</span></div><div class="track-artist">Stuck In A Loop</div></td>
                     <td class="movement new">NEW</td>
                     <td class="weeks">1</td>
                     <td class="points">3</td>
@@ -399,7 +491,7 @@
                     <td><div class="track-title">ADR & OUTTEN</div><div class="track-artist">Don't Panic, It's Organic</div></td>
                     <td class="movement down">-9</td>
                     <td class="weeks">6</td>
-                    <td class="points">2</td>
+                    <td class="points">64</td>
                 </tr>
 
                 <!-- 25 NEW -->
@@ -408,7 +500,7 @@
                     <td><img src="https://geo-media.beatport.com/image_size/1400x1400/dc790757-8bde-449d-8221-6d1f6c9f791e.jpg"
                              alt="LICK IT" class="img-cover"
                              data-audio=""></td>
-                    <td><div class="track-title">Roddy Lima & Sarah De Warren</div><div class="track-artist">LICK IT</div></td>
+                    <td><div class="track-title">Roddy Lima & Sarah De Warren <span class="new-badge">NEW</span></div><div class="track-artist">LICK IT</div></td>
                     <td class="movement new">NEW</td>
                     <td class="weeks">1</td>
                     <td class="points">1</td>
@@ -416,6 +508,21 @@
 
             </tbody>
         </table>
+
+        <!-- PERSPECTIVE -->
+        <div class="perspective">
+            <strong>Perspective:</strong> <span>Cloonee & Jocelyn Enriquez — XTC</span>
+        </div>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>18. Tiga & Meduza — You Gonna Want Me (I Know) · 9w · 177 points</li>
+                <li>20. Odd Mob & OMNOM: HYPERBEAM — Coming Up (It's Dare) · 8w · 113 points</li>
+                <li>23. Crusy & Jem Cooke — Good To Go · 7w · 92 points</li>
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -423,12 +530,8 @@
 
         function initAudioPlayers() {
             const covers = document.querySelectorAll('.img-cover');
-            console.log(`Найдено обложек: ${covers.length}`);
-            if (covers.length === 0) return;
-
             covers.forEach((img) => {
-                img.removeEventListener('click', img._audioHandler);
-                img._audioHandler = function () {
+                img.addEventListener('click', function () {
                     const audioUrl = this.getAttribute('data-audio');
                     if (!audioUrl) return;
 
@@ -439,29 +542,22 @@
                         this.style.opacity = '1';
                         return;
                     }
-
                     if (currentAudio) {
                         currentAudio.pause();
                         currentAudio.currentTime = 0;
                     }
-
                     currentAudio = new Audio(audioUrl);
                     currentAudio.volume = 0.75;
                     currentAudio.play().catch(err => console.error('Ошибка:', err));
                     this.style.opacity = '0.75';
-
                     currentAudio.onended = () => {
                         this.style.opacity = '1';
                         currentAudio = null;
                     };
-                };
-                img.addEventListener('click', img._audioHandler);
+                });
             });
         }
-
-        window.addEventListener('load', () => {
-            setTimeout(initAudioPlayers, 300);
-        });
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
     </script>
 </body>
 </html>

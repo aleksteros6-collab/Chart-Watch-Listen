@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAROS DANCE CHART #211</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #2a004a 0%, #000000 100%);
+            color: #f0e0ff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .top-menu {
+            position: sticky;
+            top: 0;
+            background: rgba(20, 0, 50, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #8a2be2;
+            z-index: 1000;
+            padding: 8px 12px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            scrollbar-width: thin;
+            scrollbar-color: #8a2be2 rgba(20, 0, 50, 0.6);
+        }
+        .top-menu::-webkit-scrollbar { height: 6px; }
+        .top-menu::-webkit-scrollbar-track { background: rgba(20, 0, 50, 0.6); border-radius: 3px; }
+        .top-menu::-webkit-scrollbar-thumb { background: #8a2be2; border-radius: 3px; }
+        .top-menu::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+
+        .menu-list { display: flex; gap: 6px; align-items: center; }
+        .menu-item {
+            color: #dda0dd;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 600;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .menu-item:hover, .menu-item.active {
+            background: #8a2be2;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .chart-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: rgba(30, 0, 60, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            background: linear-gradient(to right, #ff8c00, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #dda0dd;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+        table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+        th {
+            background: linear-gradient(to bottom, #8a2be2, #4b0082);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        td {
+            padding: 16px 12px;
+            background: rgba(70, 20, 120, 0.6);
+            transition: all 0.3s;
+            vertical-align: middle;
+        }
+        tr:hover td { background: rgba(100, 40, 160, 0.8); border-left: 4px solid #ff8c00; }
+        .position {
+            text-align: center;
+            font-size: 1.8em;
+            color: #ff8c00;
+            font-weight: bold;
+            width: 60px;
+        }
+        .img-cover {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+        }
+        .img-cover:hover { transform: scale(1.08); opacity: 0.9; }
+        .track-title { font-size: 1.15em; font-weight: bold; color: #fff; }
+        .track-artist { color: #dda0dd; font-size: 0.95em; }
+        .movement { text-align: center; font-weight: bold; white-space: nowrap; }
+        .movement.up { color: #00ff9d; }
+        .movement.new { color: #00ff9d; }
+        .movement.down { color: #ff4500; }
+        .movement.stay { color: #ffd700; }
+        .weeks { color: #b0a0ff; font-weight: bold; text-align: center; }
+        .points { color: #ff8c00; font-weight: bold; text-align: center; font-size: 1.1em; }
+        .longest {
+            display: inline-block;
+            color: #ffd700;
+            font-size: 0.7em;
+            font-weight: bold;
+            background: rgba(255, 215, 0, 0.12);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+        .new-badge {
+            display: inline-block;
+            background: #00ff9d;
+            color: #000;
+            font-size: 0.65em;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .out-block {
+            margin-top: 30px;
+            background: rgba(40, 0, 20, 0.6);
+            border-left: 4px solid #ff4500;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .out-block h3 { color: #ff4500; margin-top: 0; }
+        .out-block ul { list-style: none; padding: 0; margin: 0; }
+        .out-block li { padding: 6px 0; color: #dda0dd; border-bottom: 1px dashed rgba(255, 69, 0, 0.3); }
+        .out-block li:last-child { border-bottom: none; }
+        .perspective {
+            margin-top: 20px;
+            background: rgba(20, 40, 20, 0.6);
+            border-left: 4px solid #00ff9d;
+            padding: 15px 20px;
+            border-radius: 12px;
+        }
+        .perspective strong { color: #00ff9d; }
+        .perspective span { color: #dda0dd; }
+
+        @media (max-width: 700px) {
+            .chart-container { padding: 15px; margin: 15px; }
+            h1 { font-size: 1.8em; }
+            th, td { padding: 8px 5px; }
+            .position { font-size: 1.3em; width: 40px; }
+            .img-cover { width: 45px; height: 45px; border-radius: 8px; }
+            .track-title { font-size: 0.9em; }
+            .track-artist { font-size: 0.8em; }
+            th:nth-child(4), td:nth-child(4) { display: none; }
+            .weeks, .points { font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- МЕНЮ -->
+    <div class="top-menu">
+        <div class="menu-list">
+            <a href="index.html" class="menu-item">🏠 Главная</a>
+            <a href="TDC-211.html" class="menu-item active">#211 (26.02.2026)</a>
+            <a href="TDC-210.html" class="menu-item">#210</a>
+            <a href="TDC-209.html" class="menu-item">#209</a>
+            <a href="TDC-208.html" class="menu-item">#208</a>
+            <a href="TDC-207.html" class="menu-item">#207</a>
+            <a href="TDC-206.html" class="menu-item">#206</a>
+            <a href="TDC-205.html" class="menu-item">#205</a>
+            <a href="TDC-204.html" class="menu-item">#204</a>
+            <a href="TDC-203.html" class="menu-item">#203</a>
+            <a href="TDC-202.html" class="menu-item">#202</a>
+            <a href="TDC-201.html" class="menu-item">#201</a>
+            <a href="TDC-200.html" class="menu-item">#200</a>
+            <a href="TDC-199.html" class="menu-item">#199</a>
+            <a href="TDC-198.html" class="menu-item">#198</a>
+            <a href="TDC-197.html" class="menu-item">#197</a>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h1>TAROS DANCE CHART #211</h1>
+        <div class="subtitle">26.02.2026</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Поз</th>
+                    <th>Обложка</th>
+                    <th>Трек</th>
+                    <th>Движение</th>
+                    <th>Недели</th>
+                    <th>Очки</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- 1 -->
+                <tr>
+                    <td class="position">1</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/2c442b72-d5e9-4052-b3a6-c4374a4f861b.jpg"
+                             alt="Back & Forth (Tony Romera Rework)" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Fedde Le Grand feat. Mr.V</div><div class="track-artist">Back & Forth (Tony Romera Rework)</div></td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">4</td>
+                    <td class="points">71</td>
+                </tr>
+
+                <!-- 2 -->
+                <tr>
+                    <td class="position">2</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photo/john.summit.lights.go.out.jfif"
+                             alt="LIGHTS GO OUT" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/lights.go.out.mp3"></td>
+                    <td><div class="track-title">John Summit</div><div class="track-artist">LIGHTS GO OUT</div></td>
+                    <td class="movement down">-1</td>
+                    <td class="weeks">5</td>
+                    <td class="points">112</td>
+                </tr>
+
+                <!-- 3 -->
+                <tr>
+                    <td class="position">3</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/830b92ab-b0cf-489e-88db-c24ae5cba965.jpg"
+                             alt="Stuck In A Loop" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Joel Corry</div><div class="track-artist">Stuck In A Loop</div></td>
+                    <td class="movement up">+10</td>
+                    <td class="weeks">4</td>
+                    <td class="points">47</td>
+                </tr>
+
+                <!-- 4 -->
+                <tr>
+                    <td class="position">4</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/dc790757-8bde-449d-8221-6d1f6c9f791e.jpg"
+                             alt="Pull Up" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/discip.pull.p.mp3"></td>
+                    <td><div class="track-title">Discip</div><div class="track-artist">Pull Up</div></td>
+                    <td class="movement down">-2</td>
+                    <td class="weeks">9</td>
+                    <td class="points">189</td>
+                </tr>
+
+                <!-- 5 -->
+                <tr>
+                    <td class="position">5</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/will.clarke.what.jfif"
+                             alt="WHAT?!" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/will.clarke.mp3"></td>
+                    <td><div class="track-title">Will Clarke</div><div class="track-artist">WHAT?!</div></td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">5</td>
+                    <td class="points">67</td>
+                </tr>
+
+                <!-- 6 -->
+                <tr>
+                    <td class="position">6</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/tiga.adam.sellouk.png"
+                             alt="Mind Dimension (Adam Sellouk Remix)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/tiga.adam.sellouk.mp3"></td>
+                    <td><div class="track-title">Tiga</div><div class="track-artist">Mind Dimension (Adam Sellouk Remix)</div></td>
+                    <td class="movement down">-3</td>
+                    <td class="weeks">6</td>
+                    <td class="points">115</td>
+                </tr>
+
+                <!-- 7 -->
+                <tr>
+                    <td class="position">7</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/9088c65a-3bae-4e87-8843-d55de370ce24.jpg"
+                             alt="XTC" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Cloonee & Jocelyn Enriquez</div><div class="track-artist">XTC</div></td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">3</td>
+                    <td class="points">38</td>
+                </tr>
+
+                <!-- 8 -->
+                <tr>
+                    <td class="position">8</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/wh0.can.t.stop.jfif"
+                             alt="Can't Stop" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/Wh0.can.t.stop.mp3"></td>
+                    <td><div class="track-title">Wh0</div><div class="track-artist">Can't Stop</div></td>
+                    <td class="movement down">-4</td>
+                    <td class="weeks">5</td>
+                    <td class="points">85</td>
+                </tr>
+
+                <!-- 9 -->
+                <tr>
+                    <td class="position">9</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/7735a353-747a-47b1-94cc-355dae0cd739.jpg"
+                             alt="Jump & Shout" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Hugel, Divolly & Markward</div><div class="track-artist">Jump & Shout</div></td>
+                    <td class="movement up">+7</td>
+                    <td class="weeks">3</td>
+                    <td class="points">34</td>
+                </tr>
+
+                <!-- 10 -->
+                <tr>
+                    <td class="position">10</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/discoteka.jfif"
+                             alt="DISCOTEKA" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/benny.benassi.discoteks.mp3"></td>
+                    <td><div class="track-title">Benny Benassi & Tobias Gerard</div><div class="track-artist">DISCOTEKA</div></td>
+                    <td class="movement down">-3</td>
+                    <td class="weeks">6</td>
+                    <td class="points">93</td>
+                </tr>
+
+                <!-- 11 -->
+                <tr>
+                    <td class="position">11</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/offaiah.physical.jfif"
+                             alt="Physical" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/offaiah.physical.mp3"></td>
+                    <td><div class="track-title">OFFAIAH & Nevve</div><div class="track-artist">Physical</div></td>
+                    <td class="movement down">-5</td>
+                    <td class="weeks">5</td>
+                    <td class="points">56</td>
+                </tr>
+
+                <!-- 12 -->
+                <tr>
+                    <td class="position">12</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/c5b227b5-c5dd-4ad2-88ae-692cfe7b8117.jpg"
+                             alt="neck" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Mau P</div><div class="track-artist">neck</div></td>
+                    <td class="movement up">+8</td>
+                    <td class="weeks">2</td>
+                    <td class="points">20</td>
+                </tr>
+
+                <!-- 13 -->
+                <tr>
+                    <td class="position">13</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/volkoder.all.night.long.jfif"
+                             alt="All Night Long" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/volkoder.mp3"></td>
+                    <td><div class="track-title">Volkoder</div><div class="track-artist">All Night Long</div></td>
+                    <td class="movement down">-5</td>
+                    <td class="weeks">5</td>
+                    <td class="points">71</td>
+                </tr>
+
+                <!-- 14 -->
+                <tr>
+                    <td class="position">14</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/1a12d2b5-fdc7-4e5f-9d1c-c2741b22e6c0.jpg"
+                             alt="Upside Down" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Jaden Bojsen & David Guetta</div><div class="track-artist">Upside Down</div></td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">2</td>
+                    <td class="points">20</td>
+                </tr>
+
+                <!-- 15 -->
+                <tr>
+                    <td class="position">15</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/9088c65a-3bae-4e87-8843-d55de370ce24.jpg"
+                             alt="Your Mind (HNTR Remix)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/adam.beyer.your.mind.mp3"></td>
+                    <td><div class="track-title">Adam Beyer & Bart Skills</div><div class="track-artist">Your Mind (HNTR Remix)</div></td>
+                    <td class="movement down">-5</td>
+                    <td class="weeks">9</td>
+                    <td class="points">160</td>
+                </tr>
+
+                <!-- 16 LONGEST -->
+                <tr>
+                    <td class="position">16</td>
+                    <td><img src="https://topmusicarts.com/cdn/shop/files/FEZZO---Kids-_Ableton-Remake_4e6c8d3a-e8a9-4dae-ad13-4aaff39df020_1512x.png?v=1764286067"
+                             alt="Kids" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/Fezzo_-_Kids_80340970.mp3cut.net.mp3"></td>
+                    <td><div class="track-title">FEZZO</div><div class="track-artist">Kids</div><span class="longest">LONGEST CHART SITTER</span></td>
+                    <td class="movement down">-1</td>
+                    <td class="weeks">12</td>
+                    <td class="points">185</td>
+                </tr>
+
+                <!-- 17 -->
+                <tr>
+                    <td class="position">17</td>
+                    <td><img src="https://avatars.yandex.net/get-music-content/16469857/7fd8f3a6.a.39406844-1/m1000x1000"
+                             alt="Confession" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">D.O.D & Poppy Baskcomb</div><div class="track-artist">Confession</div></td>
+                    <td class="movement up">+5</td>
+                    <td class="weeks">2</td>
+                    <td class="points">13</td>
+                </tr>
+
+                <!-- 18 -->
+                <tr>
+                    <td class="position">18</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/2c442b72-d5e9-4052-b3a6-c4374a4f861b.jpg"
+                             alt="Rain" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">FISHER</div><div class="track-artist">Rain</div></td>
+                    <td class="movement up">+7</td>
+                    <td class="weeks">2</td>
+                    <td class="points">9</td>
+                </tr>
+
+                <!-- 19 -->
+                <tr>
+                    <td class="position">19</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/omnom.lavender.town.jfif"
+                             alt="Lavender Town" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/omnom.mp3"></td>
+                    <td><div class="track-title">OMNOM</div><div class="track-artist">Lavender Town</div></td>
+                    <td class="movement down">-7</td>
+                    <td class="weeks">5</td>
+                    <td class="points">46</td>
+                </tr>
+
+                <!-- 20 NEW -->
+                <tr>
+                    <td class="position">20</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/7735a353-747a-47b1-94cc-355dae0cd739.jpg"
+                             alt="Loco Loco" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Gordo & Reiner Zonneveld <span class="new-badge">NEW</span></div><div class="track-artist">Loco Loco</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">6</td>
+                </tr>
+
+                <!-- 21 -->
+                <tr>
+                    <td class="position">21</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/dc790757-8bde-449d-8221-6d1f6c9f791e.jpg"
+                             alt="In The Dark" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">FARGIN</div><div class="track-artist">In The Dark</div></td>
+                    <td class="movement up">+3</td>
+                    <td class="weeks">2</td>
+                    <td class="points">7</td>
+                </tr>
+
+                <!-- 22 -->
+                <tr>
+                    <td class="position">22</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/adriatique.yubik.jfif"
+                             alt="Never Alone" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/adriatique.mp3"></td>
+                    <td><div class="track-title">Adriatique & Vincent Vossen & Yubik</div><div class="track-artist">Never Alone</div></td>
+                    <td class="movement down">-8</td>
+                    <td class="weeks">8</td>
+                    <td class="points">109</td>
+                </tr>
+
+                <!-- 23 NEW -->
+                <tr>
+                    <td class="position">23</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/2c442b72-d5e9-4052-b3a6-c4374a4f861b.jpg"
+                             alt="Like Home" class="img-cover"
+                             data-audio=""></td>
+                    <td><div class="track-title">Going Deeper & Ryan Spicer <span class="new-badge">NEW</span></div><div class="track-artist">Like Home</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">3</td>
+                </tr>
+
+                <!-- 24 -->
+                <tr>
+                    <td class="position">24</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/you.are.my.high.jfif"
+                             alt="You Are My High" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/nico.de.andrea.mp3"></td>
+                    <td><div class="track-title">Nico De Andrea & MAXI MERAKI</div><div class="track-artist">You Are My High</div></td>
+                    <td class="movement down">-7</td>
+                    <td class="weeks">6</td>
+                    <td class="points">45</td>
+                </tr>
+
+                <!-- 25 -->
+                <tr>
+                    <td class="position">25</td>
+                    <td><img src="https://geo-media.beatport.com/image_size/1400x1400/1a12d2b5-fdc7-4e5f-9d1c-c2741b22e6c0.jpg"
+                             alt="Get With You Tonight (Jay Vegas Disco Dub)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/audio/mark.knight.lukas.setto.mp3"></td>
+                    <td><div class="track-title">Mark Knight & Lukas Setto</div><div class="track-artist">Get With You Tonight (Jay Vegas Disco Dub)</div></td>
+                    <td class="movement down">-6</td>
+                    <td class="weeks">9</td>
+                    <td class="points">108</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- PERSPECTIVE -->
+        <div class="perspective">
+            <strong>Perspective:</strong> <span>Joshwa — Out of My Mind</span>
+        </div>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>21. Illyus & Barrientos, Adam Remai — Deep Down · 6w · 69 points</li>
+                <li>23. Super Flu — Believe (Robin Schulz Rework) · 13w · 245 points</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+
+        function initAudioPlayers() {
+            const covers = document.querySelectorAll('.img-cover');
+            covers.forEach((img) => {
+                img.addEventListener('click', function () {
+                    const audioUrl = this.getAttribute('data-audio');
+                    if (!audioUrl) return;
+
+                    if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                        currentAudio = null;
+                        this.style.opacity = '1';
+                        return;
+                    }
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                    }
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.volume = 0.75;
+                    currentAudio.play().catch(err => console.error('Ошибка:', err));
+                    this.style.opacity = '0.75';
+                    currentAudio.onended = () => {
+                        this.style.opacity = '1';
+                        currentAudio = null;
+                    };
+                });
+            });
+        }
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
+    </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Смотри и Слушай — Голосование за трек года 2026</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+            color: #e0e7ff;
+            margin: 0;
+            padding: 30px 15px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(20, 30, 60, 0.85);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+            border: 1px solid #3b82f6;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.4em;
+            margin: 0 0 10px;
+            color: #60a5fa;
+            text-shadow: 0 0 15px rgba(96, 165, 250, 0.6);
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #93c5fd;
+            margin-bottom: 40px;
+        }
+        .track-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(30, 58, 138, 0.5);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            border-left: 5px solid transparent;
+            transition: all 0.25s ease;
+        }
+        .track-card:hover {
+            background: rgba(59, 130, 246, 0.35);
+            border-left: 5px solid #60a5fa;
+            transform: translateX(6px);
+        }
+        .cover {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+            background: #1e40af;
+            flex-shrink: 0;
+        }
+        .info {
+            flex-grow: 1;
+        }
+        .track-name {
+            font-size: 1.15em;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        .artist-name {
+            color: #bfdbfe;
+            font-size: 0.95em;
+        }
+        .vote-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95em;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        .vote-btn:hover {
+            background: #60a5fa;
+            transform: scale(1.05);
+        }
+        .vote-btn.voted {
+            background: #1e40af;
+            cursor: default;
+            transform: none;
+        }
+        .note {
+            text-align: center;
+            color: #93c5fd;
+            font-size: 0.95em;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Смотри и Слушай</h1>
+    <div class="subtitle">Голосование за лучший трек 2026 года</div>
+
+    <div id="tracks-list">
+        <!-- Треки будут вставлены через JS -->
+    </div>
+
+    <div class="note">
+        Можно проголосовать только один раз за каждый трек.<br>
+        Количество голосов скрыто.
+    </div>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<script>
+    // ================== ВСТАВЬ СВОЙ FIREBASE КОНФИГ СЮДА ==================
+    const firebaseConfig = {
+        apiKey: "ТВОЙ_API_KEY",
+        authDomain: "ТВОЙ_ПРОЕКТ.firebaseapp.com",
+        databaseURL: "https://ТВОЙ_ПРОЕКТ-default-rtdb.firebaseio.com",
+        projectId: "ТВОЙ_ПРОЕКТ",
+        storageBucket: "ТВОЙ_ПРОЕКТ.appspot.com",
+        messagingSenderId: "XXXXXX",
+        appId: "1:XXXXXX:web:XXXXXX"
+    };
+    // ======================================================================
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Список всех треков
+    const tracks = [
+        { id: "adriatique-palm", artist: "Adriatique", title: "Palm Of Your Hands" },
+        { id: "afrojack-awake", artist: "Afrojack & Sia & David Guetta", title: "Awake Tonight" },
+        { id: "alan-walker-golden-bird", artist: "Alan Walker & Chuanzi & Liu Yu", title: "Golden Bird" },
+        { id: "alan-walker-broken-strings", artist: "Alan Walker & Isabella Melkman & Katherine O'Ryan", title: "Broken Strings" },
+        { id: "alex-alta-1-2", artist: "Alex Alta & KDDK", title: "1&2" },
+        { id: "alex-taros-adrenaline", artist: "Alex Taros", title: "Adrenaline Rush" },
+        { id: "alex-taros-alright", artist: "Alex Taros", title: "Alright (House Work)" },
+        { id: "alex-taros-middle", artist: "Alex Taros", title: "In The Middle Of Nowhere" },
+        { id: "alok-dive", artist: "Alok & Khalid", title: "Dive Into Me" },
+        { id: "anotr-like-it", artist: "ANOTR & 3DDY", title: "Like It" },
+        { id: "ariana-petal", artist: "Ariana Grande", title: "petal" },
+        { id: "armin-let-it-be", artist: "Armin van Buuren & Jai Ryu", title: "Let It Be For Love" },
+        { id: "aspyer-higher", artist: "Aspyer & BROMANCE", title: "Higher" },
+        { id: "axwell-whatever", artist: "Axwell feat. Bonn", title: "Whatever Turns You On" },
+        { id: "barry-dance", artist: "Barry Can't Swim", title: "Dance Dance Dance" },
+        { id: "barton-alone", artist: "Barton", title: "I Think We're Alone Now" },
+        { id: "bogdan-broken", artist: "Bogdan Medvedi", title: "Broken Heart" },
+        { id: "burak-miss-you", artist: "Burak Yeter & LUSIA", title: "Miss You" },
+        { id: "calvin-ocean", artist: "Calvin Harris", title: "Ocean (feat. Jessie Reyez)" },
+        { id: "calvin-satisfy", artist: "Calvin Harris & Jazzy", title: "Satisfy" },
+        { id: "carlita-manhattan", artist: "Carlita & SOFI TUKKER", title: "Manhattan" },
+        { id: "cedric-gotta-be", artist: "Cedric Gervais & Carla Monroe", title: "Gotta Be" },
+        { id: "dave-raindance", artist: "Dave feat. Tems", title: "Raindance" },
+        { id: "david-guetta-gone", artist: "David Guetta & Teddy Swims & Tones and I", title: "Gone Gone Gone" },
+        { id: "dimension-guardian", artist: "Dimension & Karen Harding", title: "Guardian Angel" },
+        { id: "disclosure-deeper", artist: "Disclosure & Leon Thomas", title: "Deeper" },
+        { id: "doja-jealous", artist: "Doja Cat", title: "Jealous Type" },
+        { id: "fantomel-dame", artist: "Fantomel & Kate Linn", title: "Dame Un Grrr (Provi Remix)" },
+        { id: "fast-boy-beautiful", artist: "FAST BOY", title: "Beautiful Life" },
+        { id: "felix-nows", artist: "Felix Jaehn & Sarah Barrios", title: "Now's A Good Time To Be" },
+        { id: "fezzo-kids", artist: "FEZZO", title: "Kids" },
+        { id: "fisher-rain", artist: "FISHER", title: "Rain" },
+        { id: "fisher-favour", artist: "FISHER & Tones and I", title: "Favour" },
+        { id: "gordo-loco", artist: "GORDO & Reiner Zonneveld", title: "Loco Loco" },
+        { id: "gordo-energy", artist: "GORDO & WhoMadeWho", title: "ENERGY" },
+        { id: "haven-i-run", artist: "HAVEN. feat. Kaitlin Aragon", title: "I Run" },
+        { id: "hugel-movin", artist: "HUGEL & Imael Angel & Ultra Nate", title: "Movin' To The Sun" },
+        { id: "hugel-mami", artist: "HUGEL & Neton Vega", title: "Mami" },
+        { id: "icona-dance", artist: "Icona Pop", title: "Dance To This" },
+        { id: "illenium-dont-want", artist: "ILLENIUM & Ellie Goulding", title: "Don't Want Your Love" },
+        { id: "iowa-my", artist: "IOWA", title: "Мы" },
+        { id: "jamback-positive", artist: "Jamback", title: "Positive" },
+        { id: "joel-i-love", artist: "Joel Corry", title: "I LOVE UR GF" },
+        { id: "joel-whisper", artist: "Joel Corry", title: "Whisper" },
+        { id: "john-summit-lights", artist: "John Summit", title: "LIGHTS GO OUT" },
+        { id: "john-summit-dont-believe", artist: "John Summit & Absolutely", title: "DON'T BELIEVE IT" },
+        { id: "jony-krasivaya", artist: "JONY", title: "Красивая" },
+        { id: "jony-pomnyu", artist: "JONY", title: "Помню" },
+        { id: "karol-bby-wow", artist: "Karol G & Judeline & Rusowsky", title: "Bby WOW" },
+        { id: "kungs-galaxy", artist: "Kungs & Theophilus London", title: "Galaxy" },
+        { id: "linda-liekinheitin", artist: "Linda Lampenius & Pete Parkkonen", title: "Liekinheitin" },
+        { id: "lyriq-dont-go", artist: "LYRIQ", title: "DON'T GO MAD" },
+        { id: "lyriq-autentichnaya", artist: "LYRIQ", title: "АУТЕНТИЧНАЯ" },
+        { id: "madonna-danceteria", artist: "Madonna", title: "Danceteria" },
+        { id: "mak5d-bold", artist: "Mak5D", title: "Bold & Wild" },
+        { id: "matoma-world", artist: "Matoma & Coleman Hell", title: "World In Your Eyes" },
+        { id: "maxim-broken", artist: "Maxim Chaser", title: "Broken Angels" },
+        { id: "meduza-dont-wanna", artist: "MEDUZA & Henry Camamile", title: "Don't Wanna Go Home" },
+        { id: "merk-partenope", artist: "Merk & Kremont", title: "PARTENOPE (feat. Serena Brancale & The Kolors)" },
+        { id: "mileo-frankenstein", artist: "Mileo", title: "Frankenstein" },
+        { id: "miley-bass", artist: "MILEY", title: "Bass Persuades" },
+        { id: "milky-just", artist: "Milky & Mall Grab", title: "Just The Way You Are" },
+        { id: "morandi-miss-cali", artist: "Morandi", title: "Miss Cali (Hallelujah)" },
+        { id: "morgan-cant-love", artist: "Morgan Wallen & Ella Langley", title: "I Can't Love You Anymore" },
+        { id: "mosimann-ghosts", artist: "Mosimann & Skip The Use", title: "Ghosts" },
+        { id: "moti-outside", artist: "MOTi", title: "Outside With You" },
+        { id: "nick-cold", artist: "Nick Schilder", title: "Cold" },
+        { id: "onerepublic-give", artist: "OneRepublic", title: "Give Me Something" },
+        { id: "paul-kalkbrenner", artist: "Paul Kalkbrenner & Stromae", title: "QUE CE SOIT CLAIR" },
+        { id: "peggy-wo-man", artist: "Peggy Gou", title: "Wo, man (feat. Ayra Starr)" },
+        { id: "pnau-tu-corazon", artist: "PNAU & The Warning", title: "Tu Corazon (Your Heart)" },
+        { id: "prospa-love-songs", artist: "Prospa", title: "Love Songs (feat. Kosmo Kint)" },
+        { id: "puretone-addicted", artist: "Puretone", title: "Addicted To Bass (Dom Dolla Relapse)" },
+        { id: "ray-dalton-blood", artist: "Ray Dalton", title: "Blood Running" },
+        { id: "raye-husband", artist: "RAYE", title: "WHERE IS MY HUSBAND!" },
+        { id: "robbie-beauty", artist: "Robbie Williams & Miss Monique", title: "Beauty In Us" },
+        { id: "robin-am-to-pm", artist: "Robin Schulz & Sigala", title: "AM to PM (feat. Zoe Wees)" },
+        { id: "robyn-dopamine", artist: "Robyn", title: "Dopamine" },
+        { id: "robyn-talk", artist: "Robyn", title: "Talk To Me" },
+        { id: "sal-per-sempre", artist: "Sal Da Vinci", title: "Per Sempre Si" },
+        { id: "sofi-cook", artist: "SOFI TUKKER & J Balvin", title: "COOK" },
+        { id: "sonny-let-me", artist: "Sonny Fodera", title: "Let Me Be In Your Arms (feat. Libianca)" },
+        { id: "sonny-think", artist: "Sonny Fodera & D.O.D & Poppy Baskcomb", title: "Think About Us" },
+        { id: "steve-heartless", artist: "Steve Aoki & mia takarabe", title: "Heartless" },
+        { id: "still-young-do-it", artist: "Still Young & BROMANCE", title: "Do It Again" },
+        { id: "stryv-patigo", artist: "Stryv", title: "Patigo" },
+        { id: "tame-dracula", artist: "Tame Impala", title: "Dracula" },
+        { id: "taylor-fate", artist: "Taylor Swift", title: "The Fate Of Ophelia" },
+        { id: "tchami-cry", artist: "Tchami & Poo Bear", title: "cry for me" },
+        { id: "bausa-magnetic", artist: "The Bausa", title: "Magnetic" },
+        { id: "hotel-feelin", artist: "THE HOTEL LOBBY x F.HERO", title: "Feelin' alive" },
+        { id: "tove-des-fleurs", artist: "Tove Lo & Stromae", title: "des fleurs" },
+        { id: "tyla-chanel", artist: "Tyla", title: "CHANEL" },
+        { id: "vicetone-disco", artist: "Vicetone & morgxn", title: "Disco Kissing" },
+        { id: "vintage-lost", artist: "Vintage Culture & Gabss", title: "Lost" },
+        { id: "visionv-lonely", artist: "VisionV & XIRA", title: "Lonely" },
+        { id: "zara-crush", artist: "Zara Larsson", title: "Crush" },
+        { id: "zivert-gaz", artist: "Zivert", title: "GAZ" },
+        { id: "zivert-davay", artist: "Zivert & Эвер & directoreels", title: "Давай на самый верх" },
+        { id: "zvonkiy-nezhnost", artist: "Zvonkiy", title: "Нежность" },
+        { id: "basta-esli", artist: "Баста & Моя Мишель", title: "Если я буду танцевать" },
+        { id: "vanya-siluet", artist: "Ваня Дмитриенко & Аня Пересильд", title: "Силуэт" },
+        { id: "diskoteka-kukla", artist: "Дискотека Авария & VONAMOUR", title: "Кукла (Remix)" },
+        { id: "lesha-aritmiya", artist: "Лёша Свик & NILETTO & Mary Gu", title: "Аритмия" },
+        { id: "manakobra-kak-zhal", artist: "МАНАКОБРА", title: "как жаль" },
+        { id: "moya-malinovoy", artist: "Моя Мишель", title: "На малиновой луне" }
+    ];
+
+    const list = document.getElementById('tracks-list');
+
+    tracks.forEach(track => {
+        const card = document.createElement('div');
+        card.className = 'track-card';
+        card.innerHTML = `
+            <img src="https://via.placeholder.com/65/1e40af/ffffff?text=♪" class="cover" alt="${track.title}">
+            <div class="info">
+                <div class="track-name">${track.title}</div>
+                <div class="artist-name">${track.artist}</div>
+            </div>
+            <button class="vote-btn" data-id="${track.id}">Голосовать</button>
+        `;
+        list.appendChild(card);
+    });
+
+    // Обработка голосования
+    document.querySelectorAll('.vote-btn').forEach(btn => {
+        const trackId = btn.getAttribute('data-id');
+        const storageKey = 'voted_' + trackId;
+
+        // Проверяем, голосовал ли уже этот браузер
+        if (localStorage.getItem(storageKey)) {
+            btn.textContent = 'Голос учтён!';
+            btn.classList.add('voted');
+            btn.disabled = true;
+        }
+
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('voted')) return;
+
+            // Записываем голос в Firebase
+            db.ref('votes/' + trackId).transaction(current => (current || 0) + 1);
+
+            // Помечаем, что этот браузер уже голосовал
+            localStorage.setItem(storageKey, 'true');
+
+            btn.textContent = 'Голос учтён!';
+            btn.classList.add('voted');
+            btn.disabled = true;
+        });
+    });
+</script>
+</body>
+</html>

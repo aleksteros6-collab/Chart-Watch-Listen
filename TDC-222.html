@@ -464,7 +464,93 @@
                     <td class="points">5</td>
                 </tr>
 
-                <!-- 22 -->
+                             <!-- 22 -->
                 <tr>
                     <td class="position">22</td>
-                    <td><img src="
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/volac.the.button.jpg"
+                             alt="The Button" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/volac.the.button.mp3"></td>
+                    <td><div class="track-title">Volac</div><div class="track-artist">The Button</div></td>
+                    <td class="movement down">-9</td>
+                    <td class="weeks">6</td>
+                    <td class="points">79</td>
+                </tr>
+
+                <!-- 23 NEW -->
+                <tr>
+                    <td class="position">23</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/armin.van.buuren.glockenbach.sun.shines.jpg"
+                             alt="Sun Shines On Me (Rising Star Remix)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/armin.van.buuren.glockenbach.sun.shines.mp3"></td>
+                    <td><div class="track-title">Armin van Buuren & Glockenbach <span class="new-badge">NEW</span></div><div class="track-artist">Sun Shines On Me (Rising Star Remix)</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">3</td>
+                </tr>
+
+                <!-- 24 -->
+                <tr>
+                    <td class="position">24</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/faithless.new.religion.jpg"
+                             alt="New Religion" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/faithless.new.religion.mp3"></td>
+                    <td><div class="track-title">Faithless & Bebe Rexha</div><div class="track-artist">New Religion</div></td>
+                    <td class="movement down">-5</td>
+                    <td class="weeks">8</td>
+                    <td class="points">78</td>
+                </tr>
+
+                <!-- 25 NEW -->
+                <tr>
+                    <td class="position">25</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/tchami.poo.bear.cry.for.me.jpg"
+                             alt="cry for me" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/tchami.poo.bear.cry.for.me.mp3"></td>
+                    <td><div class="track-title">Tchami & Poo Bear <span class="new-badge">NEW</span></div><div class="track-artist">cry for me</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">1</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>16. SIDEPIECE — Wild · 7w · 113 points</li>
+                <li>20. Gorgon City & TAET — Second Nature · 4w · 37 points</li>
+                <li>21. Ewan McVicar — Share The House · 8w · 99 points</li>
+                <li>22. Tommy Veanud & Burak Yeter — Use My Body · 3w · 14 points</li>
+                <li>24. SOFI TUKKER — BOBA · 7w · 81 points</li>
+                <li>25. CID — Loaded Gun · 6w · 52 points</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        function initAudioPlayers() {
+            const covers = document.querySelectorAll('.img-cover');
+            covers.forEach((img) => {
+                img.addEventListener('click', function () {
+                    const audioUrl = this.getAttribute('data-audio');
+                    if (!audioUrl) return;
+                    if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                        currentAudio.pause(); currentAudio.currentTime = 0;
+                        currentAudio = null; this.style.opacity = '1'; return;
+                    }
+                    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.volume = 0.75;
+                    currentAudio.play().catch(err => console.error('Ошибка:', err));
+                    this.style.opacity = '0.75';
+                    currentAudio.onended = () => { this.style.opacity = '1'; currentAudio = null; };
+                });
+            });
+        }
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
+    </script>
+</body>
+</html>

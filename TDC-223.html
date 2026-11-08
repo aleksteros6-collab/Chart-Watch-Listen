@@ -465,7 +465,89 @@
                     <td class="points">5</td>
                 </tr>
 
-                <!-- 22 -->
+                                <!-- 22 -->
                 <tr>
                     <td class="position">22</td>
-                    <td><img src="https://
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/no.one.knows.sarria.solo.tu.jpg"
+                             alt="Solo Tu" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/no.one.knows.sarria.solo.tu.mp3"></td>
+                    <td><div class="track-title">No One Knows & Sarria</div><div class="track-artist">Solo Tu</div></td>
+                    <td class="movement down">-2</td>
+                    <td class="weeks">3</td>
+                    <td class="points">13</td>
+                </tr>
+
+                <!-- 23 -->
+                <tr>
+                    <td class="position">23</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/chris.lorenzo.kah.lo.in.this.bih.jpg"
+                             alt="In This Bih'" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/chris.lorenzo.kah.lo.in.this.bih.mp3"></td>
+                    <td><div class="track-title">Chris Lorenzo & Kah-Lo</div><div class="track-artist">In This Bih'</div></td>
+                    <td class="movement down">-6</td>
+                    <td class="weeks">6</td>
+                    <td class="points">51</td>
+                </tr>
+
+                <!-- 24 LONGEST -->
+                <tr>
+                    <td class="position">24</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/gordo.loco.loco.jpg"
+                             alt="Loco Loco" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/gordo.loco.loco.mp3"></td>
+                    <td><div class="track-title">Gordo & Reiner Zonneveld</div><div class="track-artist">Loco Loco</div><span class="longest">LONGEST CHART SITTER</span></td>
+                    <td class="movement down">-5</td>
+                    <td class="weeks">13</td>
+                    <td class="points">201</td>
+                </tr>
+
+                <!-- 25 NEW -->
+                <tr>
+                    <td class="position">25</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/unfazed.a.gira.remix.jpg"
+                             alt="A Gira (Remix)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/unfazed.a.gira.remix.mp3"></td>
+                    <td><div class="track-title">unfazed <span class="new-badge">NEW</span></div><div class="track-artist">A Gira (with Emanuel Satie & Maga & Sean Doron & Tim Engelhardt & Scenarios) [Remix]</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">1</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>22. Volac — The Button · 6w · 79 points</li>
+                <li>24. Faithless & Bebe Rexha — New Religion · 8w · 78 points</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        function initAudioPlayers() {
+            const covers = document.querySelectorAll('.img-cover');
+            covers.forEach((img) => {
+                img.addEventListener('click', function () {
+                    const audioUrl = this.getAttribute('data-audio');
+                    if (!audioUrl) return;
+                    if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                        currentAudio.pause(); currentAudio.currentTime = 0;
+                        currentAudio = null; this.style.opacity = '1'; return;
+                    }
+                    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.volume = 0.75;
+                    currentAudio.play().catch(err => console.error('Ошибка:', err));
+                    this.style.opacity = '0.75';
+                    currentAudio.onended = () => { this.style.opacity = '1'; currentAudio = null; };
+                });
+            });
+        }
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
+    </script>
+</body>
+</html>

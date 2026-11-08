@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAROS DANCE CHART #218</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #2a004a 0%, #000000 100%);
+            color: #f0e0ff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .top-menu {
+            position: sticky;
+            top: 0;
+            background: rgba(20, 0, 50, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #8a2be2;
+            z-index: 1000;
+            padding: 8px 12px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+            scrollbar-width: thin;
+            scrollbar-color: #8a2be2 rgba(20, 0, 50, 0.6);
+        }
+        .top-menu::-webkit-scrollbar { height: 6px; }
+        .top-menu::-webkit-scrollbar-track { background: rgba(20, 0, 50, 0.6); border-radius: 3px; }
+        .top-menu::-webkit-scrollbar-thumb { background: #8a2be2; border-radius: 3px; }
+        .top-menu::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+
+        .menu-list { display: flex; gap: 6px; align-items: center; }
+        .menu-item {
+            color: #dda0dd;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-weight: 600;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .menu-item:hover, .menu-item.active {
+            background: #8a2be2;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .chart-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: rgba(30, 0, 60, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            background: linear-gradient(to right, #ff8c00, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #dda0dd;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+        table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+        th {
+            background: linear-gradient(to bottom, #8a2be2, #4b0082);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        td {
+            padding: 16px 12px;
+            background: rgba(70, 20, 120, 0.6);
+            transition: all 0.3s;
+            vertical-align: middle;
+        }
+        tr:hover td { background: rgba(100, 40, 160, 0.8); border-left: 4px solid #ff8c00; }
+        .position {
+            text-align: center;
+            font-size: 1.8em;
+            color: #ff8c00;
+            font-weight: bold;
+            width: 70px;
+        }
+        .medal { font-size: 0.65em; display: block; line-height: 1; }
+        .img-cover {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+        }
+        .img-cover:hover { transform: scale(1.08); opacity: 0.9; }
+        .track-title { font-size: 1.15em; font-weight: bold; color: #fff; }
+        .track-artist { color: #dda0dd; font-size: 0.95em; }
+        .movement { text-align: center; font-weight: bold; white-space: nowrap; }
+        .movement.up { color: #00ff9d; }
+        .movement.new { color: #00ff9d; }
+        .movement.down { color: #ff4500; }
+        .movement.stay { color: #ffd700; }
+        .weeks { color: #b0a0ff; font-weight: bold; text-align: center; }
+        .points { color: #ff8c00; font-weight: bold; text-align: center; font-size: 1.1em; }
+        .longest {
+            display: inline-block;
+            color: #ffd700;
+            font-size: 0.7em;
+            font-weight: bold;
+            background: rgba(255, 215, 0, 0.12);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+        .new-badge {
+            display: inline-block;
+            background: #00ff9d;
+            color: #000;
+            font-size: 0.65em;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .out-block {
+            margin-top: 30px;
+            background: rgba(40, 0, 20, 0.6);
+            border-left: 4px solid #ff4500;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .out-block h3 { color: #ff4500; margin-top: 0; }
+        .out-block ul { list-style: none; padding: 0; margin: 0; }
+        .out-block li { padding: 6px 0; color: #dda0dd; border-bottom: 1px dashed rgba(255, 69, 0, 0.3); }
+        .out-block li:last-child { border-bottom: none; }
+
+        @media (max-width: 700px) {
+            .chart-container { padding: 15px; margin: 15px; }
+            h1 { font-size: 1.8em; }
+            th, td { padding: 8px 5px; }
+            .position { font-size: 1.3em; width: 45px; }
+            .img-cover { width: 45px; height: 45px; border-radius: 8px; }
+            .track-title { font-size: 0.9em; }
+            .track-artist { font-size: 0.8em; }
+            th:nth-child(4), td:nth-child(4) { display: none; }
+            .weeks, .points { font-size: 0.85em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- МЕНЮ -->
+    <div class="top-menu">
+        <div class="menu-list">
+            <a href="index.html" class="menu-item">🏠 Главная</a>
+            <a href="TDC-218.html" class="menu-item active">#218 (16.04.2026)</a>
+            <a href="TDC-217.html" class="menu-item">#217</a>
+            <a href="TDC-216.html" class="menu-item">#216</a>
+            <a href="TDC-215.html" class="menu-item">#215</a>
+            <a href="TDC-214.html" class="menu-item">#214</a>
+            <a href="TDC-213.html" class="menu-item">#213</a>
+            <a href="TDC-212.html" class="menu-item">#212</a>
+            <a href="TDC-211.html" class="menu-item">#211</a>
+            <a href="TDC-210.html" class="menu-item">#210</a>
+            <a href="TDC-209.html" class="menu-item">#209</a>
+            <a href="TDC-208.html" class="menu-item">#208</a>
+            <a href="TDC-207.html" class="menu-item">#207</a>
+            <a href="TDC-206.html" class="menu-item">#206</a>
+            <a href="TDC-205.html" class="menu-item">#205</a>
+            <a href="TDC-204.html" class="menu-item">#204</a>
+            <a href="TDC-203.html" class="menu-item">#203</a>
+            <a href="TDC-202.html" class="menu-item">#202</a>
+            <a href="TDC-201.html" class="menu-item">#201</a>
+            <a href="TDC-200.html" class="menu-item">#200</a>
+            <a href="TDC-199.html" class="menu-item">#199</a>
+            <a href="TDC-198.html" class="menu-item">#198</a>
+            <a href="TDC-197.html" class="menu-item">#197</a>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <h1>TAROS DANCE CHART #218</h1>
+        <div class="subtitle">16.04.2026</div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Поз</th>
+                    <th>Обложка</th>
+                    <th>Трек</th>
+                    <th>Движение</th>
+                    <th>Недели</th>
+                    <th>Очки</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- 1 -->
+                <tr>
+                    <td class="position"><span class="medal">🥇</span>1</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/franky.rizardo.shinjuku.jpg"
+                             alt="Shinjuku" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/franky.rizardo.shinjuku.mp3"></td>
+                    <td><div class="track-title">Franky Rizardo</div><div class="track-artist">Shinjuku</div></td>
+                    <td class="movement up">+9</td>
+                    <td class="weeks">3</td>
+                    <td class="points">51</td>
+                </tr>
+
+                <!-- 2 -->
+                <tr>
+                    <td class="position"><span class="medal">🥈</span>2</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/anotr.talk.to.you.jpg"
+                             alt="Talk To You" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/anotr.talk.to.you.mp3"></td>
+                    <td><div class="track-title">ANOTR & 54 Ultra</div><div class="track-artist">Talk To You</div></td>
+                    <td class="movement down">-1</td>
+                    <td class="weeks">6</td>
+                    <td class="points">118</td>
+                </tr>
+
+                <!-- 3 -->
+                <tr>
+                    <td class="position"><span class="medal">🥉</span>3</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/sidepiece.wild.jpg"
+                             alt="Wild" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/sidepiece.wild.mp3"></td>
+                    <td><div class="track-title">SIDEPIECE</div><div class="track-artist">Wild</div></td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">4</td>
+                    <td class="points">72</td>
+                </tr>
+
+                <!-- 4 -->
+                <tr>
+                    <td class="position">4</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/ferry.corsten.marsh.attraction.jpg"
+                             alt="Attraction" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/ferry.corsten.marsh.attraction.mp3"></td>
+                    <td><div class="track-title">Ferry Corsten & Marsh</div><div class="track-artist">Attraction</div></td>
+                    <td class="movement up">+10</td>
+                    <td class="weeks">3</td>
+                    <td class="points">42</td>
+                </tr>
+
+                <!-- 5 -->
+                <tr>
+                    <td class="position">5</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/sofi.tukker.boba.jpg"
+                             alt="BOBA" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/sofi.tukker.boba.mp3"></td>
+                    <td><div class="track-title">SOFI TUKKER</div><div class="track-artist">BOBA</div></td>
+                    <td class="movement up">+4</td>
+                    <td class="weeks">4</td>
+                    <td class="points">60</td>
+                </tr>
+
+                <!-- 6 -->
+                <tr>
+                    <td class="position">6</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/alex.taros.alright.jpg"
+                             alt="Alright (House Work)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/alex.taros.alright.mp3"></td>
+                    <td><div class="track-title">Alex Taros</div><div class="track-artist">Alright (House Work)</div></td>
+                    <td class="movement down">-2</td>
+                    <td class="weeks">7</td>
+                    <td class="points">125</td>
+                </tr>
+
+                <!-- 7 -->
+                <tr>
+                    <td class="position">7</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/faithless.new.religion.jpg"
+                             alt="New Religion" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/faithless.new.religion.mp3"></td>
+                    <td><div class="track-title">Faithless & Bebe Rexha</div><div class="track-artist">New Religion</div></td>
+                    <td class="movement up">+5</td>
+                    <td class="weeks">4</td>
+                    <td class="points">48</td>
+                </tr>
+
+                <!-- 8 -->
+                <tr>
+                    <td class="position">8</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/bob.sinclar.kiesza.jpg"
+                             alt="I Can't Wait" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/bob.sinclar.kiesza.mp3"></td>
+                    <td><div class="track-title">Bob Sinclar & Kiesza</div><div class="track-artist">I Can't Wait</div></td>
+                    <td class="movement down">-6</td>
+                    <td class="weeks">6</td>
+                    <td class="points">97</td>
+                </tr>
+
+                <!-- 9 -->
+                <tr>
+                    <td class="position">9</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/maxim.chaser.broken.angels.jpg"
+                             alt="Broken Angels" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/maxim.chaser.broken.angels.mp3"></td>
+                    <td><div class="track-title">Maxim Chaser</div><div class="track-artist">Broken Angels</div></td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">5</td>
+                    <td class="points">52</td>
+                </tr>
+
+                <!-- 10 -->
+                <tr>
+                    <td class="position">10</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/ewan.mcvicar.share.the.house.jpg"
+                             alt="Share The House" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/ewan.mcvicar.share.the.house.mp3"></td>
+                    <td><div class="track-title">Ewan McVicar</div><div class="track-artist">Share The House</div></td>
+                    <td class="movement down">-7</td>
+                    <td class="weeks">5</td>
+                    <td class="points">75</td>
+                </tr>
+
+                <!-- 11 -->
+                <tr>
+                    <td class="position">11</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/gordo.loco.loco.jpg"
+                             alt="Loco Loco" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/gordo.loco.loco.mp3"></td>
+                    <td><div class="track-title">Gordo & Reiner Zonneveld</div><div class="track-artist">Loco Loco</div></td>
+                    <td class="movement down">-3</td>
+                    <td class="weeks">8</td>
+                    <td class="points">155</td>
+                </tr>
+
+                <!-- 12 -->
+                <tr>
+                    <td class="position">12</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/prospa.cloonee.free.your.mind.jpg"
+                             alt="Free Your Mind" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/prospa.cloonee.free.your.mind.mp3"></td>
+                    <td><div class="track-title">Prospa & Cloonee</div><div class="track-artist">Free Your Mind</div></td>
+                    <td class="movement up">+11</td>
+                    <td class="weeks">2</td>
+                    <td class="points">17</td>
+                </tr>
+
+                <!-- 13 -->
+                <tr>
+                    <td class="position">13</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/volac.the.button.jpg"
+                             alt="The Button" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/volac.the.button.mp3"></td>
+                    <td><div class="track-title">Volac</div><div class="track-artist">The Button</div></td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">2</td>
+                    <td class="points">24</td>
+                </tr>
+
+                <!-- 14 NEW -->
+                <tr>
+                    <td class="position">14</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/kungs.boys.noize.get.away.jpg"
+                             alt="Get Away" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/kungs.boys.noize.get.away.mp3"></td>
+                    <td><div class="track-title">Kungs & Boys Noize <span class="new-badge">NEW</span></div><div class="track-artist">Get Away</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">12</td>
+                </tr>
+
+                <!-- 15 -->
+                <tr>
+                    <td class="position">15</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/joshwa.out.of.my.mind.jpg"
+                             alt="Out of My Mind" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/joshwa.out.of.my.mind.mp3"></td>
+                    <td><div class="track-title">Joshwa</div><div class="track-artist">Out of My Mind</div></td>
+                    <td class="movement down">-9</td>
+                    <td class="weeks">7</td>
+                    <td class="points">132</td>
+                </tr>
+
+                <!-- 16 NEW -->
+                <tr>
+                    <td class="position">16</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/gorgon.city.taet.second.nature.jpg"
+                             alt="Second Nature" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/gorgon.city.taet.second.nature.mp3"></td>
+                    <td><div class="track-title">Gorgon City & TAET <span class="new-badge">NEW</span></div><div class="track-artist">Second Nature</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">10</td>
+                </tr>
+
+                <!-- 17 -->
+                <tr>
+                    <td class="position">17</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/cid.loaded.gun.jpg"
+                             alt="Loaded Gun" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/cid.loaded.gun.mp3"></td>
+                    <td><div class="track-title">CID</div><div class="track-artist">Loaded Gun</div></td>
+                    <td class="movement down">-1</td>
+                    <td class="weeks">3</td>
+                    <td class="points">24</td>
+                </tr>
+
+                <!-- 18 -->
+                <tr>
+                    <td class="position">18</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/fargin.vision.jpg"
+                             alt="Vision" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/fargin.vision.mp3"></td>
+                    <td><div class="track-title">FARGIN</div><div class="track-artist">Vision</div></td>
+                    <td class="movement up">+1</td>
+                    <td class="weeks">3</td>
+                    <td class="points">16</td>
+                </tr>
+
+                <!-- 19 NEW -->
+                <tr>
+                    <td class="position">19</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/anyma.lisa.bad.angel.jpg"
+                             alt="Bad Angel" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/anyma.lisa.bad.angel.mp3"></td>
+                    <td><div class="track-title">Anyma & LISA <span class="new-badge">NEW</span></div><div class="track-artist">Bad Angel</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">7</td>
+                </tr>
+
+                <!-- 20 -->
+                <tr>
+                    <td class="position">20</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/fisher.rain.jpg"
+                             alt="Rain" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/fisher.rain.mp3"></td>
+                    <td><div class="track-title">FISHER</div><div class="track-artist">Rain</div></td>
+                    <td class="movement down">-13</td>
+                    <td class="weeks">9</td>
+                    <td class="points">140</td>
+                </tr>
+
+                <!-- 21 -->
+                <tr>
+                    <td class="position">21</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/riordan.silva.bumpa.lifting.jpg"
+                             alt="Lifting" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/riordan.silva.bumpa.lifting.mp3"></td>
+                    <td><div class="track-title">Riordan & Silva Bumpa</div><div class="track-artist">Lifting</div></td>
+                    <td class="movement down">-8</td>
+                    <td class="weeks">6</td>
+                    <td class="points">80</td>
+                </tr>
+
+                <!-- 22 NEW -->
+                <tr>
+                    <td class="position">22</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/chris.lorenzo.kah.lo.in.this.bih.jpg"
+                             alt="In This Bih'" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/chris.lorenzo.kah.lo.in.this.bih.mp3"></td>
+                    <td><div class="track-title">Chris Lorenzo & Kah-Lo <span class="new-badge">NEW</span></div><div class="track-artist">In This Bih'</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">4</td>
+                </tr>
+
+                <!-- 23 -->
+                <tr>
+                    <td class="position">23</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/randoree.ma.fesh.ex.jpg"
+                             alt="Ma Fesh Ex" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/randoree.ma.fesh.ex.mp3"></td>
+                    <td><div class="track-title">Randoree & High Notes & Juany Bravo</div><div class="track-artist">Ma Fesh Ex</div></td>
+                    <td class="movement down">-5</td>
+                    <td class="weeks">5</td

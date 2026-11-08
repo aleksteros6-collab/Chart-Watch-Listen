@@ -472,7 +472,7 @@
                     <td class="points">4</td>
                 </tr>
 
-                <!-- 23 -->
+                              <!-- 23 -->
                 <tr>
                     <td class="position">23</td>
                     <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/randoree.ma.fesh.ex.jpg"
@@ -480,4 +480,72 @@
                              data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/randoree.ma.fesh.ex.mp3"></td>
                     <td><div class="track-title">Randoree & High Notes & Juany Bravo</div><div class="track-artist">Ma Fesh Ex</div></td>
                     <td class="movement down">-5</td>
-                    <td class="weeks">5</td
+                    <td class="weeks">5</td>
+                    <td class="points">44</td>
+                </tr>
+
+                <!-- 24 NEW -->
+                <tr>
+                    <td class="position">24</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/fezzo.dubdogz.zaark.how.does.it.feel.jpg"
+                             alt="How Does It Feel" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/fezzo.dubdogz.zaark.how.does.it.feel.mp3"></td>
+                    <td><div class="track-title">Fezzo & Dubdogz & Zaark <span class="new-badge">NEW</span></div><div class="track-artist">How Does It Feel</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">2</td>
+                </tr>
+
+                <!-- 25 LONGEST -->
+                <tr>
+                    <td class="position">25</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/fedde.le.grand.back.and.forth.jpg"
+                             alt="Back & Forth (Tony Romera Rework)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/fedde.le.grand.back.and.forth.mp3"></td>
+                    <td><div class="track-title">Fedde Le Grand feat. Mr.V</div><div class="track-artist">Back & Forth (Tony Romera Rework)</div><span class="longest">LONGEST CHART SITTER</span></td>
+                    <td class="movement down">-4</td>
+                    <td class="weeks">11</td>
+                    <td class="points">162</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>17. Going Deeper & Ryan Spicer — Like Home · 7w · 79 points</li>
+                <li>22. Will Clarke — WHAT?! · 11w · 158 points</li>
+                <li>20. Jaden Bojsen & David Guetta — Upside Down · 8w · 112 points</li>
+                <li>24. Discip — Pull Up · 15w · 254 points</li>
+                <li>25. Joel Corry — Stuck In A Loop · 10w · 112 points</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        function initAudioPlayers() {
+            const covers = document.querySelectorAll('.img-cover');
+            covers.forEach((img) => {
+                img.addEventListener('click', function () {
+                    const audioUrl = this.getAttribute('data-audio');
+                    if (!audioUrl) return;
+                    if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                        currentAudio.pause(); currentAudio.currentTime = 0;
+                        currentAudio = null; this.style.opacity = '1'; return;
+                    }
+                    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.volume = 0.75;
+                    currentAudio.play().catch(err => console.error('Ошибка:', err));
+                    this.style.opacity = '0.75';
+                    currentAudio.onended = () => { this.style.opacity = '1'; currentAudio = null; };
+                });
+            });
+        }
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
+    </script>
+</body>
+</html>

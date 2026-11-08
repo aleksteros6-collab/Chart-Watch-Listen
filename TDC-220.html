@@ -474,7 +474,78 @@
                     <td class="points">63</td>
                 </tr>
 
-                <!-- 23 NEW -->
+                              <!-- 23 NEW -->
                 <tr>
                     <td class="position">23</td>
-                    <td><
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/purple.disco.machine.disco.cherry.jpg"
+                             alt="Disco Cherry" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/purple.disco.machine.disco.cherry.mp3"></td>
+                    <td><div class="track-title">Purple Disco Machine <span class="new-badge">NEW</span></div><div class="track-artist">Disco Cherry</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">3</td>
+                </tr>
+
+                <!-- 24 -->
+                <tr>
+                    <td class="position">24</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/joshwa.out.of.my.mind.jpg"
+                             alt="Out of My Mind" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/joshwa.out.of.my.mind.mp3"></td>
+                    <td><div class="track-title">Joshwa</div><div class="track-artist">Out of My Mind</div></td>
+                    <td class="movement down">-3</td>
+                    <td class="weeks">9</td>
+                    <td class="points">139</td>
+                </tr>
+
+                <!-- 25 NEW -->
+                <tr>
+                    <td class="position">25</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/jonas.rathsman.tobago.remix.jpg"
+                             alt="Tobago (Serve Cold & Grigore & BENSY Remix)" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/jonas.rathsman.tobago.remix.mp3"></td>
+                    <td><div class="track-title">Jonas Rathsman <span class="new-badge">NEW</span></div><div class="track-artist">Tobago (Serve Cold & Grigore & BENSY Remix)</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">1</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>20. FARGIN — Vision · 4w · 22 points</li>
+                <li>23. Fedde Le Grand feat. Mr.V — Back & Forth (Tony Romera Rework) · 12w · 165 points</li>
+                <li>25. Riordan & Silva Bumpa — Lifting · 7w · 81 points</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        function initAudioPlayers() {
+            const covers = document.querySelectorAll('.img-cover');
+            covers.forEach((img) => {
+                img.addEventListener('click', function () {
+                    const audioUrl = this.getAttribute('data-audio');
+                    if (!audioUrl) return;
+                    if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                        currentAudio.pause(); currentAudio.currentTime = 0;
+                        currentAudio = null; this.style.opacity = '1'; return;
+                    }
+                    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.volume = 0.75;
+                    currentAudio.play().catch(err => console.error('Ошибка:', err));
+                    this.style.opacity = '0.75';
+                    currentAudio.onended = () => { this.style.opacity = '1'; currentAudio = null; };
+                });
+            });
+        }
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
+    </script>
+</body>
+</html>

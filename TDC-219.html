@@ -473,10 +473,77 @@
                     <td class="points">4</td>
                 </tr>
 
-                <!-- 23 LONGEST -->
+                               <!-- 23 LONGEST -->
                 <tr>
                     <td class="position">23</td>
                     <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/fedde.le.grand.back.and.forth.jpg"
                              alt="Back & Forth (Tony Romera Rework)" class="img-cover"
                              data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/fedde.le.grand.back.and.forth.mp3"></td>
-                    <td><div
+                    <td><div class="track-title">Fedde Le Grand feat. Mr.V</div><div class="track-artist">Back & Forth (Tony Romera Rework)</div><span class="longest">LONGEST CHART SITTER</span></td>
+                    <td class="movement up">+2</td>
+                    <td class="weeks">12</td>
+                    <td class="points">165</td>
+                </tr>
+
+                <!-- 24 NEW -->
+                <tr>
+                    <td class="position">24</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/fisher.tones.and.i.favour.jpg"
+                             alt="Favour" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/fisher.tones.and.i.favour.mp3"></td>
+                    <td><div class="track-title">FISHER & Tones and I <span class="new-badge">NEW</span></div><div class="track-artist">Favour</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">2</td>
+                </tr>
+
+                <!-- 25 -->
+                <tr>
+                    <td class="position">25</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/riordan.silva.bumpa.lifting.jpg"
+                             alt="Lifting" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/riordan.silva.bumpa.lifting.mp3"></td>
+                    <td><div class="track-title">Riordan & Silva Bumpa</div><div class="track-artist">Lifting</div></td>
+                    <td class="movement down">-4</td>
+                    <td class="weeks">7</td>
+                    <td class="points">81</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>23. Randoree & High Notes & Juany Bravo — Ma Fesh Ex · 5w · 44 points</li>
+                <li>20. FISHER — Rain · 9w · 140 points</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        function initAudioPlayers() {
+            const covers = document.querySelectorAll('.img-cover');
+            covers.forEach((img) => {
+                img.addEventListener('click', function () {
+                    const audioUrl = this.getAttribute('data-audio');
+                    if (!audioUrl) return;
+                    if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                        currentAudio.pause(); currentAudio.currentTime = 0;
+                        currentAudio = null; this.style.opacity = '1'; return;
+                    }
+                    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.volume = 0.75;
+                    currentAudio.play().catch(err => console.error('Ошибка:', err));
+                    this.style.opacity = '0.75';
+                    currentAudio.onended = () => { this.style.opacity = '1'; currentAudio = null; };
+                });
+            });
+        }
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
+    </script>
+</body>
+</html>

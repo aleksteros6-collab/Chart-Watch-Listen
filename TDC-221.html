@@ -472,3 +472,78 @@
                     <td><div class="track-title">Tommy Veanud & Burak Yeter</div><div class="track-artist">Use My Body</div></td>
                     <td class="movement down">-2</td>
                     <td class="we
+
+                <!-- 23 NEW -->
+                <tr>
+                    <td class="position">23</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/no.one.knows.sarria.solo.tu.jpg"
+                             alt="Solo Tu" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/no.one.knows.sarria.solo.tu.mp3"></td>
+                    <td><div class="track-title">No One Knows & Sarria <span class="new-badge">NEW</span></div><div class="track-artist">Solo Tu</div></td>
+                    <td class="movement new">NEW</td>
+                    <td class="weeks">1</td>
+                    <td class="points">3</td>
+                </tr>
+
+                <!-- 24 -->
+                <tr>
+                    <td class="position">24</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/sofi.tukker.boba.jpg"
+                             alt="BOBA" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/sofi.tukker.boba.mp3"></td>
+                    <td><div class="track-title">SOFI TUKKER</div><div class="track-artist">BOBA</div></td>
+                    <td class="movement down">-5</td>
+                    <td class="weeks">7</td>
+                    <td class="points">81</td>
+                </tr>
+
+                <!-- 25 -->
+                <tr>
+                    <td class="position">25</td>
+                    <td><img src="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/photos/cid.loaded.gun.jpg"
+                             alt="Loaded Gun" class="img-cover"
+                             data-audio="https://github.com/aleksteros6-collab/Chart-Watch-Listen/releases/download/EDM/cid.loaded.gun.mp3"></td>
+                    <td><div class="track-title">CID</div><div class="track-artist">Loaded Gun</div></td>
+                    <td class="movement down">-10</td>
+                    <td class="weeks">6</td>
+                    <td class="points">52</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- OUT -->
+        <div class="out-block">
+            <h3>❌ OUT</h3>
+            <ul>
+                <li>22. Maxim Chaser — Broken Angels · 7w · 63 points</li>
+                <li>24. Joshwa — Out of My Mind · 9w · 139 points</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        function initAudioPlayers() {
+            const covers = document.querySelectorAll('.img-cover');
+            covers.forEach((img) => {
+                img.addEventListener('click', function () {
+                    const audioUrl = this.getAttribute('data-audio');
+                    if (!audioUrl) return;
+                    if (currentAudio && currentAudio.src.includes(audioUrl)) {
+                        currentAudio.pause(); currentAudio.currentTime = 0;
+                        currentAudio = null; this.style.opacity = '1'; return;
+                    }
+                    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+                    currentAudio = new Audio(audioUrl);
+                    currentAudio.volume = 0.75;
+                    currentAudio.play().catch(err => console.error('Ошибка:', err));
+                    this.style.opacity = '0.75';
+                    currentAudio.onended = () => { this.style.opacity = '1'; currentAudio = null; };
+                });
+            });
+        }
+        window.addEventListener('load', () => setTimeout(initAudioPlayers, 300));
+    </script>
+</body>
+</html>
